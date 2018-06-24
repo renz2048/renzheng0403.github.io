@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh">
+<html class="theme-next mist use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -108,21 +108,21 @@
 
 
 
-  <meta name="description" content="1 算法1.1 对称算法描述：对称加密是指加密过程和解密过程使用相同的密码。主要分：分组加密、序列加密。 原理：XOR运算，将二进制数据进行XOR运算，两次同样的操作得到原文，所以大致过程就是加密-&amp;gt;A xor B = C，解密-&amp;gt;C xor B = A（B就是密钥）。 优点：加密速度快，适合于对大量数据加密。 缺点：发送方和接受方需要使用相同的密钥，一旦密钥泄露，在互联网上传输的加密">
+  <meta name="description" content="算法对称算法描述：对称加密是指加密过程和解密过程使用相同的密码。主要分：分组加密、序列加密。 原理：XOR运算，将二进制数据进行XOR运算，两次同样的操作得到原文，所以大致过程就是加密-&amp;gt;A xor B = C，解密-&amp;gt;C xor B = A（B就是密钥）。 优点：加密速度快，适合于对大量数据加密。 缺点：发送方和接受方需要使用相同的密钥，一旦密钥泄露，在互联网上传输的加密数据将会被中">
 <meta name="keywords" content="PKI,net">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网关服务端第一阶段总结">
 <meta property="og:url" content="https://renzheng0403.github.io/2017/08/26/2017-08-26-PKI知识点总结/index.html">
 <meta property="og:site_name" content="renz">
-<meta property="og:description" content="1 算法1.1 对称算法描述：对称加密是指加密过程和解密过程使用相同的密码。主要分：分组加密、序列加密。 原理：XOR运算，将二进制数据进行XOR运算，两次同样的操作得到原文，所以大致过程就是加密-&amp;gt;A xor B = C，解密-&amp;gt;C xor B = A（B就是密钥）。 优点：加密速度快，适合于对大量数据加密。 缺点：发送方和接受方需要使用相同的密钥，一旦密钥泄露，在互联网上传输的加密">
-<meta property="og:locale" content="zh">
+<meta property="og:description" content="算法对称算法描述：对称加密是指加密过程和解密过程使用相同的密码。主要分：分组加密、序列加密。 原理：XOR运算，将二进制数据进行XOR运算，两次同样的操作得到原文，所以大致过程就是加密-&amp;gt;A xor B = C，解密-&amp;gt;C xor B = A（B就是密钥）。 优点：加密速度快，适合于对大量数据加密。 缺点：发送方和接受方需要使用相同的密钥，一旦密钥泄露，在互联网上传输的加密数据将会被中">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://renzheng0403.github.io/images/HMAC.JPG">
 <meta property="og:image" content="https://renzheng0403.github.io/images/PKCS5Padding.png">
 <meta property="og:image" content="https://renzheng0403.github.io/images/envelop.png">
-<meta property="og:updated_time" content="2018-06-24T12:30:23.357Z">
+<meta property="og:updated_time" content="2018-06-24T15:22:25.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网关服务端第一阶段总结">
-<meta name="twitter:description" content="1 算法1.1 对称算法描述：对称加密是指加密过程和解密过程使用相同的密码。主要分：分组加密、序列加密。 原理：XOR运算，将二进制数据进行XOR运算，两次同样的操作得到原文，所以大致过程就是加密-&amp;gt;A xor B = C，解密-&amp;gt;C xor B = A（B就是密钥）。 优点：加密速度快，适合于对大量数据加密。 缺点：发送方和接受方需要使用相同的密钥，一旦密钥泄露，在互联网上传输的加密">
+<meta name="twitter:description" content="算法对称算法描述：对称加密是指加密过程和解密过程使用相同的密码。主要分：分组加密、序列加密。 原理：XOR运算，将二进制数据进行XOR运算，两次同样的操作得到原文，所以大致过程就是加密-&amp;gt;A xor B = C，解密-&amp;gt;C xor B = A（B就是密钥）。 优点：加密速度快，适合于对大量数据加密。 缺点：发送方和接受方需要使用相同的密钥，一旦密钥泄露，在互联网上传输的加密数据将会被中">
 <meta name="twitter:image" content="https://renzheng0403.github.io/images/HMAC.JPG">
 
 
@@ -180,7 +180,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -210,7 +210,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -230,7 +230,15 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
   </li>
         
         
@@ -238,7 +246,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
         
         
@@ -246,7 +254,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
   </li>
         
         
@@ -254,7 +262,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
   </li>
 
       
@@ -309,7 +317,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="renzheng">
-      <meta itemprop="description" content="what's past is prologue">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -340,14 +348,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2017-08-26 00:00:00" itemprop="dateCreated datePublished" datetime="2017-08-26T00:00:00+08:00">2017-08-26</time>
+              <time title="创建时间：2017-08-26 00:00:00" itemprop="dateCreated datePublished" datetime="2017-08-26T00:00:00+08:00">2017-08-26</time>
             
 
             
@@ -362,9 +370,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">更新于</span>
                 
-                <time title="Modified: 2018-06-24 20:30:23" itemprop="dateModified" datetime="2018-06-24T20:30:23+08:00">2018-06-24</time>
+                <time title="修改时间：2018-06-24 23:22:25" itemprop="dateModified" datetime="2018-06-24T23:22:25+08:00">2018-06-24</time>
               
             
           </span>
@@ -378,7 +386,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PKI/" itemprop="url" rel="index"><span itemprop="name">PKI</span></a></span>
@@ -415,7 +423,7 @@
       
 
       
-        <h1 id="1-算法"><a href="#1-算法" class="headerlink" title="1 算法"></a>1 算法</h1><h2 id="1-1-对称算法"><a href="#1-1-对称算法" class="headerlink" title="1.1 对称算法"></a>1.1 对称算法</h2><p>描述：对称加密是指加密过程和解密过程使用相同的密码。主要分：<strong>分组加密</strong>、<strong>序列加密</strong>。</p>
+        <h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="对称算法"><a href="#对称算法" class="headerlink" title="对称算法"></a>对称算法</h2><p>描述：对称加密是指加密过程和解密过程使用相同的密码。主要分：<strong>分组加密</strong>、<strong>序列加密</strong>。</p>
 <p>原理：XOR运算，将二进制数据进行XOR运算，两次同样的操作得到原文，所以大致过程就是加密-&gt;A xor B = C，解密-&gt;C xor B = A（B就是密钥）。</p>
 <p>优点：加密速度快，适合于对大量数据加密。</p>
 <p>缺点：发送方和接受方需要使用相同的密钥，一旦密钥泄露，在互联网上传输的加密数据将会被中间人破解。而且由于加密数据量大</p>
@@ -447,7 +455,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="1-2-摘要算法"><a href="#1-2-摘要算法" class="headerlink" title="1.2 摘要算法"></a>1.2 摘要算法</h2><p>摘要算法使用密码学hash函数，用于验证数据完整性（没有修改、插入、删除、或重放）。</p>
+<h2 id="摘要算法"><a href="#摘要算法" class="headerlink" title="摘要算法"></a>摘要算法</h2><p>摘要算法使用密码学hash函数，用于验证数据完整性（没有修改、插入、删除、或重放）。</p>
 <p>输入数据的长度首先被填充为某固定长度分组的整数倍，填充的内容包括原始数据的位长度信息。安全性要求如下两种情况在计算上不可行（即没有攻击方法比穷举攻击更有效）：</p>
 <ul>
 <li>对预先指定的hash值找到对应的数据块（单向性）</li>
@@ -487,10 +495,10 @@
 <li>$Y_i$：M的第i个分组</li>
 <li>L：M中的分组个数</li>
 <li>b：每一分组所含位数（bits）</li>
-<li>n：嵌入的Hash函数所产生的Hash码长<h2 id="1-3-密钥运算"><a href="#1-3-密钥运算" class="headerlink" title="1.3 密钥运算"></a>1.3 密钥运算</h2>密钥运算包含两种操作（私钥操作、公钥操作），签名验签正是基于这两种操作：<br>$$<br>C=P^d mod n<br>$$</li>
+<li>n：嵌入的Hash函数所产生的Hash码长<h2 id="密钥运算"><a href="#密钥运算" class="headerlink" title="密钥运算"></a>密钥运算</h2>密钥运算包含两种操作（私钥操作、公钥操作），签名验签正是基于这两种操作：<br>$$<br>C=P^d mod n<br>$$</li>
 </ul>
 <p>$$<br>P=C^d mod n<br>$$</p>
-<h3 id="1-3-1-签名验签"><a href="#1-3-1-签名验签" class="headerlink" title="1.3.1 签名验签"></a>1.3.1 签名验签</h3><p>使用签名的前提是使用公钥加密的密文只有私钥才能解开，使用私钥加密的密文只有公钥才能解开，确保了身份认证抗抵赖性。</p>
+<h3 id="签名验签"><a href="#签名验签" class="headerlink" title="签名验签"></a>签名验签</h3><p>使用签名的前提是使用公钥加密的密文只有私钥才能解开，使用私钥加密的密文只有公钥才能解开，确保了身份认证抗抵赖性。</p>
 <p>过程：</p>
 <ul>
 <li>对原文摘要</li>
@@ -509,7 +517,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="1-3-2-非对称算法"><a href="#1-3-2-非对称算法" class="headerlink" title="1.3.2 非对称算法"></a>1.3.2 非对称算法</h3><p>非对称算法采用一对关联的公钥和私钥，公钥公开在互联网，解决了密钥配送的问题。</p>
+<h3 id="非对称算法"><a href="#非对称算法" class="headerlink" title="非对称算法"></a>非对称算法</h3><p>非对称算法采用一对关联的公钥和私钥，公钥公开在互联网，解决了密钥配送的问题。</p>
 <p>非对称算法用来在公开的网络上传输密钥依据以下<strong>两个特点</strong>：</p>
 <ol>
 <li>使用公钥加密的密文只有使用对应的私钥才能解开</li>
@@ -532,8 +540,8 @@
 </ul>
 <p>以上可以看出，私钥解密和签名的运算过程一致！</p>
 <p>用途：用于非对称传输信息，比如Bob有一个信息想传给Alice，需使用Alice的公钥加密信息，传给Alice，Alice得到加密信息后使用自己的私钥即可解开读取信息。他人即使截获加密信息也无法解开。</p>
-<h3 id="1-3-3-国密算法"><a href="#1-3-3-国密算法" class="headerlink" title="1.3.3 国密算法"></a>1.3.3 国密算法</h3><p>SM2：椭圆曲线公钥密码算法<br>SM3：密码杂凑算法，用于数字签名和验证、消息认证码的生成、随机数的生成<br>SM4：分组加密算法，分组长度128bit，密钥长度128bi。32轮非平衡Feistel迭代结构，之后加上一个反序变换。</p>
-<h1 id="2-规范"><a href="#2-规范" class="headerlink" title="2 规范"></a>2 规范</h1><h2 id="2-1-分组模式"><a href="#2-1-分组模式" class="headerlink" title="2.1 分组模式"></a>2.1 分组模式</h2><ul>
+<h3 id="国密算法"><a href="#国密算法" class="headerlink" title="国密算法"></a>国密算法</h3><p>SM2：椭圆曲线公钥密码算法<br>SM3：密码杂凑算法，用于数字签名和验证、消息认证码的生成、随机数的生成<br>SM4：分组加密算法，分组长度128bit，密钥长度128bi。32轮非平衡Feistel迭代结构，之后加上一个反序变换。</p>
+<h1 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h1><h2 id="分组模式"><a href="#分组模式" class="headerlink" title="分组模式"></a>分组模式</h2><ul>
 <li>ECB （Electronic Code book，电子密码本方式）明文分组与密文分组一一对应<ul>
 <li>优点：最简单的一种模式，可并行运算，误差不会传递</li>
 <li>缺点：若有相同明文分组，将被加密成相同密文分组，即明文的结构容易被泄露</li>
@@ -549,7 +557,7 @@
 <li>OFB （Output Feedback  ，输出反馈模式）OFB与CFB相同的地方在于都是将明文分组与密钥XOR运算，区别就在于密钥的生成。OFB的密钥算法的输入来自于上一个密钥算法的输出。第一个密钥算法的输入使用一个IV向量</li>
 </ul>
 <p>OFB与CFB都采用将分组加密转换成流加密的方式</p>
-<h2 id="2-2-填充模式"><a href="#2-2-填充模式" class="headerlink" title="2.2 填充模式"></a>2.2 填充模式</h2><ul>
+<h2 id="填充模式"><a href="#填充模式" class="headerlink" title="填充模式"></a>填充模式</h2><ul>
 <li>PKCS5Padding<br><img src="/images/PKCS5Padding.png" alt="PKCS5Padding"><br>如图，用自己的话来描述就是缺多少bit，就在每个bit里填多少。该方式是8分组结构，只适合DES/3DES。</li>
 <li>PKCS7Padding<br>分组长度可以是小于255的任意长度</li>
 <li>ZeroPadding<br>使用0X0补齐：<code>... | DD DD DD DD DD DD DD DD | DD DD DD DD 00 00 00 00 |</code></li>
@@ -557,16 +565,16 @@
 <li>ISO 10126<br>该模式个人觉得稍好一些，最后一个填充位填写缺少的bit数，其它位填充随机数：<code>... | DD DD DD DD DD DD DD DD | DD DD DD DD 81 A6 23 04 |</code></li>
 <li>ISO/IEC 7816-4<br>填充实例如下：<code>... | DD DD DD DD DD DD DD DD | DD DD DD DD 80 00 00 00 |</code>（未解）</li>
 </ul>
-<h2 id="2-3-PKCS-1"><a href="#2-3-PKCS-1" class="headerlink" title="2.3 PKCS#1"></a>2.3 PKCS#1</h2><p>定义RSA公私钥数据表达形式，及加密，解密，签名，验签，填充过程，定义了数字签名如何计算，包括签名数据和签名本身的格式。<br><strong>RSA公钥结构：</strong><br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RSAPublicKey :: = <span class="keyword">SEQUENCE</span>&#123;</span><br><span class="line">   modulus              <span class="keyword">INTEGER</span>,   ------ n（RSA合数模）</span><br><span class="line">   publicExponent    <span class="keyword">INTEGER</span>    ------ e （RSA公开幂，<span class="number">3</span>～n-<span class="number">1</span>范围内的正整数）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>RSA公钥的ASN.1结构，可以表述为：名为RSAPublicKey的这个结构呢，就可以用来表述一个RSA公钥了。它有两个INTEGER型变量：modulus和publicExponent。<br><strong>RSA私钥结构：</strong><br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">RSAPrivateKey :: = <span class="keyword">SEQUENCE</span>&#123;</span><br><span class="line">    version                 Version,（版本号，如果使用多素数，版本号为<span class="number">1</span>）</span><br><span class="line">    modulus               <span class="keyword">INTEGER</span>,   ------ n（RSA合数模）</span><br><span class="line">    publicExponent     <span class="keyword">INTEGER</span>,   ------ e（RSA的公开幂）</span><br><span class="line">    privateExponent    <span class="keyword">INTEGER</span>,   ------ d（RSA的私有幂）</span><br><span class="line">    prime1                 <span class="keyword">INTEGER</span>,   ------ p（n的素数因子p）</span><br><span class="line">    prime2                 <span class="keyword">INTEGER</span>,   ------ q（n的素数因子q）</span><br><span class="line">    exponent1            <span class="keyword">INTEGER</span>,   ------ d <span class="built_in">mod</span> (p -<span class="number">1</span>)</span><br><span class="line">    exponent2            <span class="keyword">INTEGER</span>,   ------ d <span class="built_in">mod</span> (q -<span class="number">1</span>)</span><br><span class="line">    coefficient            <span class="keyword">INTEGER</span>,   ------- (inverse of q) <span class="built_in">mod</span> p</span><br><span class="line">    otherPrimeInfos    OtherPrimeInfos   ------ <span class="keyword">OPTIONAL</span>（当version为<span class="number">0</span>时，不存在；当 version为<span class="number">1</span>时，必须有）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>加密和签名方案的对象标识</strong><br>以下是对PKCS#1 OID的类型表示的定义<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">PKCS1Algorithms ALGORITHM-IDENTIFIER ::= &#123;</span><br><span class="line"> &#123; OID rsaEncryption PARAMETERS <span class="literal">NULL</span> &#125; <span class="string">|</span></span><br><span class="line"> &#123; OID md2WithRSAEncryption PARAMETERS <span class="literal">NULL</span> &#125; <span class="string">|</span></span><br><span class="line"> &#123; OID md5WithRSAEncryption PARAMETERS <span class="literal">NULL</span> &#125; <span class="string">|</span></span><br><span class="line"> &#123; OID sha1WithRSAEncryption PARAMETERS <span class="literal">NULL</span> &#125; <span class="string">|</span></span><br><span class="line"> &#123; OID sha256WithRSAEncryption PARAMETERS <span class="literal">NULL</span> &#125; <span class="string">|</span></span><br><span class="line"> &#123; OID sha384WithRSAEncryption PARAMETERS <span class="literal">NULL</span> &#125; <span class="string">|</span></span><br><span class="line"> &#123; OID sha512WithRSAEncryption PARAMETERS <span class="literal">NULL</span> &#125; <span class="string">|</span></span><br><span class="line">&#123; OID id-RSAES-OAEP PARAMETERS RSAES-OAEP-params &#125; <span class="string">|</span></span><br><span class="line"> PKCS1PSourceAlgorithms <span class="string">|</span></span><br><span class="line">&#123; OID id-RSASSA-PSS PARAMETERS RSASSA-PSS-params &#125; ,</span><br><span class="line"> ... -- Allows for future expansion --</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>规定了PKCS#1摘要和签名分别使用的算法，例如<code>sha1WithRSAEncryption</code>中<code>sha1</code>代表摘要使用的算法，<code>RSAEncryption</code>代表签名使用的算法<br><strong>RSAES-OAEP加密</strong><br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RSAES-OAEP-params ::= SEQUENCE &#123;</span><br><span class="line"> hashAlgorithm [0] HashAlgorithm<span class="built_in"> DEFAULT </span>sha1,(标识了散列函数）</span><br><span class="line"> maskGenAlgorithm [1] MaskGenAlgorithm<span class="built_in"> DEFAULT </span>mgf1SHA1, （标识掩膜生成函数）</span><br><span class="line"> pSourceAlgorithm [2] PSourceAlgorithm<span class="built_in"> DEFAULT </span>pSpecifiedEmpty（标识标签L的源)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>hashAlgorithm</code>支持的散列函数：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OAEP-PSSDigestAlgorithms ALGORITHM-IDENTIFIER ::= &#123;</span><br><span class="line"> &#123; OID <span class="keyword">id</span>-sha1 PARAMETERS <span class="literal">NULL</span> &#125;|</span><br><span class="line">&#123; OID <span class="keyword">id</span>-sha256 PARAMETERS <span class="literal">NULL</span> &#125;|</span><br><span class="line">&#123; OID <span class="keyword">id</span>-sha384 PARAMETERS <span class="literal">NULL</span> &#125;|</span><br><span class="line">&#123; OID <span class="keyword">id</span>-sha512 PARAMETERS <span class="literal">NULL</span> &#125;,</span><br><span class="line"> ... -- Allows <span class="keyword">for</span> future expansion --</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="2-4-PKCS-5"><a href="#2-4-PKCS-5" class="headerlink" title="2.4 PKCS#5"></a>2.4 PKCS#5</h2><p>基于口令的加密规范Password-Based Cryptography Specification</p>
+<h2 id="PKCS-1"><a href="#PKCS-1" class="headerlink" title="PKCS#1"></a>PKCS#1</h2><p>定义RSA公私钥数据表达形式，及加密，解密，签名，验签，填充过程，定义了数字签名如何计算，包括签名数据和签名本身的格式。<br><strong>RSA公钥结构：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RSAPublicKey :: = SEQUENCE&#123;</span><br><span class="line">   modulus              INTEGER,   ------ n（RSA合数模）</span><br><span class="line">   publicExponent    INTEGER    ------ e （RSA公开幂，3～n-1范围内的正整数）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>RSA公钥的ASN.1结构，可以表述为：名为RSAPublicKey的这个结构呢，就可以用来表述一个RSA公钥了。它有两个INTEGER型变量：modulus和publicExponent。<br><strong>RSA私钥结构：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">RSAPrivateKey :: = SEQUENCE&#123;</span><br><span class="line">    version                 Version,（版本号，如果使用多素数，版本号为1）</span><br><span class="line">    modulus               INTEGER,   ------ n（RSA合数模）</span><br><span class="line">    publicExponent     INTEGER,   ------ e（RSA的公开幂）</span><br><span class="line">    privateExponent    INTEGER,   ------ d（RSA的私有幂）</span><br><span class="line">    prime1                 INTEGER,   ------ p（n的素数因子p）</span><br><span class="line">    prime2                 INTEGER,   ------ q（n的素数因子q）</span><br><span class="line">    exponent1            INTEGER,   ------ d mod (p -1)</span><br><span class="line">    exponent2            INTEGER,   ------ d mod (q -1)</span><br><span class="line">    coefficient            INTEGER,   ------- (inverse of q) mod p</span><br><span class="line">    otherPrimeInfos    OtherPrimeInfos   ------ OPTIONAL（当version为0时，不存在；当 version为1时，必须有）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>加密和签名方案的对象标识</strong><br>以下是对PKCS#1 OID的类型表示的定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">PKCS1Algorithms ALGORITHM-IDENTIFIER ::= &#123;</span><br><span class="line"> &#123; OID rsaEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID md2WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID md5WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID sha1WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID sha256WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID sha384WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID sha512WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line">&#123; OID id-RSAES-OAEP PARAMETERS RSAES-OAEP-params &#125; |</span><br><span class="line"> PKCS1PSourceAlgorithms |</span><br><span class="line">&#123; OID id-RSASSA-PSS PARAMETERS RSASSA-PSS-params &#125; ,</span><br><span class="line"> ... -- Allows for future expansion --</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>规定了PKCS#1摘要和签名分别使用的算法，例如<code>sha1WithRSAEncryption</code>中<code>sha1</code>代表摘要使用的算法，<code>RSAEncryption</code>代表签名使用的算法<br><strong>RSAES-OAEP加密</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RSAES-OAEP-params ::= SEQUENCE &#123;</span><br><span class="line"> hashAlgorithm [0] HashAlgorithm DEFAULT sha1,(标识了散列函数）</span><br><span class="line"> maskGenAlgorithm [1] MaskGenAlgorithm DEFAULT mgf1SHA1, （标识掩膜生成函数）</span><br><span class="line"> pSourceAlgorithm [2] PSourceAlgorithm DEFAULT pSpecifiedEmpty（标识标签L的源)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>hashAlgorithm</code>支持的散列函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OAEP-PSSDigestAlgorithms ALGORITHM-IDENTIFIER ::= &#123;</span><br><span class="line"> &#123; OID id-sha1 PARAMETERS NULL &#125;|</span><br><span class="line">&#123; OID id-sha256 PARAMETERS NULL &#125;|</span><br><span class="line">&#123; OID id-sha384 PARAMETERS NULL &#125;|</span><br><span class="line">&#123; OID id-sha512 PARAMETERS NULL &#125;,</span><br><span class="line"> ... -- Allows for future expansion --</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="PKCS-5"><a href="#PKCS-5" class="headerlink" title="PKCS#5"></a>PKCS#5</h2><p>基于口令的加密规范Password-Based Cryptography Specification</p>
 <p>目的：保护私钥文件的安全性</p>
 <p>通过将原始口令+salt派生出新口令进行加密</p>
 <p>PKSC5Padding（用于制定算法DES）对称加密填充方式，填充块固定为8个字节，填充值为待填充的长度，与PKCS7Padding类似。</p>
-<h2 id="2-5-PKCS-7"><a href="#2-5-PKCS-7" class="headerlink" title="2.5 PKCS#7"></a>2.5 PKCS#7</h2><p>加密消息的语法标准Cryptographic Message Syntax Version 1.5<br>结构：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">pkcs7_st</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="comment">/* 其他项 */</span></span><br><span class="line"></span><br><span class="line">  ASN1_OBJECT *type;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">union</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">char</span> *ptr;</span><br><span class="line">   <span class="comment">/* NID_pkcs7_data */</span></span><br><span class="line">   ASN1_OCTET_STRING *data;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_signed */</span></span><br><span class="line">   PKCS7_SIGNED *sign;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_enveloped */</span></span><br><span class="line">   PKCS7_ENVELOPE *enveloped;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_signedAndEnveloped */</span></span><br><span class="line">   PKCS7_SIGN_ENVELOPE *signed_and_enveloped;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_digest */</span></span><br><span class="line">   PKCS7_DIGEST *digest;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_encrypted */</span></span><br><span class="line">   PKCS7_ENCRYPT *encrypted;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* Anything else */</span></span><br><span class="line">   ASN1_TYPE *other;</span><br><span class="line"> &#125; d;</span><br><span class="line">&#125; PKCS7;</span><br></pre></td></tr></table></figure></p>
+<h2 id="PKCS-7"><a href="#PKCS-7" class="headerlink" title="PKCS#7"></a>PKCS#7</h2><p>加密消息的语法标准Cryptographic Message Syntax Version 1.5<br>结构：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">pkcs7_st</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="comment">/* 其他项 */</span></span><br><span class="line"></span><br><span class="line">  ASN1_OBJECT *type;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">union</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">char</span> *ptr;</span><br><span class="line">   <span class="comment">/* NID_pkcs7_data */</span></span><br><span class="line">   ASN1_OCTET_STRING *data;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_signed */</span></span><br><span class="line">   PKCS7_SIGNED *sign;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_enveloped */</span></span><br><span class="line">   PKCS7_ENVELOPE *enveloped;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_signedAndEnveloped */</span></span><br><span class="line">   PKCS7_SIGN_ENVELOPE *signed_and_enveloped;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_digest */</span></span><br><span class="line">   PKCS7_DIGEST *digest;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_encrypted */</span></span><br><span class="line">   PKCS7_ENCRYPT *encrypted;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* Anything else */</span></span><br><span class="line">   ASN1_TYPE *other;</span><br><span class="line"> &#125; d;</span><br><span class="line">&#125; PKCS7;</span><br></pre></td></tr></table></figure></p>
 <p>pkcs7 各种类型数据结构的 DER 编解码通过宏在 crypto/pkcs7/pk7_asn1.c 中实现</p>
 <ul>
 <li>可以包含6种类型的数据:<ul>
@@ -614,19 +622,19 @@
 <li>RSA私钥加密的签名值signdata</li>
 <li>（也应该包含证书，由CA担保身份）</li>
 </ul>
-<h2 id="2-6-PKCS-8"><a href="#2-6-PKCS-8" class="headerlink" title="2.6 PKCS#8"></a>2.6 PKCS#8</h2><p>私钥封装格式Private_Key Information Syntax Specification Version 1.2</p>
+<h2 id="PKCS-8"><a href="#PKCS-8" class="headerlink" title="PKCS#8"></a>PKCS#8</h2><p>私钥封装格式Private_Key Information Syntax Specification Version 1.2</p>
 <p>定义了私钥信息语法和加密私钥语法。<br>私钥类型任意，对称算法可设置</p>
-<h2 id="2-7-PKCS-10"><a href="#2-7-PKCS-10" class="headerlink" title="2.7 PKCS#10"></a>2.7 PKCS#10</h2><p>证书请求格式（主题，公钥，私钥签名）</p>
+<h2 id="PKCS-10"><a href="#PKCS-10" class="headerlink" title="PKCS#10"></a>PKCS#10</h2><p>证书请求格式（主题，公钥，私钥签名）</p>
 <p>RA注册流程：注册信息-&gt;审核通过-&gt;生成密钥-&gt;生成PKCS10请求-&gt;将信息和P10请求的公钥合并成CMP请求-&gt;发送到CA</p>
-<h2 id="2-8-PKCS-11"><a href="#2-8-PKCS-11" class="headerlink" title="2.8 PKCS#11"></a>2.8 PKCS#11</h2><p>介质接口格式：</p>
+<h2 id="PKCS-11"><a href="#PKCS-11" class="headerlink" title="PKCS#11"></a>PKCS#11</h2><p>介质接口格式：</p>
 <ul>
 <li>硬件驱动</li>
 <li>定义文件操作</li>
 <li>权限管理</li>
 </ul>
 <p>对应于Windows的CSP，国密接口的SKF</p>
-<h2 id="2-9-PKCS-12"><a href="#2-9-PKCS-12" class="headerlink" title="2.9 PKCS#12"></a>2.9 PKCS#12</h2><p>带私钥的个人证书格式，包含私钥、证书、证书链、CRL…</p>
-<h2 id="2-10-X-509"><a href="#2-10-X-509" class="headerlink" title="2.10 X.509"></a>2.10 X.509</h2><p><a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener">X.509证书与509黑名单规范</a></p>
+<h2 id="PKCS-12"><a href="#PKCS-12" class="headerlink" title="PKCS#12"></a>PKCS#12</h2><p>带私钥的个人证书格式，包含私钥、证书、证书链、CRL…</p>
+<h2 id="X-509"><a href="#X-509" class="headerlink" title="X.509"></a>X.509</h2><p><a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener">X.509证书与509黑名单规范</a></p>
 <p>X.509数字证书主体如下：</p>
 <ul>
 <li>签名前的证书申请（签名对象的信息）</li>
@@ -677,7 +685,7 @@
 <li>d2i_X509：解码 DER 编码的数字证书</li>
 <li>PEM_read_bio_X509：从PEM格式的数字证书中得到X509数据结构</li>
 </ul>
-<h2 id="2-11-ASN-1"><a href="#2-11-ASN-1" class="headerlink" title="2.11 ASN.1"></a>2.11 ASN.1</h2><p>Abstract Syntax Notation One，抽象语法标识，是与平台、语言无关的数据结构定义语法</p>
+<h2 id="ASN-1"><a href="#ASN-1" class="headerlink" title="ASN.1"></a>ASN.1</h2><p>Abstract Syntax Notation One，抽象语法标识，是与平台、语言无关的数据结构定义语法</p>
 <p><strong>编码格式</strong><br>BER、CER、DER、XER，可以编码成XML格式，不仅仅是常用的二进制流。<br>二进制流的TLV方式表达数据结构，如下：</p>
 <table>
 <thead>
@@ -697,7 +705,7 @@
 </tr>
 </tbody>
 </table>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Personnel</span><br><span class="line">Record     Length   Contents</span><br><span class="line"><span class="number">60</span>         <span class="number">8185</span></span><br><span class="line">                    Name     Length  Contents</span><br><span class="line">                    <span class="number">61</span>       <span class="number">10</span></span><br><span class="line">                                     VisibleString  Length  Contents</span><br><span class="line">                                     <span class="number">1</span>A             <span class="number">04</span>      <span class="string">"John"</span></span><br><span class="line">                                     VisibleString  Length  Contents</span><br><span class="line">                                     <span class="number">1</span>A             <span class="number">01</span>      <span class="string">"P"</span></span><br><span class="line">                                     VisibleString  Length  Contents</span><br><span class="line">                                     <span class="number">1</span>A             <span class="number">05</span>      <span class="string">"Smith"</span></span><br><span class="line"></span><br><span class="line">                     DateofBirth     Length  Contents</span><br><span class="line">                     A0              <span class="number">0</span>A</span><br><span class="line">                                             Date    Length  Contents</span><br><span class="line">                                             <span class="number">43</span>      <span class="number">08</span>      <span class="string">"19590717"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Personnel</span><br><span class="line">Record     Length   Contents</span><br><span class="line">60         8185</span><br><span class="line">                    Name     Length  Contents</span><br><span class="line">                    61       10</span><br><span class="line">                                     VisibleString  Length  Contents</span><br><span class="line">                                     1A             04      &quot;John&quot;</span><br><span class="line">                                     VisibleString  Length  Contents</span><br><span class="line">                                     1A             01      &quot;P&quot;</span><br><span class="line">                                     VisibleString  Length  Contents</span><br><span class="line">                                     1A             05      &quot;Smith&quot;</span><br><span class="line"></span><br><span class="line">                     DateofBirth     Length  Contents</span><br><span class="line">                     A0              0A</span><br><span class="line">                                             Date    Length  Contents</span><br><span class="line">                                             43      08      &quot;19590717&quot;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>BER: Basic Encoding Rules<ul>
 <li>基本编码格式。</li>
@@ -725,15 +733,15 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">----<span class="keyword">BEGIN</span> ENCRYPTED PRIVATE KEY-----</span></span><br><span class="line"><span class="ruby">...</span></span><br><span class="line"><span class="ruby">-----<span class="keyword">END</span> ENCRYPTED PRIVATE KEY-----</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN ENCRYPTED PRIVATE KEY-----</span><br><span class="line">...</span><br><span class="line">-----END ENCRYPTED PRIVATE KEY-----</span><br></pre></td></tr></table></figure>
 <ul>
 <li>PEM格式的证书:</li>
 </ul>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">----<span class="keyword">BEGIN</span> CERTIFICATE-----</span></span><br><span class="line"><span class="ruby">...</span></span><br><span class="line"><span class="ruby">-----<span class="keyword">END</span> CERTIFICATE-----</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">...</span><br><span class="line">-----END CERTIFICATE-----</span><br></pre></td></tr></table></figure>
 <ul>
 <li>PEM格式的PKCS#10证书请求:</li>
 </ul>
-<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">----<span class="keyword">BEGIN</span> CERTIFICATE REQUEST-----</span></span><br><span class="line"><span class="ruby">...</span></span><br><span class="line"><span class="ruby">-----<span class="keyword">END</span> CERTIFICATE REQUEST-----</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN CERTIFICATE REQUEST-----</span><br><span class="line">...</span><br><span class="line">-----END CERTIFICATE REQUEST-----</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>CER、DER、CRT、PEM的关系</p>
 <ul>
@@ -764,7 +772,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-12-CRL"><a href="#2-12-CRL" class="headerlink" title="2.12 CRL"></a>2.12 CRL</h2><p>证书撤销列表(Certificate Revocation List，简称 CRL)，是一种包含撤销的证书列表的签名数据结构。基本的 CRL 信息有：被撤销证书序列号、撤销时间、撤销原因、签名者以及 CRL 签名等信息。</p>
+<h2 id="CRL"><a href="#CRL" class="headerlink" title="CRL"></a>CRL</h2><p>证书撤销列表(Certificate Revocation List，简称 CRL)，是一种包含撤销的证书列表的签名数据结构。基本的 CRL 信息有：被撤销证书序列号、撤销时间、撤销原因、签名者以及 CRL 签名等信息。</p>
 <p>被撤销证书的信息：X509_REVOKED</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">X509_revoked_st</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ASN1_INTEGER *serialNumber;</span><br><span class="line">    ASN1_TIME *revocationDate;</span><br><span class="line">    STACK_OF(X509_EXTENSION) *extensions;</span><br><span class="line">    <span class="keyword">int</span> sequence;</span><br><span class="line">&#125; X509_REVOKED;</span><br></pre></td></tr></table></figure>
 <ul>
@@ -793,7 +801,7 @@
 <li>references：引用</li>
 </ul>
 <h2 id="附3-LDAP"><a href="#附3-LDAP" class="headerlink" title="附3 LDAP"></a>附3 LDAP</h2><p>轻量目录访问协议(Lightweight Directory Access Protocol)，运行于TCP/IP之上。</p>
-<p>目录的信息按照树型结构组织，数据结构：<br><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">条目entry-&gt;区别名DN-&gt;属性Attribute-&gt;类型<span class="keyword">Type</span></span><br><span class="line">                                |<span class="type"></span></span><br><span class="line"><span class="type">                                -&gt;值Values</span></span><br></pre></td></tr></table></figure></p>
+<p>目录的信息按照树型结构组织，数据结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">条目entry-&gt;区别名DN-&gt;属性Attribute-&gt;类型Type</span><br><span class="line">                                |</span><br><span class="line">                                -&gt;值Values</span><br></pre></td></tr></table></figure></p>
 <h2 id="附4-OCSP"><a href="#附4-OCSP" class="headerlink" title="附4 OCSP"></a>附4 OCSP</h2><p>在线证书状态协议（Online Certificate Status Protocol)</p>
 <p>数据格式：</p>
 <ul>
@@ -816,7 +824,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-13-数字证书"><a href="#2-13-数字证书" class="headerlink" title="2.13 数字证书"></a>2.13 数字证书</h2><p><strong>发证流程：</strong></p>
+<h2 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h2><p><strong>发证流程：</strong></p>
 <ul>
 <li>申请者将合法的身份信息（参考X509章节）以PKCS#10格式通过SCEP（简单证书颁发协议，工作在HTTP之上）发送给CA，</li>
 <li>CA验证申请者的合法性，满足条件就会产生一个合法的证书，内容包括身份信息、公钥、CA信息、CA签名、有效时间、序列号、CRL表的下载地址或查询地址</li>
@@ -849,7 +857,7 @@
 </ul>
 </li>
 </ol>
-<h1 id="3-OpenSSL"><a href="#3-OpenSSL" class="headerlink" title="3 OpenSSL"></a>3 OpenSSL</h1><h2 id="3-1-命令行"><a href="#3-1-命令行" class="headerlink" title="3.1 命令行"></a>3.1 命令行</h2><p><strong>构建数字证书</strong><br>主要操作包括产生私钥（key），构造证书请求（req），签发用户证书，自签发根证书。</p>
+<h1 id="OpenSSL"><a href="#OpenSSL" class="headerlink" title="OpenSSL"></a>OpenSSL</h1><h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><p><strong>构建数字证书</strong><br>主要操作包括产生私钥（key），构造证书请求（req），签发用户证书，自签发根证书。</p>
 <ul>
 <li>1.产生私钥（带密码保护）：<code>openssl genrsa -out mysite.key -des3 -passout pass:123456 1024</code></li>
 <li>2.构造证书请求<ul>
@@ -860,16 +868,16 @@
 <li>3.签发用户证书：<code>openssl x509 -req -in mysite.req -CA testca.pem -CAkey testca.key -out mysite.pem -passin pass:abcdef -CAcreateserial</code>-days指定证书有效期</li>
 <li>当然，签发用户证书的前提是已经自签发根证书，先执行1,2步生成根证书申请，然后自签发：<code>openssl x509 -req -in testCA.req -signkey testca.key -out testca.pem -passin pass:abcdef</code></li>
 </ul>
-<h2 id="3-2-编程"><a href="#3-2-编程" class="headerlink" title="3.2 编程"></a>3.2 编程</h2><p>对称算法和摘要算法全局初始化：<code>OpenSSL_add_all_algorithms();</code></p>
+<h2 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h2><p>对称算法和摘要算法全局初始化：<code>OpenSSL_add_all_algorithms();</code></p>
 <p>释放句柄：<code>EVP_MD_CTX_cleanup(&amp;ctx);</code></p>
-<h3 id="3-2-1-加解密"><a href="#3-2-1-加解密" class="headerlink" title="3.2.1 加解密"></a>3.2.1 加解密</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EVP_CipherInit</span><span class="params">(EVP_CIPHER_CTX *ctx, <span class="keyword">const</span> EVP_CIPHER *type, <span class="keyword">unsigned</span> <span class="keyword">char</span> *key, <span class="keyword">unsigned</span> <span class="keyword">char</span> *iv, <span class="keyword">int</span> enc)</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EVP_CipherUpdate</span><span class="params">(EVP_CIPHER_CTX *ctx, <span class="keyword">unsigned</span> <span class="keyword">char</span> *out, <span class="keyword">int</span> *outl, <span class="keyword">unsigned</span> <span class="keyword">char</span> *in, <span class="keyword">int</span> inl)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EVP_CipherFinal</span><span class="params">(EVP_CIPHER_CTX *ctx, <span class="keyword">unsigned</span> <span class="keyword">char</span> *outm, <span class="keyword">int</span> *outl)</span></span>;</span><br></pre></td></tr></table></figure>
-<h3 id="3-2-2-摘要"><a href="#3-2-2-摘要" class="headerlink" title="3.2.2 摘要"></a>3.2.2 摘要</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EVP_DigestInit</span><span class="params">(EVP_MD_CTX *ctx, <span class="keyword">const</span> EVP_MD *type)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EVP_DigestUpdate</span><span class="params">(EVP_MD_CTX *ctx, <span class="keyword">const</span> <span class="keyword">void</span> *d, <span class="keyword">size_t</span> cnt)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EVP_DigestFinal</span><span class="params">(EVP_MD_CTX *ctx, <span class="keyword">unsigned</span> <span class="keyword">char</span> *md, <span class="keyword">unsigned</span> <span class="keyword">int</span> *s)</span></span>;</span><br></pre></td></tr></table></figure>
-<h3 id="3-2-3-签名验签-RSA-ECDSA"><a href="#3-2-3-签名验签-RSA-ECDSA" class="headerlink" title="3.2.3 签名验签(RSA/ECDSA)"></a>3.2.3 签名验签(RSA/ECDSA)</h3><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EVP_SignInit ( <span class="name">&amp;md_sign_ctx</span>, md )</span><br><span class="line">EVP_SignUpdate(<span class="name">&amp;md_sign_ctx</span>, data, data_cb)</span><br><span class="line">EVP_SignFinal (<span class="name">&amp;md_sign_ctx</span>, sign, psign_cb, pPriKey )</span><br><span class="line"></span><br><span class="line">EVP_VerifyInit( <span class="name">&amp;md_verify_ctx</span>, md )</span><br><span class="line">EVP_VerifyUpdate(<span class="name">&amp;md_verify_ctx</span>, data, data_cb)</span><br><span class="line">EVP_VerifyFinal(<span class="name">&amp;md_verify_ctx</span>, sign, sign_cb, pPubKey)</span><br></pre></td></tr></table></figure>
-<h3 id="3-2-4-公钥加密与私钥解密（RSA算法）"><a href="#3-2-4-公钥加密与私钥解密（RSA算法）" class="headerlink" title="3.2.4 公钥加密与私钥解密（RSA算法）"></a>3.2.4 公钥加密与私钥解密（RSA算法）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">EVP_PKEY_encrypt</span>	<span class="params">(	EVP_PKEY_CTX * 	ctx, <span class="keyword">unsigned</span> <span class="keyword">char</span> * 	out, <span class="keyword">size_t</span> * 	outlen, <span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> * 	in, <span class="keyword">size_t</span> 	inlen )</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="3-2-5-PKCS7签名验签（RSA-ECDSA）"><a href="#3-2-5-PKCS7签名验签（RSA-ECDSA）" class="headerlink" title="3.2.5 PKCS7签名验签（RSA/ECDSA）"></a>3.2.5 PKCS7签名验签（RSA/ECDSA）</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">p7</span> <span class="string">=</span> <span class="string">PKCS7_sign(x,</span> <span class="string">pPriKey,</span> <span class="literal">NULL</span><span class="string">,</span> <span class="string">in,</span> <span class="string">PKCS7_BINARY)</span></span><br><span class="line"><span class="string">PKCS7_verify(p7,</span> <span class="literal">NULL</span><span class="string">,</span> <span class="literal">NULL</span><span class="string">,</span> <span class="string">in,</span> <span class="literal">NULL</span><span class="string">,</span> <span class="string">PKCS7_BINARY|PKCS7_NOVERIFY)</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-2-6-PKCS7数字信封加密解密（RSA）"><a href="#3-2-6-PKCS7数字信封加密解密（RSA）" class="headerlink" title="3.2.6 PKCS7数字信封加密解密（RSA）"></a>3.2.6 PKCS7数字信封加密解密（RSA）</h3><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p7 = PKCS7_encrypt(<span class="name">certs</span>, in, EVP_des_cbc(), PKCS7_BINARY)</span><br><span class="line">PKCS7_decrypt(<span class="name">p7</span>, pPriKey, x, out, PKCS7_BINARY)</span><br></pre></td></tr></table></figure>
-<h3 id="3-2-7解密公司的加密邮件（SMIME）"><a href="#3-2-7解密公司的加密邮件（SMIME）" class="headerlink" title="3.2.7解密公司的加密邮件（SMIME）"></a>3.2.7解密公司的加密邮件（SMIME）</h3><p>公司加密邮件为标准SMIME格式，导出后得到.eml文件<br>使用<code>PKCS7 *SMIME_read_PKCS7(BIO *bio, BIO **bcont)</code>将bio读取到的SMIME格式保存在PKCS7格式内，然后通过PKCS7_dncrypt接口解密</p>
-<h3 id="3-2-8错误处理"><a href="#3-2-8错误处理" class="headerlink" title="3.2.8错误处理"></a>3.2.8错误处理</h3><p>错误处理应该尽可能多的包含各种信息，包括：</p>
+<h3 id="加解密"><a href="#加解密" class="headerlink" title="加解密"></a>加解密</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int EVP_CipherInit(EVP_CIPHER_CTX *ctx, const EVP_CIPHER *type, unsigned char *key, unsigned char *iv, int enc)</span><br><span class="line">int EVP_CipherUpdate(EVP_CIPHER_CTX *ctx, unsigned char *out, int *outl, unsigned char *in, int inl);</span><br><span class="line">int EVP_CipherFinal(EVP_CIPHER_CTX *ctx, unsigned char *outm, int *outl);</span><br></pre></td></tr></table></figure>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int EVP_DigestInit(EVP_MD_CTX *ctx, const EVP_MD *type);</span><br><span class="line">int EVP_DigestUpdate(EVP_MD_CTX *ctx, const void *d, size_t cnt);</span><br><span class="line">int EVP_DigestFinal(EVP_MD_CTX *ctx, unsigned char *md, unsigned int *s);</span><br></pre></td></tr></table></figure>
+<h3 id="签名验签-RSA-ECDSA"><a href="#签名验签-RSA-ECDSA" class="headerlink" title="签名验签(RSA/ECDSA)"></a>签名验签(RSA/ECDSA)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EVP_SignInit ( &amp;md_sign_ctx, md )</span><br><span class="line">EVP_SignUpdate(&amp;md_sign_ctx, data, data_cb)</span><br><span class="line">EVP_SignFinal (&amp;md_sign_ctx, sign, psign_cb, pPriKey )</span><br><span class="line"></span><br><span class="line">EVP_VerifyInit( &amp;md_verify_ctx, md )</span><br><span class="line">EVP_VerifyUpdate(&amp;md_verify_ctx, data, data_cb)</span><br><span class="line">EVP_VerifyFinal(&amp;md_verify_ctx, sign, sign_cb, pPubKey)</span><br></pre></td></tr></table></figure>
+<h3 id="公钥加密与私钥解密（RSA算法）"><a href="#公钥加密与私钥解密（RSA算法）" class="headerlink" title="公钥加密与私钥解密（RSA算法）"></a>公钥加密与私钥解密（RSA算法）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int EVP_PKEY_encrypt	(	EVP_PKEY_CTX * 	ctx, unsigned char * 	out, size_t * 	outlen, const unsigned char * 	in, size_t 	inlen )</span><br></pre></td></tr></table></figure>
+<h3 id="PKCS7签名验签（RSA-ECDSA）"><a href="#PKCS7签名验签（RSA-ECDSA）" class="headerlink" title="PKCS7签名验签（RSA/ECDSA）"></a>PKCS7签名验签（RSA/ECDSA）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p7 = PKCS7_sign(x, pPriKey, NULL, in, PKCS7_BINARY)</span><br><span class="line">PKCS7_verify(p7, NULL, NULL, in, NULL, PKCS7_BINARY|PKCS7_NOVERIFY)</span><br></pre></td></tr></table></figure>
+<h3 id="PKCS7数字信封加密解密（RSA）"><a href="#PKCS7数字信封加密解密（RSA）" class="headerlink" title="PKCS7数字信封加密解密（RSA）"></a>PKCS7数字信封加密解密（RSA）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p7 = PKCS7_encrypt(certs, in, EVP_des_cbc(), PKCS7_BINARY)</span><br><span class="line">PKCS7_decrypt(p7, pPriKey, x, out, PKCS7_BINARY)</span><br></pre></td></tr></table></figure>
+<h3 id="解密公司的加密邮件（SMIME）"><a href="#解密公司的加密邮件（SMIME）" class="headerlink" title="解密公司的加密邮件（SMIME）"></a>解密公司的加密邮件（SMIME）</h3><p>公司加密邮件为标准SMIME格式，导出后得到.eml文件<br>使用<code>PKCS7 *SMIME_read_PKCS7(BIO *bio, BIO **bcont)</code>将bio读取到的SMIME格式保存在PKCS7格式内，然后通过PKCS7_dncrypt接口解密</p>
+<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p>错误处理应该尽可能多的包含各种信息，包括：</p>
 <ul>
 <li>错误码；</li>
 <li>出错文件以及行号；</li>
@@ -980,10 +988,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -993,7 +1001,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">renzheng</p>
-              <p class="site-description motion-element" itemprop="description">what's past is prologue</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           
@@ -1003,8 +1011,8 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
@@ -1013,7 +1021,7 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  
+                  <a href="/categories/index.html">
                     
                     
                       
@@ -1024,15 +1032,9 @@
                     
                       
                     
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">7</span>
-                    <span class="site-state-item-name">categories</span>
-                  
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
                 </div>
               
 
@@ -1040,7 +1042,7 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  
+                  <a href="/tags/index.html">
                     
                     
                       
@@ -1056,8 +1058,8 @@
                       
                     
                     <span class="site-state-item-count">6</span>
-                    <span class="site-state-item-name">tags</span>
-                  
+                    <span class="site-state-item-name">标签</span>
+                  </a>
                 </div>
               
             </nav>
@@ -1091,7 +1093,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-算法"><span class="nav-number">1.</span> <span class="nav-text">1 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-对称算法"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 对称算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-摘要算法"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 摘要算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附1：消息认证码（MAC-Message-authentication-code）"><span class="nav-number">1.3.</span> <span class="nav-text">附1：消息认证码（MAC, Message authentication code）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附2：基于Hash函数的MAC：HMAC"><span class="nav-number">1.4.</span> <span class="nav-text">附2：基于Hash函数的MAC：HMAC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-密钥运算"><span class="nav-number">1.5.</span> <span class="nav-text">1.3 密钥运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-签名验签"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.3.1 签名验签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-非对称算法"><span class="nav-number">1.5.2.</span> <span class="nav-text">1.3.2 非对称算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-国密算法"><span class="nav-number">1.5.3.</span> <span class="nav-text">1.3.3 国密算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-规范"><span class="nav-number">2.</span> <span class="nav-text">2 规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-分组模式"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 分组模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-填充模式"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 填充模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-PKCS-1"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 PKCS#1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-PKCS-5"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 PKCS#5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-PKCS-7"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 PKCS#7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附：数字信封"><span class="nav-number">2.6.</span> <span class="nav-text">附：数字信封</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-PKCS-8"><span class="nav-number">2.7.</span> <span class="nav-text">2.6 PKCS#8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-PKCS-10"><span class="nav-number">2.8.</span> <span class="nav-text">2.7 PKCS#10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-8-PKCS-11"><span class="nav-number">2.9.</span> <span class="nav-text">2.8 PKCS#11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-PKCS-12"><span class="nav-number">2.10.</span> <span class="nav-text">2.9 PKCS#12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-10-X-509"><span class="nav-number">2.11.</span> <span class="nav-text">2.10 X.509</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-11-ASN-1"><span class="nav-number">2.12.</span> <span class="nav-text">2.11 ASN.1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-12-CRL"><span class="nav-number">2.13.</span> <span class="nav-text">2.12 CRL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附3-LDAP"><span class="nav-number">2.14.</span> <span class="nav-text">附3 LDAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附4-OCSP"><span class="nav-number">2.15.</span> <span class="nav-text">附4 OCSP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-13-数字证书"><span class="nav-number">2.16.</span> <span class="nav-text">2.13 数字证书</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-OpenSSL"><span class="nav-number">3.</span> <span class="nav-text">3 OpenSSL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-命令行"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-编程"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-加解密"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 加解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-摘要"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3-签名验签-RSA-ECDSA"><span class="nav-number">3.2.3.</span> <span class="nav-text">3.2.3 签名验签(RSA/ECDSA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-4-公钥加密与私钥解密（RSA算法）"><span class="nav-number">3.2.4.</span> <span class="nav-text">3.2.4 公钥加密与私钥解密（RSA算法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-5-PKCS7签名验签（RSA-ECDSA）"><span class="nav-number">3.2.5.</span> <span class="nav-text">3.2.5 PKCS7签名验签（RSA/ECDSA）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-6-PKCS7数字信封加密解密（RSA）"><span class="nav-number">3.2.6.</span> <span class="nav-text">3.2.6 PKCS7数字信封加密解密（RSA）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-7解密公司的加密邮件（SMIME）"><span class="nav-number">3.2.7.</span> <span class="nav-text">3.2.7解密公司的加密邮件（SMIME）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-8错误处理"><span class="nav-number">3.2.8.</span> <span class="nav-text">3.2.8错误处理</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#算法"><span class="nav-number">1.</span> <span class="nav-text">算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对称算法"><span class="nav-number">1.1.</span> <span class="nav-text">对称算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要算法"><span class="nav-number">1.2.</span> <span class="nav-text">摘要算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附1：消息认证码（MAC-Message-authentication-code）"><span class="nav-number">1.3.</span> <span class="nav-text">附1：消息认证码（MAC, Message authentication code）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附2：基于Hash函数的MAC：HMAC"><span class="nav-number">1.4.</span> <span class="nav-text">附2：基于Hash函数的MAC：HMAC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#密钥运算"><span class="nav-number">1.5.</span> <span class="nav-text">密钥运算</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#签名验签"><span class="nav-number">1.5.1.</span> <span class="nav-text">签名验签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非对称算法"><span class="nav-number">1.5.2.</span> <span class="nav-text">非对称算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#国密算法"><span class="nav-number">1.5.3.</span> <span class="nav-text">国密算法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#规范"><span class="nav-number">2.</span> <span class="nav-text">规范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#分组模式"><span class="nav-number">2.1.</span> <span class="nav-text">分组模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#填充模式"><span class="nav-number">2.2.</span> <span class="nav-text">填充模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKCS-1"><span class="nav-number">2.3.</span> <span class="nav-text">PKCS#1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKCS-5"><span class="nav-number">2.4.</span> <span class="nav-text">PKCS#5</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKCS-7"><span class="nav-number">2.5.</span> <span class="nav-text">PKCS#7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附：数字信封"><span class="nav-number">2.6.</span> <span class="nav-text">附：数字信封</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKCS-8"><span class="nav-number">2.7.</span> <span class="nav-text">PKCS#8</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKCS-10"><span class="nav-number">2.8.</span> <span class="nav-text">PKCS#10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKCS-11"><span class="nav-number">2.9.</span> <span class="nav-text">PKCS#11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PKCS-12"><span class="nav-number">2.10.</span> <span class="nav-text">PKCS#12</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#X-509"><span class="nav-number">2.11.</span> <span class="nav-text">X.509</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASN-1"><span class="nav-number">2.12.</span> <span class="nav-text">ASN.1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CRL"><span class="nav-number">2.13.</span> <span class="nav-text">CRL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附3-LDAP"><span class="nav-number">2.14.</span> <span class="nav-text">附3 LDAP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附4-OCSP"><span class="nav-number">2.15.</span> <span class="nav-text">附4 OCSP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字证书"><span class="nav-number">2.16.</span> <span class="nav-text">数字证书</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OpenSSL"><span class="nav-number">3.</span> <span class="nav-text">OpenSSL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行"><span class="nav-number">3.1.</span> <span class="nav-text">命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编程"><span class="nav-number">3.2.</span> <span class="nav-text">编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加解密"><span class="nav-number">3.2.1.</span> <span class="nav-text">加解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-number">3.2.2.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#签名验签-RSA-ECDSA"><span class="nav-number">3.2.3.</span> <span class="nav-text">签名验签(RSA/ECDSA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公钥加密与私钥解密（RSA算法）"><span class="nav-number">3.2.4.</span> <span class="nav-text">公钥加密与私钥解密（RSA算法）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PKCS7签名验签（RSA-ECDSA）"><span class="nav-number">3.2.5.</span> <span class="nav-text">PKCS7签名验签（RSA/ECDSA）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PKCS7数字信封加密解密（RSA）"><span class="nav-number">3.2.6.</span> <span class="nav-text">PKCS7数字信封加密解密（RSA）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解密公司的加密邮件（SMIME）"><span class="nav-number">3.2.7.</span> <span class="nav-text">解密公司的加密邮件（SMIME）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#错误处理"><span class="nav-number">3.2.8.</span> <span class="nav-text">错误处理</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1125,7 +1127,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -1133,7 +1135,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
 
 
 
