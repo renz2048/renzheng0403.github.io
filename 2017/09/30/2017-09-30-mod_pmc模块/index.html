@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="description_eg">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        mod_pmc模块 - renz&#39;s blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> what&#39;s past is prologue </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/images/orz.png" />
+        </div>
+        <div class="name">
+            <i>renzheng</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-源代码结构（apache模块结构）"><span class="toc-text">1 源代码结构（apache模块结构）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-钩子处理函数"><span class="toc-text">2 钩子处理函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-pm-permission-check"><span class="toc-text">2.1 pm_permission_check</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> what&#39;s past is prologue </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        mod_pmc模块
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-09-30 00:00:00</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="1-源代码结构（apache模块结构）"><a href="#1-源代码结构（apache模块结构）" class="headerlink" title="1 源代码结构（apache模块结构）"></a>1 源代码结构（apache模块结构）</h2><p>模块定义：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> AP_MODULE_DECLARE_DATA pmc_module = &#123;</span><br><span class="line">    STANDARD20_MODULE_STUFF,</span><br><span class="line">    pmc_create_dir_conf,      <span class="comment">/* create per-dir    config structures */</span></span><br><span class="line">    pmc_merge_dir_conf,       <span class="comment">/* merge  per-dir    config structures */</span></span><br><span class="line">    pmc_create_server_conf,   <span class="comment">/* create per-server config structures */</span></span><br><span class="line">    pmc_merge_server_conf,    <span class="comment">/* merge  per-server config structures */</span></span><br><span class="line">    pmc_cmds,                 <span class="comment">/* table of config file commands       */</span></span><br><span class="line">    pmc_register_hooks        <span class="comment">/* register hooks                      */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>注册钩子处理函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">pmc_register_hooks</span><span class="params">(<span class="keyword">apr_pool_t</span> *p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* 注册可选函数 */</span></span><br><span class="line">    APR_REGISTER_OPTIONAL_FN(pmc_check_fail);</span><br><span class="line">    APR_REGISTER_OPTIONAL_FN(pmc_query_attrs);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 日志 */</span></span><br><span class="line">    ap_hook_pre_config(pmc_hook_pre_config, <span class="literal">NULL</span>, <span class="literal">NULL</span>, APR_HOOK_MIDDLE);</span><br><span class="line">    <span class="comment">/* 初始化连接上下文 */</span></span><br><span class="line">    ap_hook_pre_connection(pmc_pre_connection, <span class="literal">NULL</span>, <span class="literal">NULL</span>, APR_HOOK_MIDDLE);</span><br><span class="line">    <span class="comment">/* 检查权限 */</span></span><br><span class="line">    ap_hook_access_checker(pm_permission_check, <span class="literal">NULL</span>, <span class="literal">NULL</span>, APR_HOOK_FIRST);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>指令配置：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">const</span> command_rec pmc_cmds[] =</span><br><span class="line">&#123;</span><br><span class="line">    AP_INIT_TAKE1(<span class="string">"PMCEngine"</span>, cmd_pmc_engine, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc engine On or Off"</span>),</span><br><span class="line">    AP_INIT_FLAG(<span class="string">"PMCEngineSkip"</span>, cmd_pmc_engine_skip, <span class="literal">NULL</span>, ACCESS_CONF, <span class="string">"set if pmc is skipped"</span>),</span><br><span class="line">    AP_INIT_TAKE1(<span class="string">"PMCCurlTimeOut"</span>, cmd_pmc_curl_timeout, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc curl timeout"</span>),</span><br><span class="line">    AP_INIT_TAKE1(<span class="string">"PMCCurlConnectionTimeOut"</span>, cmd_pmc_curl_connection_timeout, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc curl connection timeout"</span>),</span><br><span class="line">    AP_INIT_TAKE1(<span class="string">"PMCControlType"</span>, cmd_pmc_control_type, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc control type(Connect or Access)"</span>),</span><br><span class="line">    AP_INIT_TAKE23(<span class="string">"PMCServiceProvider"</span>, cmd_pmc_service_provider, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc service provider and uri"</span>),</span><br><span class="line">    AP_INIT_TAKE1(<span class="string">"PMCExtendGranularity"</span>, cmd_pmc_granularity_extend, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc entend granularity On or Off"</span>),</span><br><span class="line">    AP_INIT_TAKE1(<span class="string">"PMCUrlEncode"</span>, cmd_pmc_urlencode, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc urlencode On or Off"</span>),</span><br><span class="line">    AP_INIT_TAKE1(<span class="string">"PMCEncrypt"</span>, cmd_pmc_encrypt, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc encrypt  On or Off"</span>),</span><br><span class="line">    AP_INIT_TAKE2(<span class="string">"PMCEncryptAlgorithm"</span>, cmd_pmc_encrypt_algorithm, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc encrypt algorithm"</span>),</span><br><span class="line">    AP_INIT_TAKE1(<span class="string">"PMCFieldUrlDecode"</span>, cmd_pmc_field_urldecode, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc field urldecode On or Off"</span>),</span><br><span class="line">    AP_INIT_TAKE1(<span class="string">"PMCUriPattern"</span>, cmd_pmc_uri_pattern, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc uri pattern"</span>),</span><br><span class="line">    AP_INIT_TAKE1(<span class="string">"PMCUriRegex"</span>, cmd_pmc_uri_regex, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc uri regex"</span>),</span><br><span class="line">    AP_INIT_TAKE23(<span class="string">"PMCHeaderFieldMapping"</span>, cmd_pmc_header_field_mapping, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc header field mapping"</span>),</span><br><span class="line">    AP_INIT_TAKE2(<span class="string">"PMCUrlFieldMapping"</span>, cmd_pmc_url_field_mapping, <span class="literal">NULL</span>, RSRC_CONF, <span class="string">"set pmc url field mapping"</span>),</span><br><span class="line"></span><br><span class="line">    &#123;<span class="literal">NULL</span>&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>指令用于在配置文件中设定值。</p>
+<p>我自己认为apache这套系统在功能<strong>实现</strong>和<strong>控制</strong>两个方面做的很清晰，在钩子处理函数里面，实现的是业务逻辑，使用的人如果想更改其中的某些选项或者方式，那么只需要通过指令做相应的配置就可以了，即控制。我们想一想魔法世界，巫师并不清楚魔法世界的运作原理，但是使用魔杖念出魔咒，就可以发挥神奇的功效。Apache的指令就是我们的魔咒。还可以自己创造<strong>魔咒</strong>，只要在<code>command_rec pmc_cmds[]</code>里配置并编写相应的函数就能完成。</p>
+<p>什么是功能<strong>实现</strong>呢？目前我能想到的和这个系统最像的就是集成电路的制备过程，模块和参数控制，硅片在这个流程里被加工成集成电路，而通过改变设定的参数，你可以控制渗透多少元素或者腐蚀到什么程度。但是这个比喻不好，因为了解这个的人不多。现实中也有同样的例子，或许社会学家就有更形象的例子。</p>
+<p>数据来到了这个<code>mod_pmc</code>模块，我想将其设置为接入控制，不需要去分析源代码，改动源代码的结构，只需要在专门设置访问控制的配置文件pmc.conf文件里设置：<code>PMCControlType  Access</code>就可以了。那么接下来在名为<code>PMCControlType  Access</code>的黑盒后面发生了什么？</p>
+<p>顺藤摸瓜，在指令配置<code>static const command_rec pmc_cmds[]</code>里发现了<code>AP_INIT_TAKE1(&quot;PMCControlType&quot;, cmd_pmc_control_type, NULL, RSRC_CONF, &quot;set pmc control type(Connect or Access)&quot;),</code>，线索很明确了，<code>cmd_pmc_control_type</code>就是我们下一步要去探访的<strong>函数</strong>，此行吉凶未知，万一他什么也不说，只是给出一副冷冰冰的黑脸怎么办。</p>
+<p>我们的在同一个文件<strong>mod_pmc.c</strong>里找到了<code>cmd_pmc_control_type</code>老兄，结果却异常顺利，原来设想的”我不知道啊，某某告诉我的，你去他那里看看“这种对话并没有出现。<code>cmd_pmc_control_type</code>老兄一看就是个实在人，告诉了我他的工作：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">char</span> * <span class="title">cmd_pmc_control_type</span><span class="params">(cmd_parms *params, <span class="keyword">void</span> *dummy, <span class="keyword">const</span> <span class="keyword">char</span> *control_type)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    pmc_module_conf *mconf = ap_get_module_config(params-&gt;server-&gt;module_config, &amp;pmc_module);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (strcasecmp(control_type, <span class="string">"Connect"</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">        mconf-&gt;control_type = CT_CONNECT;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (strcasecmp(control_type, <span class="string">"Access"</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">        mconf-&gt;control_type = CT_ACCESS;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> apr_psprintf(params-&gt;pool, <span class="string">"%s is an invalid control type, must be Connect or Access"</span>, control_type);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>诺，你看，<code>control_type</code>的值也就是<code>cmd_pmc_control_type</code>的值自然是<code>Access</code>，由此将设置<code>mconf-&gt;control_type</code>的值为<code>CT_ACCESS</code>，但是老兄隐藏了<code>ap_get_module_config</code>的线索，我使用人肉搜索也没有找到。包括<code>cmd_params *params</code>参数也没有提供来源，这不重要。重要的是，在钩子处理函数<code>pm_permission_check</code>里看到的通过<code>switch (mconf-&gt;control_type)</code>进行判断有了合理的解释，<code>mconf-&gt;control_type</code>果然是设置好的值，但是与我之前的猜测甚远，并不是在另外某个函数里故意设置的，真相只有一个，那就是<code>cmd_pmc_control_type</code>老兄干的！（此刻响起了名侦探柯南破案成功的音乐）</p>
+<p>不要高兴太早，我们还只理清了这个模块的指令的其中一个的实现，举这个例子只是想理清这个模块的架构的大致模样：钩子处理函数处理数据的主要流程，指令注册的函数则对某些参数进行改变，接下来的部分的思路就分两块进行了。</p>
+<h2 id="2-钩子处理函数"><a href="#2-钩子处理函数" class="headerlink" title="2 钩子处理函数"></a>2 钩子处理函数</h2><h3 id="2-1-pm-permission-check"><a href="#2-1-pm-permission-check" class="headerlink" title="2.1 pm_permission_check"></a>2.1 <code>pm_permission_check</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: pm_permission_check</span><br><span class="line">e=&gt;end: return DECLINED</span><br><span class="line">mconf=&gt;operation: mconf = ap_get_module_config(server-&gt;module_config, &amp;pmc_module);</span><br><span class="line">dconf=&gt;operation: dconf = ap_get_module_config(r-&gt;per_dir_config, &amp;pmc_module);</span><br><span class="line">ret=&gt;operation: ret</span><br><span class="line">finish_check=&gt;operation: finish_check</span><br><span class="line">curl=&gt;operation: curl_handle = curl_easy_init();</span><br><span class="line">rconf=&gt;operation: rconf = pmc_create_request_conf(r-&gt;pool);</span><br><span class="line">mconf_service_provider=&gt;operation: mconf-&gt;service_provider//检测服务提供者</span><br><span class="line"></span><br><span class="line">mconf_enable=&gt;condition: mconf-&gt;enable</span><br><span class="line">dconf_skip=&gt;condition: dconf-&gt;skip</span><br><span class="line">mconf_service=&gt;condition: uri == NULL</span><br><span class="line">mconf_control_type=&gt;condition: mconf-&gt;control_type == CT_CONNECT</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">st-&gt;mconf-&gt;mconf_enable</span><br><span class="line">mconf_enable(no, bottom)-&gt;dconf</span><br><span class="line">mconf_enable(yes)-&gt;ret</span><br><span class="line">dconf-&gt;dconf_skip</span><br><span class="line">dconf_skip(yes)-&gt;e</span><br><span class="line">dconf_skip(no, bottom)-&gt;mconf_service</span><br><span class="line">mconf_service(yes)-&gt;e</span><br><span class="line">mconf_service(no, bottom)-&gt;curl</span><br><span class="line">curl-&gt;rconf</span><br><span class="line">rconf-&gt;mconf_control_type</span><br><span class="line">mconf_control_type(yes)-&gt;finish_check</span><br><span class="line">mconf_control_type(no, bottom)-&gt;mconf_service_provider</span><br></pre></td></tr></table></figure>
+<p>浩浩荡荡画了这么长flowchar，我决定放弃了，开始是画图比读代码容易理解，此刻画图却成了折磨，还是读代码爽啊。</p>
+<p>检查服务提供者算是第一道比较重要的关卡，<code>mconf-&gt;service_provider</code>有三种可能的值：</p>
+<ul>
+<li><p>SP_LOCAL:</p>
+<p>check_permission_with_local(r, mconf)</p>
+</li>
+<li><p>SP_MTSMS:</p>
+<p>check_permission_with_mtsms(r, mconf, curl_handler, new_url)</p>
+</li>
+<li><p>SP_TJJMS:</p>
+<p>mconf-&gt;control_type</p>
+<ul>
+<li><p>CT_CONNECT</p>
+<p>check_permission_with_tjjms(r, mconf, curl_handle, new_url)</p>
+</li>
+<li><p>CT_ACCESS</p>
+</li>
+</ul>
+</li>
+</ul>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>

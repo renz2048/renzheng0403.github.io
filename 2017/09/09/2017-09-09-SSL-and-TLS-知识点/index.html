@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="description_eg">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        SSL and TLS 知识点 - renz&#39;s blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> what&#39;s past is prologue </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/images/orz.png" />
+        </div>
+        <div class="name">
+            <i>renzheng</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-SSL总体流程"><span class="toc-text">1 SSL总体流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-SSL连接"><span class="toc-text">2 SSL连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ClientHello"><span class="toc-text">ClientHello</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ServerHello"><span class="toc-text">ServerHello</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Certificate"><span class="toc-text">Certificate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ServerHelloDone"><span class="toc-text">ServerHelloDone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ClientKeyExchange"><span class="toc-text">ClientKeyExchange</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ChangeCipherSpec（不属于握手消息）"><span class="toc-text">ChangeCipherSpec（不属于握手消息）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Finished"><span class="toc-text">Finished</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-SSL记录协议"><span class="toc-text">3 SSL记录协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#内容类型"><span class="toc-text">内容类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#长度"><span class="toc-text">长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#版本号"><span class="toc-text">版本号</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-会话恢复"><span class="toc-text">4 会话恢复</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-客户端身份验证"><span class="toc-text">5 客户端身份验证</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-临时RSA"><span class="toc-text">6 临时RSA</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-再握手（Rehandshake）"><span class="toc-text">7 再握手（Rehandshake）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-密钥交换算法的区别"><span class="toc-text">8 密钥交换算法的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-TLS-RSA"><span class="toc-text">8.1 TLS-RSA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-TLS-DH"><span class="toc-text">8.2 TLS-DH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-TLS-DHE"><span class="toc-text">8.3 TLS-DHE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附：Diffie-Hellman密钥交换"><span class="toc-text">附：Diffie-Hellman密钥交换</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-密钥生成"><span class="toc-text">9 密钥生成</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> what&#39;s past is prologue </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        SSL and TLS 知识点
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-09-09 00:00:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#PKI" title="PKI">PKI</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#SSL" title="SSL">SSL</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>TLS四个核心主协议：</p>
+<ul>
+<li>handshake protocol 握手协议</li>
+<li>change cipher spec protocol 密钥规格变更协议</li>
+<li>application data protocol 应用数据协议</li>
+<li><p>alert protocol 警报协议</p>
+</li>
+<li><p>record协议：包括对消息的分段、压缩、消息认证和完整性保护、加密</p>
+</li>
+</ul>
+<p>SSL核心功能：握手、密钥交换、相互认证、保密数据传输</p>
+<p>SSL握手的三个目的：</p>
+<ul>
+<li>客户端与服务器就一组保护数据的算法达成一致</li>
+<li>确立一组由算法使用的密钥</li>
+<li>还可以选择对客户端身份进行认证</li>
+</ul>
+<p>由于SSL/TLS协议自身特性（数字证书），不能被用于保护多跳端到端通信，只能保护点到点通信。</p>
+<p>SSL/TLS协议能够提供的安全目标：</p>
+<ul>
+<li>身份认证（数字证书）</li>
+<li>机密传输（信息加密）</li>
+<li>数据完整性（MAC）</li>
+<li>重放保护（通过使用隐式序列号防止重放攻击）</li>
+</ul>
+<h1 id="1-SSL总体流程"><a href="#1-SSL总体流程" class="headerlink" title="1 SSL总体流程"></a>1 SSL总体流程</h1><p><img src="/images/SSL握手概述.png" alt="SSL握手概述"></p>
+<ol>
+<li>客户端将其支持的算法列表和一个用作密钥生成算法输入的随机数发送给服务器</li>
+<li>服务器选择一个加密算法，并将其和包含服务器公钥的证书发送给客户端，还包括一个用作密钥生成算法输入的随机数</li>
+<li>客户端验证服务器证书，并抽取服务器公钥。同时生成一个pre_master_secret随即密码串，然后使用服务器公钥对其进行加密，将加密的信息发送给服务器</li>
+<li>客户端和服务器根据pre_master_secret和随机数值独立计算加密密钥和MAC密钥</li>
+<li>客户端将所有握手消息MAC值加密后发送给服务器</li>
+<li>服务器将所有握手消息MAC值加密后发送给客户端</li>
+</ol>
+<h1 id="2-SSL连接"><a href="#2-SSL连接" class="headerlink" title="2 SSL连接"></a>2 SSL连接</h1><p><img src="/images/SSL连接.png" alt="SSL连接"></p>
+<ol>
+<li>握手消息ClientHello，用于告知服务器客服端所支持的密码套件种类、最高SSL/TLS协议版本以及压缩算法。还包括一个客户端生成的用于密钥产生的随机数，在密钥生成过程中被使用（其它有Session值，第一次握手为0；版本号）</li>
+<li>服务器返回的一系列握手消息。首先是ServerHello，包含了服务器选择的加密参数。还包括一个服务器生成的用于密钥产生的随机数，如果是第一次握手，服务器将提供给客户端一个Session值用于恢复使用已经协商好的密钥信息</li>
+<li>服务器发送Certificate，该消息是X.509证书序列，证书依序提供，从服务器证书开始，到Certificate authority或者最新的自签名证书结束。同时证书会附带携带与协商的密钥交换算法对应的密钥。客户端除了校验签名信息，还要保证证书链中的所有证书均未被吊销。</li>
+<li>ServerHelloDone，表示服务器已发送在此阶段要发送的全部信息。此项告诉客户端本次Certificate后面没有可选信息，不用再等了</li>
+<li>ClientKeyExchange客户端验证了服务端证书并并抽取公钥后，使用服务器公钥对生成的被称为pre_master_secret的随机密钥串加密，再通过此消息发送</li>
+<li>ChangeCipherSpec告诉服务器，客户端之后的消息都是用商定的加密算法，此消息不属于握手消息，</li>
+<li>Finished 发送前一阶段的所有握手消息MAC值，对握手消息校验，这样服务器可以判断使用的加密算法是否是安全商定的，而没有遭到中间人篡改或诱导</li>
+<li>ChangeCipherSpec告诉客户端，服务器之后的消息都使用商定的加密算法</li>
+<li>Finished</li>
+</ol>
+<h2 id="ClientHello"><a href="#ClientHello" class="headerlink" title="ClientHello"></a>ClientHello</h2><p>结构体：<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">struct &#123;</span><br><span class="line"> ProtocolVersion client_version<span class="comment">;</span></span><br><span class="line"> <span class="built_in">Random</span> <span class="built_in">random</span><span class="comment">;</span></span><br><span class="line"> SessionlD session_id<span class="comment">; </span></span><br><span class="line">  CipherSuite cipher_suites&lt;<span class="number">2</span>..<span class="number">2</span>^<span class="number">16</span>-1&gt;<span class="comment">;</span></span><br><span class="line"> CompressionMethod compression_methods&lt;l..<span class="number">2</span>^<span class="number">8</span>-1&gt;<span class="comment">;</span></span><br><span class="line">&#125; ClientHello<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">struct &#123;</span><br><span class="line"> uint8 major<span class="comment">;</span></span><br><span class="line"> uint8 minor<span class="comment">;</span></span><br><span class="line">&#125; ProtocolVersion<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">struct &#123;</span><br><span class="line"> uint32 gmt_unix_time<span class="comment">;</span></span><br><span class="line"> opaque random_bytes[<span class="number">28</span>]<span class="comment">;</span></span><br><span class="line">&#125; <span class="built_in">Random</span><span class="comment">;</span></span><br><span class="line"></span><br><span class="line">opaque SessionlD&lt;<span class="number">0</span>..<span class="number">32</span>&gt;<span class="comment">;</span></span><br><span class="line">uint8 CipherSuite[<span class="number">2</span>]<span class="comment">;</span></span><br><span class="line">enum &#123;null(<span class="number">0</span>),(<span class="number">255</span>)&#125; CompressionMethod<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>消息：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">Handshake Protocol:<span class="built_in"> Client </span>Hello</span><br><span class="line">    Handshake Type:<span class="built_in"> Client </span>Hello (1)</span><br><span class="line">    Version: TLS 1.2 (0x0303)</span><br><span class="line">    Random</span><br><span class="line">        GMT Unix Time: Apr 13, 2053 09:32:30.000000000 �й���׼ʱ��</span><br><span class="line">        Random Bytes: b383297830cf9a3e82ddd7152edff8f6d015fbd697f3a5d8<span class="built_in">..</span>.</span><br><span class="line">    Session ID: d8ae81d62bd18b0cc3f1e7b8774bdd2b1e4755419ab1058e<span class="built_in">..</span>.</span><br><span class="line">    Cipher Suites (14 suites)</span><br><span class="line">        Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 (0xc02b)</span><br><span class="line">        Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f)</span><br><span class="line">        Cipher Suite: TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 (0xc02c)</span><br><span class="line">        Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (0xc030)</span><br><span class="line">        Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA (0xc013)</span><br><span class="line">        Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA (0xc014)</span><br><span class="line">        Cipher Suite: TLS_RSA_WITH_AES_128_GCM_SHA256 (0x009c)</span><br><span class="line">        Cipher Suite: TLS_RSA_WITH_AES_256_GCM_SHA384 (0x009d)</span><br><span class="line">        Cipher Suite: TLS_RSA_WITH_AES_128_CBC_SHA (0x002f)</span><br><span class="line">        Cipher Suite: TLS_RSA_WITH_AES_256_CBC_SHA (0x0035)</span><br><span class="line">        Cipher Suite: TLS_RSA_WITH_3DES_EDE_CBC_SHA (0x000a)</span><br><span class="line">    Compression Methods (1 method)</span><br><span class="line">        Compression Method: <span class="literal">null</span> (0)</span><br><span class="line">    Extensions Length: 407</span><br><span class="line">    Extension: renegotiation_info</span><br><span class="line">        Renegotiation <span class="builtin-name">Info</span> extension</span><br><span class="line">            Renegotiation <span class="builtin-name">info</span> extension length: 0</span><br><span class="line">    Extension: server_name</span><br><span class="line">       <span class="built_in"> Server </span>Name Indication extension</span><br><span class="line">           <span class="built_in"> Server </span>Name: www.baidu.com</span><br><span class="line">    Extension: signature_algorithms</span><br><span class="line">        Signature Hash Algorithms (9 algorithms)</span><br><span class="line">            Signature Hash Algorithm: 0x0403</span><br><span class="line">                Signature Hash Algorithm Hash: SHA256 (4)</span><br><span class="line">                Signature Hash Algorithm Signature: ECDSA (3)</span><br><span class="line">            Signature Hash Algorithm: 0x0401</span><br><span class="line">                Signature Hash Algorithm Hash: SHA256 (4)</span><br><span class="line">                Signature Hash Algorithm Signature: RSA (1)</span><br><span class="line">            </span><br><span class="line">    Extension: elliptic_curves</span><br><span class="line">        Elliptic curves (4 curves)</span><br><span class="line">            Elliptic curve: Unknown (0xaaaa)</span><br><span class="line">            Elliptic curve: Unknown (0x001d)</span><br><span class="line">            Elliptic curve: secp256r1 (0x0017)</span><br><span class="line">            Elliptic curve: secp384r1 (0x0018)</span><br></pre></td></tr></table></figure></p>
+<p>客户端在新建连接后，希望重新协商或者响应服务器发起的重新协商请求时，发送这条消息。该消息将客户端的功能和首选项传送给服务器，包含以下关键元素：</p>
+<ul>
+<li>Version 协议版本，包含客户端准备接受的最高SSL版本号</li>
+<li>Random 握手时客户端与服务器都会提供随机数，用于身份验证，可以防止重放攻击（<strong>但是为什么</strong>）<ul>
+<li>Client time（4byte)产生消息时的时间</li>
+<li>Random bytes（28byte）随机生成，确保即使使用同一个pre_master_secret</li>
+</ul>
+</li>
+<li>Session ID客户端用来指示希望重复使用前一次连接是的加密密钥资料</li>
+<li>Ciper Suites 密码套件，指定服务器的认证算法、密钥交换算法、批量加密算法和摘要算法（消息完整性）。可参考(ssl握手协议中的CipherSuite)[<a href="http://blog.csdn.net/dog250/article/details/5750992]" target="_blank" rel="noopener">http://blog.csdn.net/dog250/article/details/5750992]</a> ，baidu一篇正好是公司前辈的文章</li>
+<li>Compression Methods 客户端可以提交一个或多个支持压缩的方法。默认的压缩方法是null</li>
+<li>Extensions 扩展额外数据</li>
+</ul>
+<h2 id="ServerHello"><a href="#ServerHello" class="headerlink" title="ServerHello"></a>ServerHello</h2><p>将服务器选择的连接参数传回客户端<br>结构与ClientHello类似：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Handshake Protocol:<span class="built_in"> Server </span>Hello</span><br><span class="line">    Version: TLS 1.2 (0x0303)</span><br><span class="line">    Random</span><br><span class="line">        GMT Unix Time: Sep  9, 2017 14:38:09.000000000 �й���׼ʱ��</span><br><span class="line">        Random Bytes: d3fe2fbdbbe626fc09b691158652d6808239d05b7b9ed0a3<span class="built_in">..</span>.</span><br><span class="line">    Session ID: d8ae81d62bd18b0cc3f1e7b8774bdd2b1e4755419ab1058e<span class="built_in">..</span>.</span><br><span class="line">    Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f)</span><br><span class="line">    Compression Method: <span class="literal">null</span> (0)</span><br><span class="line">    Extension: Application Layer Protocol Negotiation</span><br><span class="line">        ALPN Protocol</span><br><span class="line">            ALPN Next Protocol: http/1.1</span><br></pre></td></tr></table></figure></p>
+<p>服务器也提供了一个随机值，用它连同客户端提供的随机值，以及pre_master_secret一起产生密钥资料。</p>
+<h2 id="Certificate"><a href="#Certificate" class="headerlink" title="Certificate"></a>Certificate</h2><p>X.509证书序列</p>
+<h2 id="ServerHelloDone"><a href="#ServerHelloDone" class="headerlink" title="ServerHelloDone"></a>ServerHelloDone</h2><p>是一条空消息，表明服务器已经发送了在此阶段要发送的全部消息</p>
+<h2 id="ClientKeyExchange"><a href="#ClientKeyExchange" class="headerlink" title="ClientKeyExchange"></a>ClientKeyExchange</h2><p>携带客户端为密钥交换提供的所有信息<br>结构体：<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">struct &#123;</span><br><span class="line"> <span class="keyword">select</span> (KeyExchangeAIgorithm) &#123;</span><br><span class="line"> <span class="keyword">case</span> rsa: EncryptedPreMasterSecret;</span><br><span class="line"> <span class="keyword">case</span> diffie_hellman: DiffieHellmanClientPublicValue;</span><br><span class="line"> &#125; exchange_keys;</span><br><span class="line">&#125; ClientKeyExchange;</span><br><span class="line">struct &#123;</span><br><span class="line"> ProtocolVersion client_version;</span><br><span class="line"> opaque random[<span class="number">46</span>];</span><br><span class="line">&#125; PreMasterSecret;</span><br><span class="line">struct &#123;</span><br><span class="line"> <span class="keyword">public</span>-key-encrypted PreMasterSecret pre_master_secret;</span><br><span class="line">&#125; EncryptedPreMasterSecret;</span><br><span class="line"><span class="keyword">enum</span> &#123; <span class="keyword">implicit</span>, explicit &#125; PublicValueEncoding;</span><br><span class="line">struct &#123;</span><br><span class="line"> <span class="keyword">select</span> (PublicValueEncoding) &#123;</span><br><span class="line"> <span class="keyword">case</span> <span class="keyword">implicit</span>: struct &#123;&#125;;</span><br><span class="line"> <span class="keyword">case</span> explicit: opaque DH_Yc&lt;I.<span class="number">.2</span>^<span class="number">16</span>-<span class="number">1</span> &gt;;</span><br><span class="line"> &#125; dh_public;</span><br><span class="line">&#125; DiffieHellmanClientPublicValue;</span><br></pre></td></tr></table></figure></p>
+<h2 id="ChangeCipherSpec（不属于握手消息）"><a href="#ChangeCipherSpec（不属于握手消息）" class="headerlink" title="ChangeCipherSpec（不属于握手消息）"></a>ChangeCipherSpec（不属于握手消息）</h2><p>指示发送实现已经切换好的算法和密钥资料，之后发送的消息将使用算法加以保护</p>
+<h2 id="Finished"><a href="#Finished" class="headerlink" title="Finished"></a>Finished</h2><p>结构体：<br><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">SSLv3:</span></span><br><span class="line">struct &#123;</span><br><span class="line"> opaque md5_hash[<span class="number">16</span>]<span class="comment">;</span></span><br><span class="line"> opaque <span class="keyword">sha_hash[20];</span></span><br><span class="line"><span class="keyword">&#125;Finished;</span></span><br><span class="line"><span class="keyword">TLS:</span></span><br><span class="line"><span class="keyword">struct </span>&#123;</span><br><span class="line"> opaque verify_data[<span class="number">12</span>]<span class="comment">;</span></span><br><span class="line">&#125; Finished<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>每一方向另一方发送协商后的主密码与连结起来的握手消息的摘要信息，另一方将其与本地计算得出的摘要对比。</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5_hash = MD5(<span class="name">master_secret</span> + pad2 + MD5(<span class="name">handshake_messages</span> + Sender + master_secret + pad1) )<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>第一遍调用MD5的输入：所有握手消息、Sender常量、master_secret、填充字节（pad1为字节0x36重复48次所形成的字符串）</p>
+<p>第二遍调用MD5的输入：主密码、填充字节（pad2为字节0x5c重复48次所形成的字符串）、第一遍的输出</p>
+<p>Finished另一个有趣的地点在于第二个发送Finished的一方将前一个Finished的消息计算在摘要值之内的可能性，如下图所示：<br><img src="/images/SSL-handshark-Finished.png" alt="Finished"><br>这样当服务器计算握手消息的时候会多计算两个握手消息，必然不会匹配。解决的办法是在处理Finished消息之前再创建一份摘要对象的拷贝。</p>
+<h1 id="3-SSL记录协议"><a href="#3-SSL记录协议" class="headerlink" title="3 SSL记录协议"></a>3 SSL记录协议</h1><p><img src="/images/SSL记录层.png" alt="SSL记录层协议"></p>
+<p>SSL记录层协议将数据流分割成片段加密传输</p>
+<p>记录头包含三种信息：内容类型、长度、SSL版本</p>
+<p>结构体：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line"> ContentType <span class="keyword">type</span>;</span><br><span class="line"> ProtocolVersion version;</span><br><span class="line"> uint16 length;</span><br><span class="line">&#125; RecordHeader;</span><br><span class="line"><span class="class"><span class="keyword">enum</span> &#123;</span></span><br><span class="line"> change_cipher_spec(<span class="number">20</span>), alert(<span class="number">21</span>), handshake(<span class="number">22</span>),</span><br><span class="line"> application_data(<span class="number">23</span>), (<span class="number">255</span>)</span><br><span class="line">&#125; ContentType;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line"> uint8 major;</span><br><span class="line"> uint8 minor;</span><br><span class="line">&#125; ProtocolVersion;</span><br></pre></td></tr></table></figure></p>
+<h3 id="内容类型"><a href="#内容类型" class="headerlink" title="内容类型"></a>内容类型</h3><p>SSL支持四种内容类型：application_data、alert、handshark、change_cipher_spec</p>
+<p>alert用于报告各种类型的错误</p>
+<p>handshark用于承载握手信息</p>
+<p>change_cipher_spec表示加密及认证的改变，指示使用新的密钥</p>
+<h3 id="长度"><a href="#长度" class="headerlink" title="长度"></a>长度</h3><p>让接收方知道要从线路上读取多少字节消息</p>
+<h3 id="版本号"><a href="#版本号" class="headerlink" title="版本号"></a>版本号</h3><h1 id="4-会话恢复"><a href="#4-会话恢复" class="headerlink" title="4 会话恢复"></a>4 会话恢复</h1><p>先看与百度的握手过程：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">459</span>	<span class="number">22.284378</span>	<span class="number">192.168</span><span class="number">.41</span><span class="number">.110</span>	<span class="number">115.239</span><span class="number">.211</span><span class="number">.112</span>	TLSv1<span class="number">.2</span>	<span class="number">571</span>	Client Hello</span><br><span class="line"><span class="number">461</span>	<span class="number">22.294188</span>	<span class="number">115.239</span><span class="number">.211</span><span class="number">.112</span>	<span class="number">192.168</span><span class="number">.41</span><span class="number">.110</span>	TLSv1<span class="number">.2</span>	<span class="number">150</span>	Server Hello</span><br><span class="line"><span class="number">462</span>	<span class="number">22.294210</span>	<span class="number">115.239</span><span class="number">.211</span><span class="number">.112</span>	<span class="number">192.168</span><span class="number">.41</span><span class="number">.110</span>	TLSv1<span class="number">.2</span>	<span class="number">60</span>	Change Cipher Spec</span><br><span class="line"><span class="number">464</span>	<span class="number">22.295709</span>	<span class="number">115.239</span><span class="number">.211</span><span class="number">.112</span>	<span class="number">192.168</span><span class="number">.41</span><span class="number">.110</span>	TLSv1<span class="number">.2</span>	<span class="number">99</span>	Hello Request, Hello Request</span><br><span class="line"><span class="number">465</span>	<span class="number">22.295942</span>	<span class="number">192.168</span><span class="number">.41</span><span class="number">.110</span>	<span class="number">115.239</span><span class="number">.211</span><span class="number">.112</span>	TLSv1<span class="number">.2</span>	<span class="number">105</span>	Change Cipher Spec, Hello Request, Hello Request</span><br><span class="line"><span class="number">468</span>	<span class="number">22.299020</span>	<span class="number">192.168</span><span class="number">.41</span><span class="number">.110</span>	<span class="number">115.239</span><span class="number">.211</span><span class="number">.112</span>	TLSv1<span class="number">.2</span>	<span class="number">82</span>	Application Data</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>这里由于ClientHello提供了一个Session，使用了前一次SSL握手协商好的加密密钥信息，因此当客户端接收到ServerHello后就发送ChangeCipherSpec通知服务端后面的消息将使用之前的加密密钥加密</p>
+<p>可以发现省略了Certificate，ClientKeyExchange，并不涉及到密钥及加密算法交换等信息，而且此后的消息都是通过加密密钥发送的，如果攻击者冒充服务端，自然无法解开收到的消息，这解释了为什么客户端没有验证服务端身份。</p>
+<p>恢复SSL会话流程：<br><img src="/images/SSL-Session.png" alt="SSL-Session"></p>
+<h1 id="5-客户端身份验证"><a href="#5-客户端身份验证" class="headerlink" title="5 客户端身份验证"></a>5 客户端身份验证</h1><p>服务器通过发送CertificateRequest消息请求对客户端进行身份验证，客户端接受后发送自己的Certificate消息，再发送CertificateVerify消息证明自己拥有对应的私钥。</p>
+<p>服务器将告诉客户端，我接受哪些证书和签名算法，或者接受哪些证书颁发机构：<br><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    ClientCertificateType certificate_types;</span><br><span class="line">    SignatureAndHashAlgorithm supported_signature_algorithms;</span><br><span class="line">    DistinguishedName certificate_authorities;</span><br><span class="line">&#125; CertificateRequest;</span><br><span class="line"><span class="class"><span class="keyword">enum</span>&#123;</span></span><br><span class="line"> rsa_sign(<span class="number">1</span>),dss_sign(<span class="number">2</span>),rsa_fixed_dh(<span class="number">3</span>),dss_fixed_dh(<span class="number">4</span>),</span><br><span class="line"> (<span class="number">255</span>)</span><br><span class="line">&#125;ClientCertificateType;</span><br><span class="line">opaque DistinguishedName&lt;l..<span class="number">2</span>^<span class="number">16</span>-<span class="number">1</span>&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>客户端将发送一条到这一步为止的所有握手消息的签名，以此证明自己拥有的私钥与之前发送的客户端证书中的公钥匹配：<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">struct &#123;</span><br><span class="line">    Signature handshark_message_signature<span class="comment">;</span></span><br><span class="line">&#125; CertificateVerify<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>若是你对我的私钥与证书中CA机构确认的公钥有怀疑，可以自己进行计算签名值对比（我觉得一定会的）</p>
+<h1 id="6-临时RSA"><a href="#6-临时RSA" class="headerlink" title="6 临时RSA"></a>6 临时RSA</h1><p>ServerKeyExchange（在ServerHelloDone之前）服务器使用该消息传输经过签名的512bit RSA密钥，客户端收到该消息后，验证临时密钥上的服务器签名，并使用其加密pre_master_secret</p>
+<h1 id="7-再握手（Rehandshake）"><a href="#7-再握手（Rehandshake）" class="headerlink" title="7 再握手（Rehandshake）"></a>7 再握手（Rehandshake）</h1><p>建立SSL连接之后再进行一次握手，客户端发送一条ClientHello，如果服务器同意，发送空的HelloRequest握手消息，客户端发送ClientHello作为响应。如果服务器不同意，发送一条no_renegotiation警示。</p>
+<h1 id="8-密钥交换算法的区别"><a href="#8-密钥交换算法的区别" class="headerlink" title="8 密钥交换算法的区别"></a>8 密钥交换算法的区别</h1><p>密钥交换的目的是计算<strong>预主密钥</strong>（premaster secret），这个值是组成<strong>主密钥</strong>（master secret）的来源。</p>
+<h2 id="8-1-TLS-RSA"><a href="#8-1-TLS-RSA" class="headerlink" title="8.1 TLS-RSA"></a>8.1 TLS-RSA</h2><p>PreMasterSecret由客户端指定，并用RSA公钥加密发送给服务器。</p>
+<h2 id="8-2-TLS-DH"><a href="#8-2-TLS-DH" class="headerlink" title="8.2 TLS-DH"></a>8.2 TLS-DH</h2><p>双方各自提交一个证书包含DH公开值，服务器端提交证书包含DH公开值。</p>
+<h2 id="8-3-TLS-DHE"><a href="#8-3-TLS-DHE" class="headerlink" title="8.3 TLS-DHE"></a>8.3 TLS-DHE</h2><p>基于DHE的TLS握手中有ServerKeyExchange消息。DH参数和它的数字签名均被包含在消息中，握手过程中交换参数的认证就是通过数字签名实现，支持的签名算法包括RSA和DSS。</p>
+<h2 id="附：Diffie-Hellman密钥交换"><a href="#附：Diffie-Hellman密钥交换" class="headerlink" title="附：Diffie-Hellman密钥交换"></a>附：Diffie-Hellman密钥交换</h2><p>抛开算法的细节（因为我不懂），DH密钥交换需要6个参数：</p>
+<ul>
+<li>域参数（服务器选取）<ul>
+<li>dh_p</li>
+<li>dh_g</li>
+</ul>
+</li>
+<li>客户端<ul>
+<li>dh_Ys</li>
+<li>dh_Yc</li>
+</ul>
+</li>
+<li>服务器<ul>
+<li>dh_Ys</li>
+<li>dh_Yc</li>
+</ul>
+</li>
+</ul>
+<p>协商过程中客户端和服务器相互发送其中一个参数（dh_Ys和dh_Yc）到对端</p>
+<p>服务器发送ServerDHparams:<br><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct &#123;</span><br><span class="line">    opaque dh_p<span class="comment">;</span></span><br><span class="line">    opaque dh_g<span class="comment">;</span></span><br><span class="line">    opaque dh_Ys<span class="comment">;</span></span><br><span class="line">&#125; ServerDHParams<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>客户端相应并发送其公开参数（dh_Yc）:<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">struct &#123;</span><br><span class="line">    <span class="keyword">select</span> (PublicValueEncoding) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="keyword">implicit</span>:</span><br><span class="line">        <span class="keyword">case</span> explicit:</span><br><span class="line">            opaque dh_Yc;</span><br><span class="line">    &#125; dh_public;</span><br><span class="line">&#125;ClientDiffHellmanPublic;</span><br></pre></td></tr></table></figure></p>
+<h1 id="9-密钥生成"><a href="#9-密钥生成" class="headerlink" title="9 密钥生成"></a>9 密钥生成</h1><p>Pseudo-random Function（PRF，伪随机函数）：秘密值扩展、密钥生成</p>
+<p>工作原理如图<br><img src="/images/PRF.png" alt=""><br>PRF基于两个hash函数：MD5和SHA-1；</p>
+<p>有三个输入：</p>
+<ul>
+<li>Secret，例如PreMasterSecret，在使用时被分为长度相同的两半：S1和S2，跟别作为P_MD5和P_SHA-1的输入。</li>
+<li>Label标志服</li>
+<li>Seed种子值（客户端随机数+服务器随机数）</li>
+</ul>
+<p>SSL/TLS协议密钥的生成过程：<br><img src="/images/SSL-key.png" alt=""></p>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>

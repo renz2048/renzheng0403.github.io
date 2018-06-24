@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="description_eg">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        反向代理 - renz&#39;s blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> what&#39;s past is prologue </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/images/orz.png" />
+        </div>
+        <div class="name">
+            <i>renzheng</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#反向代理"><span class="toc-text">反向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-数据流"><span class="toc-text">1 数据流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-数据包分析："><span class="toc-text">2 数据包分析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-过程分析"><span class="toc-text">3 过程分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-客户端与网关之间的SSL握手"><span class="toc-text">3.1 客户端与网关之间的SSL握手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-数据在网关之间的修改"><span class="toc-text">3.2 数据在网关之间的修改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-网关与应用之间的HTTP请求"><span class="toc-text">3.3 网关与应用之间的HTTP请求</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-指令配置"><span class="toc-text">4 指令配置</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> what&#39;s past is prologue </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        反向代理
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2017-09-30 00:00:00</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h1><h2 id="1-数据流"><a href="#1-数据流" class="headerlink" title="1 数据流"></a>1 数据流</h2><p><img src="/images/SSL5_Proxy_Reverse.png" alt="SSL5_Proxy_Reverse"></p>
+<h2 id="2-数据包分析："><a href="#2-数据包分析：" class="headerlink" title="2 数据包分析："></a>2 数据包分析：</h2><p>前端抓包：本来作为对比，这里应该展示一下前端抓包，然而由于水平有限，抓取到包后才发现是SSL加密后的数据，不会解！这里先厚颜无耻的用别人的数据：</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1</span><br><span class="line"><span class="section">Host: 192.168.41.119:443</span></span><br><span class="line"><span class="section">Connection: keep-alive</span></span><br><span class="line"><span class="section">Upgrade-Insecure-Requests: 1</span></span><br><span class="line"><span class="section">User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36</span></span><br><span class="line">(KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36</span><br><span class="line"><span class="section">Accept:</span></span><br><span class="line">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</span><br><span class="line"><span class="section">Accept-Encoding: gzip, deflate, sdch</span></span><br><span class="line"><span class="section">Accept-Language: en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4</span></span><br><span class="line"></span><br><span class="line">HTTP/1.1 200 OK</span><br><span class="line"><span class="section">Date: Mon, 19 Jun 2017 03:55:24 GMT</span></span><br><span class="line"><span class="section">Server: Apache/2.4.7 (Ubuntu)</span></span><br><span class="line"><span class="section">X-Frame-Options: SAMEORIGIN</span></span><br><span class="line"><span class="section">X-XSS-Protection: 1; mode=block</span></span><br><span class="line"><span class="section">X-Content-Type-Options: nosniff</span></span><br><span class="line"><span class="section">Cache-Control: max-age=0, private, must-revalidate</span></span><br><span class="line"><span class="section">X-Request-Id: 2af2ebc2-9cf8-4b78-ba59-6b8b376c14a0</span></span><br><span class="line"><span class="section">X-Runtime: 0.031394</span></span><br><span class="line"><span class="section">X-Powered-By: Phusion Passenger 4.0.37</span></span><br><span class="line"><span class="section">ETag: W/"d6e7f913f28897c09387d35dd14b4a35-gzip"</span></span><br><span class="line"><span class="section">Status: 200 OK</span></span><br><span class="line"><span class="section">Vary: Accept-Encoding</span></span><br><span class="line"><span class="section">Content-Encoding: gzip</span></span><br><span class="line"><span class="section">Content-Length: 2899</span></span><br><span class="line"><span class="section">Content-Type: text/html; charset=utf-8</span></span><br><span class="line"><span class="section">Keep-Alive: timeout=15, max=100</span></span><br><span class="line"><span class="section">Connection: Keep-Alive</span></span><br></pre></td></tr></table></figure>
+<p>从数据里得知，使用者发送了一个GET请求到网关（192.168.41.119:443），并得到反馈。</p>
+<p>后端抓包：<code>tcpdump -i any host 192.168.1.8 -s 0 -A -w reverse-117-8.cap</code>  （相当于在上图第二根灰色虚线处设立一个数据监察点）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/</span> HTTP/1.0</span><br><span class="line"></span><br><span class="line"><span class="attribute">Host</span>: 192.168.1.8</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span>: 1</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36</span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate, br</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.8</span><br><span class="line"><span class="attribute">X-Forwarded-Proto</span>: https</span><br><span class="line"><span class="attribute">Max-Forwards</span>: 10</span><br><span class="line"><span class="attribute">X-Forwarded-For</span>: 192.168.41.110</span><br><span class="line"><span class="attribute">X-Forwarded-Host</span>: 192.168.41.117</span><br><span class="line"><span class="attribute">X-Forwarded-Server</span>: www.mysite.com</span><br><span class="line"></span><br><span class="line">HTTP/1.1 <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Date</span>: Wed, 20 Sep 2017 05:17:36 GMT</span><br><span class="line"><span class="attribute">Server</span>: Apache/2.0.54 (Unix) PHP/5.0.4</span><br><span class="line"><span class="attribute">Last-Modified</span>: Mon, 20 Jun 2016 06:12:44 GMT</span><br><span class="line"><span class="attribute">ETag</span>: "1be8ec-1bbe-97b00f00"</span><br><span class="line"><span class="attribute">Accept-Ranges</span>: bytes</span><br><span class="line"><span class="attribute">Content-Length</span>: 7102</span><br><span class="line"><span class="attribute">Connection</span>: close</span><br><span class="line"><span class="attribute">Content-Type</span>: text/html</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>抓取的数据对应与图中的第7步与第8步，这里没有开启信息绑定项，所以没有<code>KOAL-CERT-CN</code>和<code>KOAL-CERT-OU</code>项，信息绑定将在<a href="">mod_uaa模块分析</a>介绍。</p>
+<p>从<code>X-Forwarded-For: 192.168.41.110</code>项可以方便应用获取数据包的原始来源IP，个人估计是用来进行追踪的，如果不想被<strong>应用</strong>了解是谁通过网关访问，可能需要改动网关，使其增加<strong>隐身访问</strong>的功能，实现在设计层面很简单，就是去掉<code>X-Forwarded-For: 192.168.41.110</code>。好了，我们现在不会担心自己的访问IP被应用收集了，但是去掉该选项会不会导致从<strong>应用</strong>返回到网关的数据报无法找到回去的路，这个没有做过实验我也无法确定。</p>
+<p>既然无法确定我为什么要提出这个想法，因为你看，在上面应用返回给网关的数据报中，没有包含任何有关”hi,please go to 192.168.41.110”的选项，可是网关还是顺利的完成了任务，也就是说将用户请求的数据正确的返回给用户并不是靠<code>X-Forwarded-For: 192.168.41.110</code>选项维持的。</p>
+<p>至于究竟如何实现，抱歉以我目前水平无法想出方法去立刻得出答案。不过还是可以提出猜想，比如网关采取阻塞IO的方式傻傻的等。</p>
+<h2 id="3-过程分析"><a href="#3-过程分析" class="headerlink" title="3 过程分析"></a>3 过程分析</h2><h3 id="3-1-客户端与网关之间的SSL握手"><a href="#3-1-客户端与网关之间的SSL握手" class="headerlink" title="3.1 客户端与网关之间的SSL握手"></a>3.1 客户端与网关之间的SSL握手</h3><p>这个过程主要涉及SSL协议，主要是为了确定双方的身份，同时利用RSA加解密的思想确定一个预主密钥，这个密钥是一个对称加密密钥，之后双方发送的数据都通过预主密钥加密发送。参见<a href="https://renzheng0403.github.io/posts/ssl/SSL-and-TLS-%E7%9F%A5%E8%AF%86%E7%82%B9.html">SSL握手</a></p>
+<h3 id="3-2-数据在网关之间的修改"><a href="#3-2-数据在网关之间的修改" class="headerlink" title="3.2 数据在网关之间的修改"></a>3.2 数据在网关之间的修改</h3><p>这个过程相当于对数据的改头换面，从图中可以看出其依次经过了一条由各个模块构成的流水线：<a href="">mod_ssl</a>-&gt;<a href="https://renzheng0403.github.io/posts/mod_pmc%E6%A8%A1%E5%9D%97.html">mod_pmc</a>-&gt;<a href="">mod_uaa</a>-&gt;<a href="">mod_proxy</a>-&gt;<a href="">mod_proxy_http</a></p>
+<h3 id="3-3-网关与应用之间的HTTP请求"><a href="#3-3-网关与应用之间的HTTP请求" class="headerlink" title="3.3 网关与应用之间的HTTP请求"></a>3.3 网关与应用之间的HTTP请求</h3><p>这个就不详细讲了，属于正常的HTTP请求。</p>
+<h2 id="4-指令配置"><a href="#4-指令配置" class="headerlink" title="4 指令配置"></a>4 指令配置</h2><p>这个部分并不是用来阅读的，用来在后面研究模块的时候回过头来惊叹，哦，原来是这个样子！</p>
+<p>proxy.conf:</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">ServerRoot <span class="string">"/kssl/HRP/cfg/1"</span></span><br><span class="line">DocumentRoot <span class="string">"/kssl/HRP/cfg/htdoc"</span></span><br><span class="line">CoreDumpDirectory ./<span class="built-in">log</span></span><br><span class="line">TraceEnable off</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Include     logformat.conf</span><br><span class="line">Include     server.conf</span><br><span class="line">PidFile     <span class="built-in">log</span>/HRP.pid</span><br><span class="line">ErrorLog   <span class="string">"syslog||/kssl/HRP/bin/rotatelogs /kssl/HRP/cfg/1/log/error.log 2M"</span></span><br><span class="line">LogLevel    warn</span><br><span class="line">SSLPassPhraseDialog auto</span><br><span class="line"></span><br><span class="line">SSLSessionCache shm:/kssl/HRP/cfg/<span class="number">1</span>/cache/ssl/session_cache(<span class="number">16777216</span>)</span><br><span class="line">SSLSessionCacheTimeout <span class="number">900</span></span><br><span class="line"></span><br><span class="line">Listen      <span class="number">192.168</span><span class="number">.41</span><span class="number">.119</span>:<span class="number">443</span></span><br><span class="line">ListenBacklog   <span class="number">1024</span></span><br><span class="line"></span><br><span class="line">NameVirtualHost <span class="number">192.168</span><span class="number">.41</span><span class="number">.119</span>:<span class="number">443</span></span><br><span class="line"></span><br><span class="line">&lt;VirtualHost <span class="number">192.168</span><span class="number">.41</span><span class="number">.119</span>:<span class="number">443</span>&gt;</span><br><span class="line">    ServerName  www.mysite.com:<span class="number">443</span></span><br><span class="line">    UseCanonicalName Off</span><br><span class="line"></span><br><span class="line">    SetEnvIf Range (,.*?)&#123;<span class="number">5</span>,&#125; bad-range=<span class="number">1</span></span><br><span class="line">    RequestHeader unset Range env=bad-range</span><br><span class="line">    RequestHeader <span class="keyword">set</span> X-Forwarded-Proto <span class="comment">"https"</span></span><br><span class="line"></span><br><span class="line">    Timeout                 <span class="comment">60</span></span><br><span class="line">    KeepAlive               <span class="comment">On</span></span><br><span class="line">    MaxKeepAliveRequests    <span class="comment">1000</span></span><br><span class="line">    KeepAliveTimeout        <span class="comment">15</span></span><br><span class="line"></span><br><span class="line">    RewriteLogLevel <span class="comment">6</span></span><br><span class="line">    HostNameLookups         <span class="comment">Off</span></span><br><span class="line">    SSLEngine    <span class="comment">on</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    SSLCertificateFile      <span class="comment">pem</span>/rsa.pem</span><br><span class="line">    SSLCertificateKeyFile   pem/<span class="comment">rsa.key</span></span><br><span class="line"></span><br><span class="line">    SSLCACertificatePath    <span class="comment">pem</span>/ca</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    SSLCRLVerifyType none</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    SSLProtocol -<span class="keyword">ALL</span>  +TLSv1<span class="number">.2</span> +TLSv1<span class="number">.1</span> +TLSv1</span><br><span class="line"></span><br><span class="line">    CustomLog <span class="comment">"|/kssl/HRP/bin/rotatelogs /kssl/HRP/cfg/1/log/access.log 2M"</span> default env=!default_log_filter</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">    &lt;IfModule mod_proxy.c&gt;</span><br><span class="line"></span><br><span class="line">        SetEnv force-proxy-request<span class="number">-1.0</span> <span class="number">1</span></span><br><span class="line">        SetEnv proxy-nokeepalive <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        ProxyRequests           Off</span><br><span class="line">        ProxyVia                Block</span><br><span class="line">        ProxyPreserveHost       Off</span><br><span class="line"></span><br><span class="line">    RewriteEngine On</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        ProxyPass               /<span class="comment">   http:</span>//<span class="comment">192.168.1.8</span>/</span><br><span class="line">        ProxyPassReverse        /<span class="comment">   http:</span>//<span class="comment">192.168.1.8</span>/</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;/<span class="comment">IfModule&gt;</span></span><br><span class="line"></span><br><span class="line">&lt;/VirtualHost&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/IfDefine&gt;</span><br></pre></td></tr></table></figure>
+<p>访问控制配置pmc.conf:</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">PMCEngine <span class="keyword">On</span></span><br><span class="line">PMCControlType  Access</span><br><span class="line">PMCFilterType  Exclude</span><br><span class="line">PMCFieldUrlDecode Off</span><br><span class="line"></span><br><span class="line">PMCServiceProvider PMS http:<span class="comment">//192.168.41.115:8880/pms/check</span></span><br><span class="line">PMCUrlEncode <span class="keyword">On</span></span><br><span class="line">PMCExtendGranularity <span class="keyword">On</span></span><br><span class="line">PMCCurlTimeOut <span class="number">30</span></span><br><span class="line">PMCCurlConnectionTimeOut  <span class="number">30</span></span><br><span class="line">PMCUriPattern  *.jpg</span><br><span class="line">PMCUriPattern  *.gif</span><br><span class="line">PMCUriPattern  *.js</span><br><span class="line">PMCEncrypt Off</span><br><span class="line">PMCHeaderFieldMapping   <span class="built_in">VAR</span>:SSL_CLIENT_S_DN_CN PU:<span class="literal">CN</span></span><br><span class="line">PMCHeaderFieldMapping   <span class="built_in">VAR</span>:REMOTE_ADDR PL:IP</span><br></pre></td></tr></table></figure>
+
+        
+        <div id="comment-container">
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+</html>
