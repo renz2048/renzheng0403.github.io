@@ -325,7 +325,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 <a class="post-title-link" href="/2018/06/29/test/" itemprop="url">
-                  test
+                  md module
                 </a>
               
             
@@ -351,12 +351,24 @@
                 
               
 
-              <time title="创建时间：2018-06-29 23:55:29 / 修改时间：23:55:30" itemprop="dateCreated datePublished" datetime="2018-06-29T23:55:29+08:00">2018-06-29</time>
+              <time title="创建时间：2018-06-29 23:55:29" itemprop="dateCreated datePublished" datetime="2018-06-29T23:55:29+08:00">2018-06-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-30 00:52:27" itemprop="dateModified" datetime="2018-06-30T00:52:27+08:00">2018-06-30</time>
               
             
           </span>
@@ -391,7 +403,645 @@
       
         
           
+            <h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>用于测试pdf文件的阅览与下载<br>在source文件夹下新建download文件夹用于存放待下载文件<br><a href="/download/test.pdf">test.pdf</a></p>
+<h1 id="分类和标签"><a href="#分类和标签" class="headerlink" title="分类和标签"></a>分类和标签</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Diary</span><br><span class="line">tags:</span><br><span class="line">- PS3</span><br><span class="line">- Games</span><br></pre></td></tr></table></figure>
+<h1 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h1><p>TODO</p>
+<h1 id="首页预览"><a href="#首页预览" class="headerlink" title="首页预览"></a>首页预览</h1><p>TODO</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://renzheng0403.github.io/2018/06/07/nmap-ssl-ccs-injection脚本解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="renzheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="renz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/07/nmap-ssl-ccs-injection脚本解析/" itemprop="url">
+                  nmap ssl-ccs-injection脚本分析
+                </a>
+              
             
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-07 19:47:00" itemprop="dateCreated datePublished" datetime="2018-06-07T19:47:00+08:00">2018-06-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-30 00:43:29" itemprop="dateModified" datetime="2018-06-30T00:43:29+08:00">2018-06-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/nmap/" itemprop="url" rel="index"><span itemprop="name">nmap</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h1><h2 id="require"><a href="#require" class="headerlink" title="require"></a>require</h2><p>nmap:与Nmap内部接口。</p>
+<p>shortport:建立短portrules的函数</p>
+<p>stdnse:标准的Nmap脚本引擎功能。 该模块包含各种方便的功能，这些模块功能太小而无法证明自己。</p>
+<p>table:将输出排列成表格。</p>
+<p>vulns:漏洞管理功能。</p>
+<p>tls</p>
+<h2 id="description"><a href="#description" class="headerlink" title="description"></a>description</h2><h3 id="CCS-Injection-vulnerability-CVE-2014-0224"><a href="#CCS-Injection-vulnerability-CVE-2014-0224" class="headerlink" title="CCS Injection vulnerability(CVE-2014-0224)"></a>CCS Injection vulnerability(CVE-2014-0224)</h3><p><a href="http://ccsinjection.lepidum.co.jp/blog/2014-06-05/CCS-Injection-en/index.html" target="_blank" rel="noopener">How I discovered CCS Injection Vulnerability (CVE-2014-0224)</a></p>
+<h3 id="脚本流程"><a href="#脚本流程" class="headerlink" title="脚本流程"></a>脚本流程</h3><p>脚本发送一个失序的<code>ChangeCipherSpec</code>信息，检查服务器是否返回<code>UNEXPECTED_MESSAGE</code>警告字段。 由于未修复该漏洞的服务器只会接受此消息，因此CCS数据包将发送两次，以强制服务器发出警报。 如果警报类型与“UNEXPECTED_MESSAGE”不同，我们可以得出结论，服务器容易受影响。</p>
+<h2 id="function-test-ccs-injection"><a href="#function-test-ccs-injection" class="headerlink" title="function test_ccs_injection"></a>function test_ccs_injection</h2><h3 id="向目标服务器发送Client-Hello"><a href="#向目标服务器发送Client-Hello" class="headerlink" title="向目标服务器发送Client Hello"></a>向目标服务器发送Client Hello</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s:send(hello)</span><br></pre></td></tr></table></figure>
+<p>检测发送状态，若失败返回错误信息<code>Couldn&#39;t send Client Hello: err</code>，<code>err</code>为s:send返回的err信息。</p>
+<h3 id="读取回复"><a href="#读取回复" class="headerlink" title="读取回复"></a>读取回复</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 判断是否是提示超时</span><br><span class="line">tls.record_buffer(s, response, i)</span><br><span class="line"></span><br><span class="line">tls.record_read(response, i)</span><br><span class="line"></span><br><span class="line">-- 循环record</span><br><span class="line">  -- 判断record.type == “handshake&quot;</span><br><span class="line">    -- 判断body.type == &quot;server_hello_done&quot;</span><br><span class="line">      stdnse.debug1(&quot;Handshake completed (%s)&quot;, version)</span><br></pre></td></tr></table></figure>
+<h3 id="重复发送change-cipher-spec"><a href="#重复发送change-cipher-spec" class="headerlink" title="重复发送change_cipher_spec"></a>重复发送change_cipher_spec</h3><h4 id="change-cipher-spec消息"><a href="#change-cipher-spec消息" class="headerlink" title="change_cipher_spec消息"></a>change_cipher_spec消息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ccs = tls.record_write(&quot;change_cipher_spec&quot;, version, &quot;\x01&quot;)</span><br></pre></td></tr></table></figure>
+<h4 id="发送第一个ccs消息"><a href="#发送第一个ccs消息" class="headerlink" title="发送第一个ccs消息"></a>发送第一个ccs消息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s:send(ccs)</span><br></pre></td></tr></table></figure>
+<h4 id="发送第二个ccs消息"><a href="#发送第二个ccs消息" class="headerlink" title="发送第二个ccs消息"></a>发送第二个ccs消息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s:send(ccs)</span><br></pre></td></tr></table></figure>
+<h4 id="读取警告信息"><a href="#读取警告信息" class="headerlink" title="读取警告信息"></a>读取警告信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vulnerable = alert_unexpected_message(s)</span><br></pre></td></tr></table></figure>
+<h2 id="function-alert-unexpected-message-s"><a href="#function-alert-unexpected-message-s" class="headerlink" title="function alert_unexpected_message(s)"></a>function alert_unexpected_message(s)</h2><p>buffer = tls.record_buffer(s, buffer, 1)</p>
+<p>record = tls.record_read(buffer, 1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if record.type ~= &quot;alert&quot; then</span><br><span class="line">    -- VULNERABLE 标记，预期中的alert record</span><br><span class="line">    return true,true</span><br><span class="line">  end</span><br><span class="line"></span><br><span class="line">  for _, body in ipairs(record.body) do</span><br><span class="line">    if body.level == &quot;fatal&quot; and body.description == &quot;unexpected_message&quot; then</span><br><span class="line">      return true,false</span><br><span class="line">    end</span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+<h2 id="action-function-host-port"><a href="#action-function-host-port" class="headerlink" title="action = function(host, port)"></a>action = function(host, port)</h2><p>对<code>tls.PROTOCOLS</code>迭代</p>
+<p>  local vulnerable, err = test_ccs_injection(host, port, tls_version)</p>
+<h1 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h1><h2 id="对自建易受攻击环境的检测"><a href="#对自建易受攻击环境的检测" class="headerlink" title="对自建易受攻击环境的检测"></a>对自建易受攻击环境的检测</h2><p>客户端执行nmap：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">renz@ubuntuserver17:~$ nmap -p 443 --script ssl-ccs-injection 192.168.80.211</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.50 ( https://nmap.org ) at 2018-06-08 11:52 CST</span><br><span class="line">Nmap scan report for 192.168.80.211</span><br><span class="line">Host is up (0.00042s latency).</span><br><span class="line"></span><br><span class="line">PORT    STATE SERVICE</span><br><span class="line">443/tcp open  https</span><br><span class="line">| ssl-ccs-injection:</span><br><span class="line">|   VULNERABLE:</span><br><span class="line">|   SSL/TLS MITM vulnerability (CCS Injection)</span><br><span class="line">|     State: VULNERABLE</span><br><span class="line">|     Risk factor: High</span><br><span class="line">|       OpenSSL before 0.9.8za, 1.0.0 before 1.0.0m, and 1.0.1 before 1.0.1h</span><br><span class="line">|       does not properly restrict processing of ChangeCipherSpec messages,</span><br><span class="line">|       which allows man-in-the-middle attackers to trigger use of a zero</span><br><span class="line">|       length master key in certain OpenSSL-to-OpenSSL communications, and</span><br><span class="line">|       consequently hijack sessions or obtain sensitive information, via</span><br><span class="line">|       a crafted TLS handshake, aka the &quot;CCS Injection&quot; vulnerability.</span><br><span class="line">|</span><br><span class="line">|     References:</span><br><span class="line">|       http://www.openssl.org/news/secadv_20140605.txt</span><br><span class="line">|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0224</span><br><span class="line">|_      http://www.cvedetails.com/cve/2014-0224</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 0.26 seconds</span><br></pre></td></tr></table></figure></p>
+<p>客户端抓包:<code>ssldump -i eth0</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">10 2  0.0019 (0.0015)  S&gt;C  Handshake</span><br><span class="line">      ServerHello</span><br><span class="line">        Version 3.1</span><br><span class="line">        session_id[32]=</span><br><span class="line">          b6 d5 f5 96 08 bc c0 6c 1c 31 5b df 34 11 e5 60</span><br><span class="line">          d4 61 d1 da f1 c3 78 b4 d1 64 d3 df 00 48 e7 71</span><br><span class="line">        cipherSuite         TLS_RSA_WITH_3DES_EDE_CBC_SHA</span><br><span class="line">        compressionMethod                   NULL</span><br><span class="line">10 3  0.0019 (0.0000)  S&gt;C  Handshake</span><br><span class="line">      Certificate</span><br><span class="line">10 4  0.0019 (0.0000)  S&gt;C  Handshake</span><br><span class="line">      ServerHelloDone</span><br><span class="line">10 5  0.0022 (0.0002)  C&gt;S  ChangeCipherSpec</span><br><span class="line">10 6  0.0426 (0.0404)  C&gt;S  ChangeCipherSpec</span><br><span class="line">10 7  0.0429 (0.0002)  S&gt;C  Alert</span><br><span class="line">    level           fatal</span><br><span class="line">    value           decryption_failed</span><br><span class="line">10    0.0430 (0.0001)  C&gt;S  TCP FIN</span><br><span class="line">10    0.0431 (0.0001)  S&gt;C  TCP FIN</span><br></pre></td></tr></table></figure></p>
+<p><strong>107行未检测到<code>unexpected_message</code>表明未修复该漏洞</strong>。</p>
+<h2 id="对自建不受攻击环境的检测"><a href="#对自建不受攻击环境的检测" class="headerlink" title="对自建不受攻击环境的检测"></a>对自建不受攻击环境的检测</h2><p>客户端执行nmap：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">renz@ubuntuserver17:~$ nmap -p 443 --script ssl-ccs-injection 192.168.80.215</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.50 ( https://nmap.org ) at 2018-06-08 11:39 CST</span><br><span class="line">Nmap scan report for 192.168.80.215</span><br><span class="line">Host is up (0.00046s latency).</span><br><span class="line"></span><br><span class="line">PORT    STATE SERVICE</span><br><span class="line">443/tcp open  https</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 0.22 seconds</span><br></pre></td></tr></table></figure></p>
+<p>客户端抓包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">78 2  0.0010 (0.0005)  S&gt;C  Handshake</span><br><span class="line">      ServerHello</span><br><span class="line">        Version 3.3</span><br><span class="line">        session_id[32]=</span><br><span class="line">          57 bc 8c 2c ba 85 97 52 1f 0e 68 5c 56 c1 21 96</span><br><span class="line">          88 db a6 b6 8c 4d b4 4b eb 36 e1 a7 b8 29 6d 57</span><br><span class="line">        cipherSuite         TLS_RSA_WITH_AES_256_CBC_SHA</span><br><span class="line">        compressionMethod                   NULL</span><br><span class="line">78 3  0.0010 (0.0000)  S&gt;C  Handshake</span><br><span class="line">      Certificate</span><br><span class="line">78 4  0.0010 (0.0000)  S&gt;C  Handshake</span><br><span class="line">      ServerHelloDone</span><br><span class="line">78 5  0.0013 (0.0003)  C&gt;S  ChangeCipherSpec</span><br><span class="line">78 6  0.0016 (0.0002)  S&gt;C  Alert</span><br><span class="line">    level           fatal</span><br><span class="line">    value           unexpected_message</span><br><span class="line">78 7  0.0016 (0.0000)  C&gt;S  ChangeCipherSpec</span><br><span class="line">78    0.0016 (0.0000)  S&gt;C  TCP FIN</span><br><span class="line">78    0.0018 (0.0001)  C&gt;S  TCP FIN</span><br></pre></td></tr></table></figure></p>
+<p><strong>78行检测到<code>unexpected_message</code>表明已修复该漏洞</strong>。</p>
+<h1 id="利用漏洞攻击"><a href="#利用漏洞攻击" class="headerlink" title="利用漏洞攻击"></a>利用漏洞攻击</h1><p>能力有限，虽然手头有易被攻击的环境，但仍没有什么可行的办法以己之矛攻己之盾。是不是说自己作为中间人，成功诱导c/s双方使用弱加密套件，自己这边穷举算出密钥的可能性就大了。<br>我果然最后都没能搞出。<br>看了以下几篇文章推荐给大家，如果有什么可行性高的办法请一定分享。<br><a href="https://www.imperialviolet.org/2014/06/05/earlyccs.html" target="_blank" rel="noopener">早期ChangeCipherSpec攻击</a><br><a href="http://ccsinjection.lepidum.co.jp/blog/2014-06-05/CCS-Injection-en/index.html" target="_blank" rel="noopener">How I discovered CCS Injection Vulnerability (CVE-2014-0224)</a></p>
+<h2 id="使用1-0-1h之前版本的openssl进行ssl握手"><a href="#使用1-0-1h之前版本的openssl进行ssl握手" class="headerlink" title="使用1.0.1h之前版本的openssl进行ssl握手"></a>使用1.0.1h之前版本的openssl进行ssl握手</h2><p>进行这样一个测试，我觉得我需要两个ubuntu，作为服务端的ubuntu安装openssl-1.0.1g，并运行命令openssl s_server，客户端运行nmap。<br>或者通过gdb来运行openssl s_server来查看openssl如何接受ChangeCipherSpec。</p>
+<p>handshark flow：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Client                                                Server</span><br><span class="line"></span><br><span class="line">ClientHello                   --------&gt;</span><br><span class="line">                                                 ServerHello</span><br><span class="line">                                                Certificate*</span><br><span class="line">                                          ServerKeyExchange*</span><br><span class="line">                                         CertificateRequest*</span><br><span class="line">                              &lt;--------      ServerHelloDone</span><br><span class="line">Certificate*</span><br><span class="line">ClientKeyExchange</span><br><span class="line">CertificateVerify*</span><br><span class="line">[ChangeCipherSpec]</span><br><span class="line">Finished                      --------&gt;</span><br><span class="line">                                          [ChangeCipherSpec]</span><br><span class="line">                              &lt;--------             Finished</span><br><span class="line">Application Data              &lt;-------&gt;     Application Data</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://renzheng0403.github.io/2018/06/07/nmap脚本写作教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="renzheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="renz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/07/nmap脚本写作教程/" itemprop="url">
+                  nmap脚本写作教程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-07 18:53:00" itemprop="dateCreated datePublished" datetime="2018-06-07T18:53:00+08:00">2018-06-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-30 00:43:41" itemprop="dateModified" datetime="2018-06-30T00:43:41+08:00">2018-06-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/nmap/" itemprop="url" rel="index"><span itemprop="name">nmap</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>原文：<a href="https://nmap.org/book/nse-tutorial.html" target="_blank" rel="noopener">Script Writing Tutorial</a></p>
+<blockquote>
+<p>事实上，在你看这篇译文之前，我必须要解释两点</p>
+<ol>
+<li>按照这篇译文写出的代码并没有发挥作用</li>
+<li>你可以通过这篇文章了解到script的框架</li>
+</ol>
+</blockquote>
+<p>假设您想要从identification服务器提取信息以确定侦听TCP端口的进程的所有者。 这不是identd的目的（它是为了查询传出连接的所有者，而不是监听守护进程），但许多identd服务器都允许它。Nmap曾经拥有这种功能（称为ident扫描），但在过渡到新的扫描引擎架构时被删除。 identd使用的协议非常简单，但仍然太复杂，无法处理Nmap的版本检测语言。 首先，连接到标识服务器并发送<port-on-server>，<port-on-client>格式的查询，并以换行符结尾。 然后，服务器应该使用包含服务器端口，客户端端口，响应类型和地址信息的字符串进行响应。 如果出现错误，地址信息将被省略。 更多细节可在<a href="https://www.rfc-editor.org/rfc/rfc1413.txt" target="_blank" rel="noopener">RFC 1413</a>中找到，但这种描述对我们的目的来说已经足够了。该协议不能用Nmap的版本检测语言建模，原因有两个。 首先，您需要知道连接的本地端口和远程端口。 版本检测不提供此数据。 第二个更严重的障碍是，您需要两个打开的连接到目标 - 一个连接到识别服务器，一个连接到您希望查询的侦听端口。 NSE很容易克服这两种障碍。</port-on-client></port-on-server></p>
+<p>脚本的解剖部分在<a href="https://nmap.org/book/nse-script-format.html" target="_blank" rel="noopener">脚本格式</a>一节中进行了描述。 在本节中，我们将介绍如何使用所描述的结构。</p>
+<h1 id="The-Head"><a href="#The-Head" class="headerlink" title="The Head"></a>The Head</h1><p>脚本的head本质上是它的元信息。包含下列字段：<code>description</code>,<code>categories</code>,<code>dependencies</code>,<code>author</code>,<code>license</code>以及初始NSEDoc信息，例如用法，参数和输出标签<a href="https://nmap.org/book/nsedoc.html" target="_blank" rel="noopener">参考编写脚本文档一节</a>。</p>
+<p><code>description</code>应包含一段或更多段描述脚本的功能。 如果有关脚本结果的任何信息可能会混淆或误导用户，并且您无法通过改进脚本或结果文本来消除此问题，则应将其记录在<code>description</code>中。 如果有多个段落，第一个在必要时用作简短摘要。 确保第一段可以作为一个独立的摘要。 这个描述很简短，因为它是一个如此简单的脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">description = [[</span><br><span class="line">Attempts to find the owner of an open TCP port by querying an auth</span><br><span class="line">(identd - port 113) daemon which must also be open on the target system.</span><br><span class="line">]]</span><br></pre></td></tr></table></figure>
+<p>接下来是NSEDoc信息。 此脚本缺少常见的@usage和@args标记，因为它非常简单，但它确实有一个NSEDoc @output标记：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">--@output</span><br><span class="line">-- 21/tcp   open     ftp       ProFTPD 1.3.1</span><br><span class="line">-- |_ auth-owners: nobody</span><br><span class="line">-- 22/tcp   open     ssh       OpenSSH 4.3p2 Debian 9etch2 (protocol 2.0)</span><br><span class="line">-- |_ auth-owners: root</span><br><span class="line">-- 25/tcp   open     smtp      Postfix smtpd</span><br><span class="line">-- |_ auth-owners: postfix</span><br><span class="line">-- 80/tcp   open     http      Apache httpd 2.0.61 ((Unix) PHP/4.4.7 ...)</span><br><span class="line">-- |_ auth-owners: dhapache</span><br><span class="line">-- 113/tcp  open     auth?</span><br><span class="line">-- |_ auth-owners: nobody</span><br><span class="line">-- 587/tcp  open     submission Postfix smtpd</span><br><span class="line">-- |_ auth-owners: postfix</span><br><span class="line">-- 5666/tcp open     unknown</span><br><span class="line">-- |_ auth-owners: root</span><br></pre></td></tr></table></figure>
+<p>接下来是<code>author</code>,<code>license</code>,<code>categories</code>标签。 此脚本属于<code>safe</code>，因为我们没有将该服务用于任何不适用的内容。 由于此脚本是默认运行的脚本，因此它也位于<code>default</code>类别中。 以下是上下文中的变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">author = &quot;Diman Todorov&quot;</span><br><span class="line"></span><br><span class="line">license = &quot;Same as Nmap--See https://nmap.org/book/man-legal.html&quot;</span><br><span class="line"></span><br><span class="line">categories = &#123;&quot;default&quot;, &quot;safe&quot;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="The-Rule"><a href="#The-Rule" class="headerlink" title="The Rule"></a>The Rule</h1><p><code>rule</code>是一个Lua方法，决定跳过还是执行脚本动作。 该决定通常基于规则的类型以及传递给它的主机和端口信息。 prerule或postrule将始终评估为true。 在识别脚本的情况下，它比这稍微复杂一些。 要决定是否针对给定端口运行识别脚本，我们需要知道目标机器上是否存在运行auth服务器。 换句话说，只有在当前扫描的TCP端口打开并且TCP端口113也打开的情况下，脚本才能运行。 现在我们将依赖识别服务器在TCP端口113上侦听的事实。不幸的是，NSE只给我们提供关于当前扫描端口的信息。</p>
+<p>要知道端口113是否打开，我们使用nmap.get_port_state函数。 如果未扫描auth端口，则get_port_state函数返回nil。 所以我们检查表不是零。 我们还检查两个端口是否处于打开状态。 如果是这种情况，则执行该动作，否则我们跳过该动作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">portrule = function(host, port)</span><br><span class="line">	local auth_port = &#123; number=113, protocol=&quot;tcp&quot; &#125;</span><br><span class="line">	local identd = nmap.get_port_state(host, auth_port)</span><br><span class="line"></span><br><span class="line">	return identd ~= nil</span><br><span class="line">		and identd.state == &quot;open&quot;</span><br><span class="line">		and port.protocol == &quot;tcp&quot;</span><br><span class="line">		and port.state == &quot;open&quot;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h1 id="The-Action"><a href="#The-Action" class="headerlink" title="The Action"></a>The Action</h1><p>最后我们实现了实际的功能！ 该脚本首先连接到我们期望找到标识服务器的端口，然后它将连接到我们想要获取信息的端口。 这样做首先通过调用nmap.new_socket创建两个套接字选项。 接下来我们定义一个错误处理catch函数，如果检测到失败，它会关闭这些套接字。 在这一点上，我们可以安全地使用诸如打开，关闭，发送和接收之类的对象方法来在网络套接字上操作。 在这种情况下，我们称connect为连接。 NSE的异常处理机制用于避免过多的错误处理代码。 我们只需在尝试调用中打包网络调用，如果出现任何问题，我们会调用catch函数。</p>
+<p>如果两个连接成功，我们构造一个查询字符串并解析响应。 如果我们收到满意的答复，我们会返回检索到的信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">action = function(host, port)</span><br><span class="line">        local owner = &quot;&quot;</span><br><span class="line"></span><br><span class="line">        local client_ident = nmap.new_socket()</span><br><span class="line">        local client_service = nmap.new_socket()</span><br><span class="line"></span><br><span class="line">        local catch = function()</span><br><span class="line">                client_ident:close()</span><br><span class="line">                client_service:close()</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        local try = nmap.new_try(catch)</span><br><span class="line"></span><br><span class="line">        try(client_ident:connect(host.ip, 113))</span><br><span class="line">        try(client_service:connect(host.ip, port.number))</span><br><span class="line"></span><br><span class="line">        local localip, localport, remoteip, remoteport =</span><br><span class="line">                try(client_service:get_info())</span><br><span class="line"></span><br><span class="line">        local request = port.number .. &quot;, &quot; .. localport .. &quot;\r\n&quot;</span><br><span class="line"></span><br><span class="line">        try(client_ident:send(request))</span><br><span class="line"></span><br><span class="line">        owner = try(client_ident:receive_lines(1))</span><br><span class="line"></span><br><span class="line">        if string.match(owner, &quot;ERROR&quot;) then </span><br><span class="line">                owner = nil</span><br><span class="line">        else</span><br><span class="line">                owner = string.match(owner,</span><br><span class="line">                        &quot;%d+%s*,%s*%d+%s*:%s*USERID%s*:%s*.+%s*:%s*(.+)\r?\n&quot;)</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        try(client_ident:close())</span><br><span class="line">        try(client_service:close())</span><br><span class="line"></span><br><span class="line">        return owner</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>请注意，因为我们知道远程端口存储在port.number中，所以我们可以忽略client_service的最后两个返回值：get_info（），如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local localip, localport = try(client_service:get_info())</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，如果服务响应错误，我们会安静地退出。 这是通过将nil分配给将返回的所有者变量来完成的。 NSE脚本通常只在成功时才会返回消息，因此它们不会用无意义的警报泛滥用户。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://renzheng0403.github.io/2017/12/20/Tun-Tap接口教材/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="renzheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="renz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/20/Tun-Tap接口教材/" itemprop="url">
+                  TUN-TAP接口教程
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-12-20 01:00:00" itemprop="dateCreated datePublished" datetime="2017-12-20T01:00:00+08:00">2017-12-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-30 00:52:25" itemprop="dateModified" datetime="2018-06-30T00:52:25+08:00">2018-06-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vpn/" itemprop="url" rel="index"><span itemprop="name">vpn</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="http://backreference.org/2010/03/26/tuntap-interface-tutorial/" target="_blank" rel="noopener">原文</a></p>
+<p><em>前言：请注意，这里提供的代码仅用于演示目的。 如果你想要认真，你必须使它更健壮，并与其他代码整合。 而且，这个描述绝不是关于这个问题的明确的参考，而是我实验的结果。 请报告您在代码或本文中找到的任何bug或错误。 谢谢。</em></p>
+<p>链接到文章中描述的源码tarball：<a href="http://backreference.org/wp-content/uploads/2010/03/simpletun.tar.bz2" target="_blank" rel="noopener">simpletun</a>。</p>
+<hr>
+<p><strong>18/07/2010更新</strong>：感谢<a href="http://blog.bofh.it/debian/id_379" target="_blank" rel="noopener">这篇文章</a>，现在我已经知道了最新版本的iproute2可以（终于）创建tun/tap设备，尽管到现在都没有完整的说明文档。再也不用为了创建tun设备，而安装tunctl（UML utilities）或OpenVPN了。以下是iproute2-2.6.34：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># ip tuntap help</span><br><span class="line">Usage: ip tuntap &#123; add | del &#125; [ dev PHYS_DEV ] </span><br><span class="line">          [ mode &#123; tun | tap &#125; ] [ user USER ] [ group GROUP ]</span><br><span class="line">          [ one_queue ] [ pi ] [ vnet_hdr ]</span><br><span class="line"></span><br><span class="line">Where: USER  := &#123; STRING | NUMBER &#125;</span><br><span class="line">       GROUP := &#123; STRING | NUMBER &#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>Tun/tap interfaces</strong>是Linux（也可能是其他类UNIX操作系统）提供的一种功能，可以执行<em>userspace networking</em>，也就是允许userspace程序查看原始网络流量（在ethernet或IP level）并像它一样执行任何操作。本文档试图解释在Linux下tun/tap接口是如何工作的，以及一些示例代码来演示它们的用法。</p>
+<h1 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h1><p>Tun/tap interfaces是<em>software-only interfaces</em>，这意味着它们只存在于内核中，与常规网络接口不同，它们没有物理硬件组件（因此没有物理“线”连接到它们）。当内核决定发送数据在这个接口（而不是发送到接口的某个用户空间程序），tun/tap就像一个普通的网络接口一样（使用具体程序见下文）。当程序连接到tun/tap接口时，它会得到一个特殊的文件描述符，从中读取接口发送的数据。以类似的方式，程序可以写入这个特殊的描述符，数据（必须正确格式化，我们将会看到）将作为tun/tap接口的输入。对于内核来说，看起来像tun/tap接口正在从“wire”接收数据。<br><img src="https://upload-images.jianshu.io/upload_images/5278708-f40ce31882689cd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="tun-tap.png"></p>
+<p>tap接口和tun接口的区别在于tap接口输出或接收完整的以太网帧，而tun接口输出或接收原始IP数据包（并且内核没有添加以太网报头）。在创建接口时，用一个标志指定接口的功能是像tun接口还是像tap接口一样。</p>
+<p>接口可以是<strong>暂时的</strong>，也就是说它是由同一个程序创建，使用和销毁的; 当程序终止时，即使不明确销毁接口，接口也不复存在。 另一个选择（我更喜欢）是使接口<strong>持久化</strong>; 在这种情况下，专用程序（如tunctl或openvpn –mktun）创建它，正常的程序也可以附加其上; 当他们这样做的时候，他们必须使用相同类型（tun或tap）来创建接口进行连接，否则他们将无法连接。 我们将看到代码中是如何完成的。</p>
+<p>一旦tun/tap接口就位，它可以像其他任何接口一样使用，这意味着可以分配IP地址，分析其流量，创建防火墙规则，建立指向它的路由等。</p>
+<p>有了这些知识，让我们试着看看我们如何使用tun/tap接口以及如何使用它。</p>
+<h1 id="创建虚拟接口"><a href="#创建虚拟接口" class="headerlink" title="创建虚拟接口"></a>创建虚拟接口</h1><p>创建全新interface和重新连接到持久interface的代码本质上是相同的; 不同之处在于前者必须以root身份运行（更确切地说，具有<strong>CAP_NET_ADMIN</strong>功能的用户），而后者则可以由普通用户在满足某些条件的情况下运行。 我们先从创建一个新的interface开始。</p>
+<p>首先，设备<strong>/dev/net/tun</strong>必须以read/write的方式打开。 该设备也被称为<strong>克隆设备</strong>，它是创建任何tun/tap虚拟接口的起点。 操作（与任何open()调用一样）返回一个文件描述符。 但是这还不足以开始使用它与界面进行通信。</p>
+<p>创建接口的下一步是使用一个特殊的<strong>ioctl()</strong>系统调用，它的参数包含上一步获得的文件描述符、<strong>TUNSETIFF</strong>常量，以及一个指向包含描述虚拟接口（基本上是 名称和所需的操作模式 - tun/tap）的结构体。 作为一种变体，虚拟接口的名称可以不指定，在这种情况下，内核将通过按序分配来为设备选择一个名称（例如，如果tap2已经存在，内核将尝试 分配tap3，等等）。 所有这些都必须由root用户来完成（或者由具有CAP_NET_ADMIN功能的用户来完成 - 我不会再重复一遍;假设它适用于我所说的“必须由root运行”）。<br>如果ioctl()成功，则创建虚拟接口，并且我们所拥有的文件描述符现在与其关联，并可用于通信。</p>
+<p>针对接口有两种使用情形。 该程序可以立即开始使用接口（可能在此之前至少配置一个IP地址），当程序完成时，终止并销毁接口。 另一个选择是发出一些其他特殊的ioctl()调用来使接口持久化，停止的时候将其留在其他程序附加的地方。 例如，这就是像<code>tunctl</code>或<code>openvpn --mktun</code>这样的程序。 这些程序通常还可以选择将虚拟接口的所有权设置为非root用户和/或组，所以以非root用户身份运行但具有适当权限的程序可以稍后附加到接口。 我们将回到这个下面。</p>
+<p>用于创建虚拟接口的基本代码显示在内核源代码树的<strong>Documentation/networking/tuntap.txt</strong>文件中。 修改一下，我们可以编写一个准系统函数来创建一个虚拟接口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;linux /if.h&gt;</span><br><span class="line">#include &lt;linux /if_tun.h&gt;</span><br><span class="line"></span><br><span class="line">int tun_alloc(char *dev, int flags) &#123;</span><br><span class="line"></span><br><span class="line">  struct ifreq ifr;</span><br><span class="line">  int fd, err;</span><br><span class="line">  char *clonedev = &quot;/dev/net/tun&quot;;</span><br><span class="line"></span><br><span class="line">  /* 函数采用的参数：</span><br><span class="line">   *</span><br><span class="line">   * char *dev: 接口的名称（或 &apos;\0&apos;）。 必须有足够的空间来保存接口名称</span><br><span class="line">   * int flags: 接口标志 (eg, IFF_TUN etc.)</span><br><span class="line">   */</span><br><span class="line"></span><br><span class="line">   /* open克隆设备 */</span><br><span class="line">   if( (fd = open(clonedev, O_RDWR)) &lt; 0 ) &#123;</span><br><span class="line">     return fd;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   /* 初始化结构ifr或类型&quot;struct ifreq */</span><br><span class="line">   memset(&amp;ifr, 0, sizeof(ifr));</span><br><span class="line"></span><br><span class="line">   ifr.ifr_flags = flags;   /* IFF_TUN或IFF_TAP，也可能是IFF_NO_PI */</span><br><span class="line"></span><br><span class="line">   if (*dev) &#123;</span><br><span class="line">     /* 如果指定了设备名称，则将其放入结构中；</span><br><span class="line">      * 否则，内核将尝试分配指定类型的&quot;next&quot;设备</span><br><span class="line">      */</span><br><span class="line">     strncpy(ifr.ifr_name, dev, IFNAMSIZ);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   /* 尝试创建设备 */</span><br><span class="line">   if( (err = ioctl(fd, TUNSETIFF, (void *) &amp;ifr)) &lt; 0 ) &#123;</span><br><span class="line">     close(fd);</span><br><span class="line">     return err;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  /* 如果创建成功，则将接口的名称写回变量“dev”，以便调用者知道它。</span><br><span class="line">   * 请注意，调用者必须在* dev中保留空间（请参阅下面的调用代码）</span><br><span class="line">   */</span><br><span class="line">  strcpy(dev, ifr.ifr_name);</span><br><span class="line"></span><br><span class="line">  /* 调用者用来与虚拟接口连接的特殊文件描述符</span><br><span class="line">   */</span><br><span class="line">  return fd;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>tun_alloc()</strong>函数有两个参数：</p>
+<ul>
+<li><strong>char * dev</strong>包含接口的名称（例如，tap0，tun2等）。任何名字都可以使用，但是最好选择一个名字来表明它是哪种类型的接口。实际上，通常使用像tunX或tapX这样的名称。如果<code>*dev</code>是<code>&#39;\ 0&#39;</code>，内核将尝试创建所需类型的“第一个”可用接口（例如，tap0，但是如果已经存在的话，tap1等等）。</li>
+<li><strong>int flags</strong>包含通知内核我们需要哪种接口的标志（tun或tap）。基本上，它可以取值为<strong>IFF_TUN</strong>来指示一个TUN设备（数据包中没有以太网报头），或者<strong>IFF_TAP</strong>来指示一个TAP设备（数据包中有以太网报头）。<br>另外，另一个标志<strong>IFF_NO_PI</strong>可以与基值进行或运算。 IFF_NO_PI告诉内核不提供数据包信息。 IFF_NO_PI的目的是告诉内核，数据包将是“纯”的IP数据包，没有添加字节。否则（如果IFF_NO_PI未设置），将在数据包的开头添加4个额外的字节（2个标志字节和2个协议字节）。 IFF_NO_PI不需要在接口创建和重新连接时间之间匹配。另外请注意，当使用Wireshark捕获接口上的流量时，这4个字节从不显示。</li>
+</ul>
+<p>程序可以使用下面的代码来创建一个设备：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">char tun_name[IFNAMSIZ];</span><br><span class="line">char tap_name[IFNAMSIZ];</span><br><span class="line">char *a_name;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">strcpy(tun_name, &quot;tun1&quot;);</span><br><span class="line">tunfd = tun_alloc(tun_name, IFF_TUN);  /* tun接口 */</span><br><span class="line"></span><br><span class="line">strcpy(tap_name, &quot;tap44&quot;);</span><br><span class="line">tapfd = tun_alloc(tap_name, IFF_TAP);  /* tap接口 */</span><br><span class="line"></span><br><span class="line">a_name = malloc(IFNAMSIZ);</span><br><span class="line">a_name[0]=&apos;\0&apos;;</span><br><span class="line">tapfd = tun_alloc(a_name, IFF_TAP);    /* 内核自定义接口 */</span><br></pre></td></tr></table></figure></p>
+<p>如前所述，程序可以按照其用途使用接口，也可以将接口设置为持久性（并可选地将所有权分配给特定的用户/组）。 如果是前者，那就没什么好说的了。 但是如果是后者，接下来我们将看到发生了什么。<br>两个额外可用的ioctl()通常一起使用。第一个系统调用可以设置（或删除）接口上的持久状态。第二个允许将接口的所有权分配给常规（非root）用户。 这两个功能在程序tunctl（UML实用程序的一部分）和openvpn –mktun（可能还有其他）中实现。看看tunctl代码，它更简单，记住它只创建tap接口，因为这些是linux用户模式使用的（为了清晰起见，代码被稍微编辑和简化）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">  /* 如果用户想要删除（使其非持久化）现有接口，则设置&quot;delete&quot;;</span><br><span class="line">   * 否则，用户将创建一个新的接口</span><br><span class="line">   */</span><br><span class="line">  if(delete) &#123;</span><br><span class="line">    /* 删除持久化状态 */</span><br><span class="line">    if(ioctl(tap_fd, TUNSETPERSIST, 0) &lt; 0)&#123;</span><br><span class="line">      perror(&quot;disabling TUNSETPERSIST&quot;);</span><br><span class="line">      exit(1);</span><br><span class="line">    &#125;</span><br><span class="line">    printf(&quot;Set &apos;%s&apos; nonpersistent\n&quot;, ifr.ifr_name);</span><br><span class="line">  &#125;</span><br><span class="line">  else &#123;</span><br><span class="line">    /* 在TUNSETGROUP之前模拟行为 */</span><br><span class="line">    if(owner == -1 &amp;&amp; group == -1) &#123;</span><br><span class="line">      owner = geteuid();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(owner != -1) &#123;</span><br><span class="line">      if(ioctl(tap_fd, TUNSETOWNER, owner) &lt; 0)&#123;</span><br><span class="line">        perror(&quot;TUNSETOWNER&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if(group != -1) &#123;</span><br><span class="line">      if(ioctl(tap_fd, TUNSETGROUP, group) &lt; 0)&#123;</span><br><span class="line">        perror(&quot;TUNSETGROUP&quot;);</span><br><span class="line">        exit(1);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(ioctl(tap_fd, TUNSETPERSIST, 1) &lt; 0)&#123;</span><br><span class="line">      perror(&quot;enabling TUNSETPERSIST&quot;);</span><br><span class="line">      exit(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(brief)</span><br><span class="line">      printf(&quot;%s\n&quot;, ifr.ifr_name);</span><br><span class="line">    else &#123;</span><br><span class="line">      printf(&quot;Set &apos;%s&apos; persistent and owned by&quot;, ifr.ifr_name);</span><br><span class="line">      if(owner != -1)</span><br><span class="line">          printf(&quot; uid %d&quot;, owner);</span><br><span class="line">      if(group != -1)</span><br><span class="line">          printf(&quot; gid %d&quot;, group);</span><br><span class="line">      printf(&quot;\n&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure></p>
+<p>这些额外的ioctl()s仍然必须由root运行。但是现在我们拥有的是一个特定用户拥有的持久性接口，所以作为该用户运行的进程可以成功地连接到它。<br>如上所述，事实证明，（重新）附加到现有tun/tap接口的代码与用于创建它的代码相同;换句话说，可以再次使用tun_alloc（）。在这样做的时候，要取得成功，必然发生三件事情：</p>
+<ul>
+<li>该接口必须已经存在，并且由正试图连接的同一个用户所拥有（可能是持久的）</li>
+<li>用户必须对<strong>/dev/net/tun</strong>具有读/写权限</li>
+<li>提供的标志必须与用于创建接口的标志相匹配（例如，如果它是使用IFF_TUN创建的，那么在重新连接时必须使用相同的标志）</li>
+</ul>
+<p>如果用户发出它指定一个已经存在的接口的名称并且他是接口的所有者，就会发生这种事，因为内核允许<strong>TUNSETIFF</strong> ioctl()成功。在这种情况下，不需要创建新的接口，所以普通用户可以成功执行操作。</p>
+<p>接下来将尝试解释当调用ioctl(TUNSETIFF)时发生什么，以及内核如何区分新接口的分配请求和连接到现有接口的请求：</p>
+<ul>
+<li>如果指定了不存在或不存在的接口名称，则表示用户正在请求分配新的接口。内核因此创建一个使用给定名称的接口（或者如果给出空名称，则选择下一个可用名称）。这只适用于由root完成的工作。</li>
+<li>如果指定了现有接口的名称，则表示用户想要连接到以前分配的接口。这可以由普通用户完成，前提是：用户对克隆设备具有适当的权限，并且是接口的所有者（在创建时设置），并且指定模式（tun或tap）与创建时设置的模式相匹配时间。</li>
+</ul>
+<p>您可以看看在内核源文件drivers/net/tun.c中实现上述步骤的代码;重要的函数是<strong>tun_attach()</strong>，<strong>tun_net_init()</strong>，<strong>tun_set_iff()</strong>，*<em>tun_chr_ioctl()</em>；这最后一个函数还实现了各种可用的ioctl()，包括TUNSETIFF，TUNSETPERSIST，TUNSETOWNER，TUNSETGROUP等。</p>
+<p>在任何情况下，都不允许非root用户配置接口（即分配一个IP地址并启动它），但在任何常规接口上也是如此。如果非root用户需要执行某些需要root权限的操作，则可以使用通常的方法（suid二进制包装，sudo等）。</p>
+<p>这是一个可能的使用场景（我一直在使用）：</p>
+<ul>
+<li>虚拟接口被创建，持久化，分配给一个用户，并由root配置（例如，在启动时通过initscripts，使用tunctl或等价物）</li>
+<li>然后，普通用户可以根据自己的虚拟接口随意连接和分离。</li>
+<li>虚拟接口被root破坏，例如在关机时运行的脚本，可能使用tunctl -d或等价的</li>
+</ul>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>经过这么漫长但必要的介绍，是时候尝试使用它了。 所以，由于这是一个普通的接口，我们可以像使用另一个常规接口一样使用它。 对于我们的目的，tun和tap接口没有区别; 创建或附加到它的程序，必须知道它的类型，并相应地期望或写入数据。 我们创建一个持久接口并为其分配一个IP地址：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># openvpn --mktun --dev tun2</span><br><span class="line">Fri Mar 26 10:29:29 2010 TUN/TAP device tun2 opened</span><br><span class="line">Fri Mar 26 10:29:29 2010 Persist state set to: ON</span><br><span class="line"># ip link set tun2 up</span><br><span class="line"># ip addr add 10.0.0.1/24 dev tun2</span><br></pre></td></tr></table></figure></p>
+<p>让启动一个网络分析仪，看看流量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># tshark -i tun2</span><br><span class="line">Running as user &quot;root&quot; and group &quot;root&quot;. This could be dangerous.</span><br><span class="line">Capturing on tun2</span><br><span class="line"></span><br><span class="line"># 在另一个控制台</span><br><span class="line"># ping 10.0.0.1</span><br><span class="line">PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=0.115 ms</span><br><span class="line">64 bytes from 10.0.0.1: icmp_seq=2 ttl=64 time=0.105 ms</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>看着tshark的输出，我们看到…什么都没有。 没有流量通过接口。 这是正确的：因为我们正在ping接口的IP地址，所以操作系统正确地判定没有数据包需要“在线”发送，并且内核自己正在回应这些ping。 如果你仔细想想，如果你ping另一个接口的IP地址（例如eth0），会发生什么情况：没有数据包会被发送出去。 这听起来很明显，但起初可能是一个混乱的来源（这是对我来说）。</p>
+<p>为一个接口分配一个 /24 IP地址将创建一个通过接口的连接路由。修改一下实验，迫使内核实际上从tun接口发出一些东西（<strong>注意： 内核&lt;2.6.36;后面的内核行为有所不同，如注释中所述</strong>）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># ping 10.0.0.2</span><br><span class="line">PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.</span><br><span class="line">From 10.0.0.1 icmp_seq=2 Destination Host Unreachable</span><br><span class="line">From 10.0.0.1 icmp_seq=3 Destination Host Unreachable</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"># tshark控制台</span><br><span class="line">...</span><br><span class="line">  0.000000     10.0.0.1 -&gt; 10.0.0.2     ICMP Echo (ping) request</span><br><span class="line">  0.999374     10.0.0.1 -&gt; 10.0.0.2     ICMP Echo (ping) request</span><br><span class="line">  1.999055     10.0.0.1 -&gt; 10.0.0.2     ICMP Echo (ping) request</span><br></pre></td></tr></table></figure></p>
+<p>现在我们终于看到了一些东西。 内核看到地址不属于本地接口，通过tun2接口存在10.0.0.0/24的路由。 所以它适时发送tun2的数据包。 请注意tun和tap接口之间的不同行为：使用tun接口，内核发送IP数据包（raw，没有其他头文件存在 - 请尝试使用tshark或wireshark进行分析），而使用tap接口作为以太网， 内核会尝试将ARP作为目标IP地址：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># pinging 10.0.0.2 now, but through tap2 (tap)</span><br><span class="line"># ping 10.0.0.2</span><br><span class="line">PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.</span><br><span class="line"></span><br><span class="line"># tshark控制台</span><br><span class="line">...</span><br><span class="line">  0.111858 82:03:d4:07:62:b6 -&gt; Broadcast    ARP Who has 10.0.0.2?  Tell 10.0.0.1</span><br><span class="line">  1.111539 82:03:d4:07:62:b6 -&gt; Broadcast    ARP Who has 10.0.0.2?  Tell 10.0.0.1</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>此外，通过一个tap接口，流量将由完整的以太网帧组成（也可以使用网络分析仪进行检查）。 请注意，tap接口的MAC地址是在创建接口时由内核自动生成的，但可以使用<strong>SIOCSIFHWADDR</strong> ioctl()进行更改（再次查看<strong>drivers/net/tun.c</strong>，函数<strong>tun_chr_ioctl()</strong>）。 最后，作为以太网接口，MTU被设置为1500：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># ip link show dev tap2</span><br><span class="line">7: tap2:  mtu 1500 qdisc pfifo_fast state UNKNOWN qlen 500</span><br><span class="line">    link/ether 82:03:d4:07:62:b6 brd ff:ff:ff:ff:ff:ff</span><br></pre></td></tr></table></figure></p>
+<p>当然，到目前为止，程序没有附加到接口，所有这些传出的数据包都丢失了。 所以让我们先行一步，写一个简单的程序，连接到接口并读取内核发出的数据包。</p>
+<h1 id="一个简单的程序"><a href="#一个简单的程序" class="headerlink" title="一个简单的程序"></a>一个简单的程序</h1><p>我们将编写一个附加到tun接口的程序，并读取内核发送到该接口的数据包。 请记住，如果接口是持久性的，则可以以普通用户身份运行该程序，前提是您拥有克隆设备<strong>/dev/net/tun</strong>所需的权限、是该接口的所有者、并选择正确的模式（tun或者tap）接口。 该程序实际上是一个框架，或者说是一个框架的开始，因为我们只演示如何从设备读取数据，并且只能解释程序获取数据后可以执行的操作。 我们假设我们之前定义的<strong>tun_alloc()</strong>函数可用于程序。 这里是代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">/* tunclient.c */</span><br><span class="line"></span><br><span class="line">char tun_name[IFNAMSIZ];</span><br><span class="line"></span><br><span class="line">/* 连接到设备 */</span><br><span class="line">strcpy(tun_name, &quot;tun77&quot;);</span><br><span class="line">tun_fd = tun_alloc(tun_name, IFF_TUN | IFF_NO_PI);  /* tun接口 */</span><br><span class="line"></span><br><span class="line">if(tun_fd &lt; 0)&#123;</span><br><span class="line">  perror(&quot;Allocating interface&quot;);</span><br><span class="line">  exit(1);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* 读取内核发出的数据 */</span><br><span class="line">while(1) &#123;</span><br><span class="line">  /* 请注意，“缓冲区”应至少为接口的MTU大小，例如1500字节 */</span><br><span class="line">  nread = read(tun_fd,buffer,sizeof(buffer));</span><br><span class="line">  if(nread &lt; 0) &#123;</span><br><span class="line">    perror(&quot;Reading from interface&quot;);</span><br><span class="line">    close(tun_fd);</span><br><span class="line">    exit(1);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /* 处理数据 */</span><br><span class="line">  printf(&quot;Read %d bytes from device %s\n&quot;, nread, tun_name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>如果将tun77配置为IP地址为10.0.0.1/24，然后在尝试ping 10.0.0.2（或10.0.0.1以外的10.0.0.0/中的任何地址）时运行上述程序，则可以 从设备读取数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># openvpn --mktun --dev tun77 --user waldner</span><br><span class="line">Fri Mar 26 10:48:12 2010 TUN/TAP device tun77 opened</span><br><span class="line">Fri Mar 26 10:48:12 2010 Persist state set to: ON</span><br><span class="line"># ip link set tun77 up</span><br><span class="line"># ip addr add 10.0.0.1/24 dev tun77</span><br><span class="line"># ping 10.0.0.2</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"># on another console</span><br><span class="line">$ ./tunclient</span><br><span class="line">Read 84 bytes from device tun77</span><br><span class="line">Read 84 bytes from device tun77</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>如果你做数学计算，你会看到这84个字节是从哪里来的：其中20个用于IP头部，8个用于ICMP头部，56个是ICMP回显消息的有效载荷，正如你在运行ping命令时看到的那样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ping 10.0.0.2</span><br><span class="line">PING 10.0.0.2 (10.0.0.2) 56(84) bytes of data.</span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>尝试使用上述程序通过接口发送各种流量类型（也可以尝试使用tap），并验证您正在读取的数据的大小对接口类型是否正确。每个read()返回一个完整的数据包（如果使用tap模式，则返回帧）;同样，如果我们要写，我们将不得不为每个write（）写一个完整的IP数据包（或以太网帧以tap模式）。</p>
+<p>现在我们可以用这个数据做什么？那么，我们可以模仿我们正在阅读的交通目标的行为;再次，为了理解简单，再次使用ping示例。我们可以分析接收到的数据包，从IP头，ICMP头和有效负载中提取回复所需的信息，建立一个包含适当的ICMP回应应答消息的IP数据包，并将其发回（即写入与tun/tap设备）。这样ping的发起者实际上会收到一个答案。当然你不限于ping，所以你可以<strong>实现各种网络协议</strong>（读的我热血沸腾）。一般来说，这意味着解析接收到的数据包，并相应地采取行动。如果使用tap，要正确构建回复帧，您可能需要在代码中<strong>实现ARP</strong>。所有这一切正是<a href="http://user-mode-linux.sourceforge.net/" target="_blank" rel="noopener">Linux用户模式</a>所做的：它将在用户空间中运行的修改后的Linux内核连接到主机上存在的分接口，并通过该接口与主机进行通信。当然，作为一个完整的Linux内核，它确实实现了TCP/IP和以太网。较新的虚拟化平台，如<a href="https://libvirt.org/" target="_blank" rel="noopener">libvirt</a>，广泛使用tap接口来与支持它们的客户进行通信，如<a href="https://wiki.qemu.org/Main_Page" target="_blank" rel="noopener">qemu</a>/<a href="https://www.linux-kvm.org/page/Main_Page" target="_blank" rel="noopener">kvm</a>;接口通常具有像<strong>vnet0</strong>，<strong>vnet1</strong>等名称，只有在连接到的guest虚拟机正在运行时存在，它们不会持久化，但是如果在客户端运行<strong>ip link show</strong>和/或<strong>brctl show</strong>，则可以看到它们。<br>以同样的方式，您可以将自己的代码附加到接口并练习网络编程或者以太网和TCP/IP堆栈实现。要开始，你可以看看（你猜对了）<strong>drivers/net/tun.c</strong>，函数<strong>tun_get_user()</strong>和<strong>tun_put_user()</strong>来看看在内核方面tun驱动程序是如何执行的（注意，它几乎不能抓住内核中完整网络数据包管理的表面，这非常复杂）。</p>
+<h1 id="Tunnels"><a href="#Tunnels" class="headerlink" title="Tunnels"></a>Tunnels</h1><p>但是还有一件事我们可以用tun/tap接口来做。我们可以创建隧道tunnels。我们不需要重新实现TCP/IP;相反，我们可以编写一个程序，将原始数据来回传递给运行相同程序的远程主机，这种方式以镜面方式执行相同的操作。假设我们上面的程序除了连接到tun/tap接口之外，还建立到远程主机的网络连接，其中一个类似的程序（连接到本地tun/tap接口）也以服务器模式运行。 （实际上这两个程序是一样的，谁是服务器，谁是客户端是由命令行开关决定的）。一旦这两个程序正在运行，流量就可以向两个方向流动，因为代码的主体将在两个站点都做同样的事情。这里的网络连接是使用TCP实现的，但是也可以使用任何其他的意思（即UDP，甚至ICMP！）。你可以在这里下载完整的程序源代码：<a href="http://backreference.org/wp-content/uploads/2010/03/simpletun.tar.bz2" target="_blank" rel="noopener">simpletun</a>。<br>这里是程序的主循环，其中执行在tun/tap接口和网络隧道之间来回移动数据的实际工作。为了清楚起见，调试语句已被删除（您可以在源代码tarball中找到完整版本）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">  /* net_fd是网络文件套接字 (to the peer),</span><br><span class="line">   * tap_fd是连接到tun/tap接口的描述符 */</span><br><span class="line"></span><br><span class="line">  /* 使用select()处理两个描述符 */</span><br><span class="line">  maxfd = (tap_fd &gt; net_fd)?tap_fd:net_fd;</span><br><span class="line"></span><br><span class="line">  while(1) &#123;</span><br><span class="line">    int ret;</span><br><span class="line">    fd_set rd_set;</span><br><span class="line"></span><br><span class="line">    FD_ZERO(&amp;rd_set);</span><br><span class="line">    FD_SET(tap_fd, &amp;rd_set); FD_SET(net_fd, &amp;rd_set);</span><br><span class="line"></span><br><span class="line">    ret = select(maxfd + 1, &amp;rd_set, NULL, NULL, NULL);</span><br><span class="line"></span><br><span class="line">    if (ret &lt; 0 &amp;&amp; errno == EINTR) &#123;</span><br><span class="line">      continue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (ret &lt; 0) &#123;</span><br><span class="line">      perror(&quot;select()&quot;);</span><br><span class="line">      exit(1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(FD_ISSET(tap_fd, &amp;rd_set)) &#123;</span><br><span class="line">      /* 来自tun/tap的数据：只需读取并写入网络即可 */</span><br><span class="line"></span><br><span class="line">      nread = cread(tap_fd, buffer, BUFSIZE);</span><br><span class="line"></span><br><span class="line">      /* write length + packet */</span><br><span class="line">      plength = htons(nread);</span><br><span class="line">      nwrite = cwrite(net_fd, (char *)&amp;plength, sizeof(plength));</span><br><span class="line">      nwrite = cwrite(net_fd, buffer, nread);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(FD_ISSET(net_fd, &amp;rd_set)) &#123;</span><br><span class="line">      /* 来自网络的数据：读取它，并将其写入tun/tap接口。</span><br><span class="line">       * 我们需要先读取长度，然后读取数据包 */</span><br><span class="line"></span><br><span class="line">      /* 读取长度 */</span><br><span class="line">      nread = read_n(net_fd, (char *)&amp;plength, sizeof(plength));</span><br><span class="line"></span><br><span class="line">      /* 读取数据包 */</span><br><span class="line">      nread = read_n(net_fd, buffer, ntohs(plength));</span><br><span class="line"></span><br><span class="line">      /* 现在buffer[]包含一个完整的数据包或帧，将其写入tun/tap接口 */</span><br><span class="line">      nwrite = cwrite(tap_fd, buffer, nread);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure></p>
+<p>（有关<strong>read_n()</strong>和<strong>cwrite()</strong>函数的详细信息，请参考源代码;他们所做的事情应该是显而易见的，上面的代码在select()方面不是100％正确的，并且做出了一些天真的假设 期望read_n（）和cwrite（）不会阻塞。正如我所说的，代码仅用于演示目的）</p>
+<p>这是以上代码的主要逻辑：</p>
+<ul>
+<li>程序使用<strong>select()</strong>来同时控制两个描述符。如果数据是从任何一个描述符进来的，则写入另一个描述符。</li>
+<li>由于程序使用TCP，接收者将看到一个单一的数据流，这使得识别数据包边界变得困难。所以当一个数据包或帧被写入网络时，其长度被预先占用（2个字节）到实际数据包。</li>
+<li>当数据从tap_fd描述符进入时，一次读取读取一个完整的数据包或帧;因此可以直接将其写入网络，其长度已预先确定。由于长度号码是一个短整型，因此长于一个字节，以“原始”二进制格式写入，所以使用<strong>ntohs()/htons()</strong>在具有不同字节顺序的机器之间进行互操作。</li>
+<li>当数据从网络进入时，由于前面提到的技巧，我们可以通过读取数据流之前的两个字节的长度来知道下一个数据包将要处理多长时间。当我们读取数据包时，我们把它写到tun / tap接口描述符中，内核接收它作为“来自线路”。</li>
+</ul>
+<p>那么你可以用这样的程序做什么？ 那么，你可以创建一个隧道！ 首先，在隧道两端的主机上创建并配置必要的tun / tap接口，包括分配一个IP地址。 对于这个例子，我将假定两个tun接口：本地计算机上的tun11，192.168.0.1/24，远程计算机上的tun3，192.168.0.2/24。 <strong>simpletun</strong>默认连接使用TCP端口55555的主机（您可以使用-p命令行开关更改该端口）。 远程主机将在服务器模式下运行simpletun，并且本地主机将以客户端模式运行。 所以有了下面的例子（远程服务器在10.2.3.4）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">[remote]# openvpn --mktun --dev tun3 --user waldner</span><br><span class="line">Fri Mar 26 11:11:41 2010 TUN/TAP device tun3 opened</span><br><span class="line">Fri Mar 26 11:11:41 2010 Persist state set to: ON</span><br><span class="line">[remote]# ip link set tun3 up</span><br><span class="line">[remote]# ip addr add 192.168.0.2/24 dev tun3</span><br><span class="line"></span><br><span class="line">[remote]$ ./simpletun -i tun3 -s</span><br><span class="line"># 服务器块等待客户端连接</span><br><span class="line"></span><br><span class="line">[local]# openvpn --mktun --dev tun11 --user waldner</span><br><span class="line">Fri Mar 26 11:17:37 2010 TUN/TAP device tun11 opened</span><br><span class="line">Fri Mar 26 11:17:37 2010 Persist state set to: ON</span><br><span class="line">[local]# ip link set tun11 up</span><br><span class="line">[local]# ip addr add 192.168.0.1/24 dev tun11</span><br><span class="line"></span><br><span class="line">[local]$ ./simpletun -i tun11 -c 10.2.3.4</span><br><span class="line"># 无状况，用户现在已连接</span><br><span class="line">[local]$ ping 192.168.0.2</span><br><span class="line">PING 192.168.0.2 (192.168.0.2) 56(84) bytes of data.</span><br><span class="line">64 bytes from 192.168.0.2: icmp_seq=1 ttl=241 time=42.5 ms</span><br><span class="line">64 bytes from 192.168.0.2: icmp_seq=2 ttl=241 time=41.3 ms</span><br><span class="line">64 bytes from 192.168.0.2: icmp_seq=3 ttl=241 time=41.4 ms</span><br><span class="line">64 bytes from 192.168.0.2: icmp_seq=4 ttl=241 time=41.0 ms</span><br><span class="line"></span><br><span class="line">--- 192.168.0.2 ping statistics ---</span><br><span class="line">4 packets transmitted, 4 received, 0% packet loss, time 2999ms</span><br><span class="line">rtt min/avg/max/mdev = 41.047/41.599/42.588/0.621 ms</span><br><span class="line"></span><br><span class="line"># 尝试刺激的事情</span><br><span class="line">[local]$ ssh waldner@192.168.0.2</span><br><span class="line">waldner@192.168.0.2&apos;s password:</span><br><span class="line">Linux remote 2.6.22-14-xen #1 SMP Fri Feb 29 16:20:01 GMT 2008 x86_64</span><br><span class="line"></span><br><span class="line">Welcome to remote!</span><br><span class="line"></span><br><span class="line">[remote]$</span><br></pre></td></tr></table></figure></p>
+<p>当建立如上所述的隧道时，从外部可以看到的只是两个同等简单隧道之间的连接（在这种情况下为TCP）。上面例子中的“真实”数据（即高层应用程序ping或ssh交换的数据）绝不会直接暴露在线路上（尽管它以明文形式发送，见下文）。如果在运行simpletun的主机上启用IP转发，并在其他主机上创建必要的路由，则可以通过隧道到达远程网络。</p>
+<p>另外请注意，如果所涉及的虚拟接口是tap类型的，则可以透明地桥接两个地理上距离较远的以太网LAN，以便设备认为它们全部在相同的第2层网络上。为此，需要在网关（即运行simpletun的主机或使用tap接口的另一个隧道软件），本地LAN接口和虚拟分接接口上进行桥接。这样，从局域网接收到的帧也被发送到tap接口（由于网桥），隧道应用程序读取它们并将它们发送给远程对等体;在那里，另一个桥将确保如此接收的帧被转发到远程LAN。同样的事情会发生在相反的方向。由于我们在两个LAN之间传递以太网帧，因此两个LAN有效地桥接在一起。这意味着您可以在伦敦（例如）有10台机器，在柏林有50台机器，您可以使用192.168.1.0/24子网中的地址（或任何您想要的子网地址）创建60台计算机的以太网网络，只要它可以容纳至少60个主机地址）。但是，如果你想设置类似的东西，不要使用simpletun！</p>
+<h1 id="Extensions-and-improvements"><a href="#Extensions-and-improvements" class="headerlink" title="Extensions and improvements"></a>Extensions and improvements</h1><p>simpletun非常简单和简单，可以通过多种方式扩展。首先，可以添加连接到对等方的新方法。例如，可以实现UDP连接，或者如果你勇敢的话，也可以通过ICMP（也可以通过IPv6）。其次，数据通过网络连接以明文形式传递。但是，当数据在程序的缓冲区中时，它可能在被传输之前以某种方式被改变，例如它可以被加密（并且在另一端被类似地解密）。</p>
+<p>但是，为了本教程的目的，程序的限制版本应该已经给你一个如何使用tun/tap的隧道工作的想法。虽然simpletun是一个简单的演示，但许多流行的使用tun/tap接口的程序也是如此，例如OpenVPN，vtun或Openssh的VPN特性。</p>
+<p>最后，值得注意的是，如果隧道连接是通过TCP连接的，那么我们可能会遇到所谓的“tcp over tcp”的情况。有关更多信息，请参阅“为什么tcp over tcp是一个坏主意”。请注意，OpenVPN之类的应用程序默认情况下使用UDP，因此使用TCP以降低性能而闻名（尽管在某些情况下它是唯一的选择）。</p>
+<p>善于交际，分享！</p>
+
           
         
       
@@ -1648,842 +2298,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://renzheng0403.github.io/2017/08/26/2017-08-26-PKI知识点总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="renzheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="renz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/26/2017-08-26-PKI知识点总结/" itemprop="url">
-                  网关服务端第一阶段总结
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-08-26 00:00:00" itemprop="dateCreated datePublished" datetime="2017-08-26T00:00:00+08:00">2017-08-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-06-24 23:22:25" itemprop="dateModified" datetime="2018-06-24T23:22:25+08:00">2018-06-24</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/PKI/" itemprop="url" rel="index"><span itemprop="name">PKI</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="对称算法"><a href="#对称算法" class="headerlink" title="对称算法"></a>对称算法</h2><p>描述：对称加密是指加密过程和解密过程使用相同的密码。主要分：<strong>分组加密</strong>、<strong>序列加密</strong>。</p>
-<p>原理：XOR运算，将二进制数据进行XOR运算，两次同样的操作得到原文，所以大致过程就是加密-&gt;A xor B = C，解密-&gt;C xor B = A（B就是密钥）。</p>
-<p>优点：加密速度快，适合于对大量数据加密。</p>
-<p>缺点：发送方和接受方需要使用相同的密钥，一旦密钥泄露，在互联网上传输的加密数据将会被中间人破解。而且由于加密数据量大</p>
-<p>分类：</p>
-<ul>
-<li>DES(Data Encryption Standard)<ul>
-<li>分组算法</li>
-<li>分组长度64bit（8字节），明文分为左右两侧轮回与密钥XOR运算，每轮使用不同的密钥</li>
-<li>密钥空间2^56</li>
-</ul>
-</li>
-<li>三重DES(triple-DES),将DES重复3次<ul>
-<li>分组长度64bit（8字节）</li>
-</ul>
-</li>
-<li>AES(Advances Encryption Standard)，高级加密标准<ul>
-<li>分组长度为128bit（16字节）</li>
-<li>密钥长度只有128、192、256bit</li>
-</ul>
-</li>
-<li>RC2,RC4,RC5<ul>
-<li>RC2和RC5是分组算法，RC4是序列算法</li>
-<li>RC5分组可变、密钥长度可变</li>
-</ul>
-</li>
-<li>SSF33,SM1,SM4<ul>
-<li>分组算法</li>
-<li>分组长度128bit（16字节）</li>
-</ul>
-</li>
-</ul>
-<h2 id="摘要算法"><a href="#摘要算法" class="headerlink" title="摘要算法"></a>摘要算法</h2><p>摘要算法使用密码学hash函数，用于验证数据完整性（没有修改、插入、删除、或重放）。</p>
-<p>输入数据的长度首先被填充为某固定长度分组的整数倍，填充的内容包括原始数据的位长度信息。安全性要求如下两种情况在计算上不可行（即没有攻击方法比穷举攻击更有效）：</p>
-<ul>
-<li>对预先指定的hash值找到对应的数据块（单向性）</li>
-<li>找到两个不同的数据块对应相同的hash值（抗碰撞性）</li>
-</ul>
-<p>例如：Alice给Bob发了一条消息，Bob收到消息后，1）不能确定是不是Alice发的；2）不能确定消息是否被篡改。单向hash函数仍然不能解决问题1），但是可以解决问题2）。假如Bob能够从某种渠道获取这条消息的摘要值，那么只需在对收到的信息进行相同的hash计算，将结果与摘要值对比，若不同就说明消息遭到了篡改。</p>
-<p>Hash算法一般是指Hash表的摘要算法，将不同的键值分散到不同的数组位置，允许少量的冲突碰撞</p>
-<p>安全Hash算法（SHA）是使用最广泛的Hash函数</p>
-<ul>
-<li>MD2、MD4、MD5<ul>
-<li>摘要长度128bit（16字节）</li>
-</ul>
-</li>
-<li>SHA1、SHA2、SHA3<ul>
-<li>Secure Hash Algorithm</li>
-<li>SHA-1摘要长度160bit（20字节）</li>
-<li>SHA-2摘要长度256bit（32byte)</li>
-<li>SHA-3摘要长度384bit（48byte)</li>
-</ul>
-</li>
-<li>SM3<ul>
-<li>中国国家商用密码算法</li>
-<li>摘要长度256bit（32byte）</li>
-</ul>
-</li>
-</ul>
-<p><a href="http://www.cnblogs.com/houkai/p/3486667.html" target="_blank" rel="noopener">摘要函数——MD2/MD4/MD5数字签名</a></p>
-<h2 id="附1：消息认证码（MAC-Message-authentication-code）"><a href="#附1：消息认证码（MAC-Message-authentication-code）" class="headerlink" title="附1：消息认证码（MAC, Message authentication code）"></a>附1：消息认证码（MAC, Message authentication code）</h2><p>上节提到的摘要函数-单向散列函数只能识别消息是否完整，不能识别发送者的身份，消息认证码使用一种密钥相关联的单向散列函数，输入包括消息、密钥（发送者和接受者共享），输出固定长度的MAC值。</p>
-<p>又称密码校验和，利用密钥<strong>K</strong>和可变长度的数据<strong>M</strong>生成固定长度的短数据块<strong>MAC</strong>，并将数据块附加在数据M之后：<br>$$<br>MAC = C(K, M)<br>$$<br>若对于数据的保密性要求不高（例如广播），可直接将消息<strong>M</strong>和<strong>MAC</strong>一起发给接受者，接收者收到后使用相同的密钥<strong>K</strong>和MAC函数<strong>C</strong>对消息<strong>M</strong>计算得出<strong>MAC2</strong>，再对比两者是否相等。（这里设定通信双方共享相同的密钥<strong>K</strong>）</p>
-<p>若对于数据的保密性要求严格，可选择将消息<strong>M</strong>和<strong>MAC</strong>加密再发送：<br>$$<br>ENC = E(K_2, M||C(K_1,M))<br>$$<br>接收者收到数据后首先解密。</p>
-<h2 id="附2：基于Hash函数的MAC：HMAC"><a href="#附2：基于Hash函数的MAC：HMAC" class="headerlink" title="附2：基于Hash函数的MAC：HMAC"></a>附2：基于Hash函数的MAC：HMAC</h2><p>HMAC将Hash函数视为黑盒，将现有Hash函数作为一个模块，预先封装，在需要时直接使用。</p>
-<p><img src="/images/HMAC.JPG" alt="HMAC结构"></p>
-<ul>
-<li>H：嵌入的Hash函数</li>
-<li>IV：Hash函数输入的初始化数组</li>
-<li>M：HMAC的消息输入（包括由嵌入Hash函数定义的填充位）</li>
-<li>$Y_i$：M的第i个分组</li>
-<li>L：M中的分组个数</li>
-<li>b：每一分组所含位数（bits）</li>
-<li>n：嵌入的Hash函数所产生的Hash码长<h2 id="密钥运算"><a href="#密钥运算" class="headerlink" title="密钥运算"></a>密钥运算</h2>密钥运算包含两种操作（私钥操作、公钥操作），签名验签正是基于这两种操作：<br>$$<br>C=P^d mod n<br>$$</li>
-</ul>
-<p>$$<br>P=C^d mod n<br>$$</p>
-<h3 id="签名验签"><a href="#签名验签" class="headerlink" title="签名验签"></a>签名验签</h3><p>使用签名的前提是使用公钥加密的密文只有私钥才能解开，使用私钥加密的密文只有公钥才能解开，确保了身份认证抗抵赖性。</p>
-<p>过程：</p>
-<ul>
-<li>对原文摘要</li>
-<li>A使用自己的私钥AS对摘要私钥加密运算，得到签名</li>
-<li>B使用A的公钥AP对签名公钥解密运算，得到摘要值2，这一步证明签名来自A，若C伪造A的身份使用自己的私钥CP，则B的公钥解密失败。</li>
-<li>B再使用和A相同的hash算法对原文摘要，得到摘要值3，这一步可用来验证原文是否遭到篡改，</li>
-<li>B验证摘要值2和3是否相等</li>
-</ul>
-<p>至于填充模式，定义在PKCS#1：<code>00||BT||PS||00||D</code></p>
-<ul>
-<li>00保证大数是非负整数</li>
-<li>BT分为00，01，02。00,01是私钥操作，02是公钥操作<ul>
-<li>00：填充数据全为0X00，摘要必须以非0开头，如果摘要以0开头，将与填充数据无法区分</li>
-<li>01：填充数据全为0XFF</li>
-<li>02：填充数据必须为随机数</li>
-</ul>
-</li>
-</ul>
-<h3 id="非对称算法"><a href="#非对称算法" class="headerlink" title="非对称算法"></a>非对称算法</h3><p>非对称算法采用一对关联的公钥和私钥，公钥公开在互联网，解决了密钥配送的问题。</p>
-<p>非对称算法用来在公开的网络上传输密钥依据以下<strong>两个特点</strong>：</p>
-<ol>
-<li>使用公钥加密的密文只有使用对应的私钥才能解开</li>
-<li>使用私钥解密的密文只有使用对应的公钥才能解开</li>
-</ol>
-<p>分类：</p>
-<ul>
-<li>ECC算法（Elliptic Curve Cryptosystems, 椭圆曲线密码)</li>
-<li>RSA算法</li>
-</ul>
-<p><strong>RSA</strong><br>使用RSA公钥运算，过程如下：</p>
-<ul>
-<li>对原文数据填充、封装-&gt;$P$</li>
-<li>对P大数运算：$C=P^e mod n$</li>
-</ul>
-<p>使用RSA私钥运算，过程如下：</p>
-<ul>
-<li>对密文数据大数运算：$P=C^d mod n$</li>
-<li>对P进行去填充</li>
-</ul>
-<p>以上可以看出，私钥解密和签名的运算过程一致！</p>
-<p>用途：用于非对称传输信息，比如Bob有一个信息想传给Alice，需使用Alice的公钥加密信息，传给Alice，Alice得到加密信息后使用自己的私钥即可解开读取信息。他人即使截获加密信息也无法解开。</p>
-<h3 id="国密算法"><a href="#国密算法" class="headerlink" title="国密算法"></a>国密算法</h3><p>SM2：椭圆曲线公钥密码算法<br>SM3：密码杂凑算法，用于数字签名和验证、消息认证码的生成、随机数的生成<br>SM4：分组加密算法，分组长度128bit，密钥长度128bi。32轮非平衡Feistel迭代结构，之后加上一个反序变换。</p>
-<h1 id="规范"><a href="#规范" class="headerlink" title="规范"></a>规范</h1><h2 id="分组模式"><a href="#分组模式" class="headerlink" title="分组模式"></a>分组模式</h2><ul>
-<li>ECB （Electronic Code book，电子密码本方式）明文分组与密文分组一一对应<ul>
-<li>优点：最简单的一种模式，可并行运算，误差不会传递</li>
-<li>缺点：若有相同明文分组，将被加密成相同密文分组，即明文的结构容易被泄露</li>
-<li>CA产品的私钥保护使用ECB算法</li>
-</ul>
-</li>
-<li>CBC （Cipher-block chaining，密码分组链接）明文分组首先与前一个密文分组XOR运算，然后再加密，这样做的目的就是改变明文分组的结构，由于第一个明文分组前没有密文分组，需增添IV初始化向量，与第一个明文分组XOR运算<ul>
-<li>若密文分组损坏，但是长度没有改变，即仅改变几位的数据，解密后最多只影响两个明文分组（密文分组本身对应的明文分组，密文分组为后一个分组提供XOR伙伴的后一个明文分组）</li>
-<li>若密文缺失bit，则缺失bit之后的密文全部无法解密</li>
-</ul>
-</li>
-<li>CFB （Cipher Feedback ，密码反馈模式）明文分组与密钥XOR运算，CFB实现了一个被我称为伪伪随机数发生器的密码算法，它将前一个密文分组加密生成一个bit序列，称为密钥流（key stream），由于第一个明文分组前没有密文分组，需添加IV初始化向量，执行加密生成第一个密钥流。</li>
-<li>OFB （Output Feedback  ，输出反馈模式）OFB与CFB相同的地方在于都是将明文分组与密钥XOR运算，区别就在于密钥的生成。OFB的密钥算法的输入来自于上一个密钥算法的输出。第一个密钥算法的输入使用一个IV向量</li>
-</ul>
-<p>OFB与CFB都采用将分组加密转换成流加密的方式</p>
-<h2 id="填充模式"><a href="#填充模式" class="headerlink" title="填充模式"></a>填充模式</h2><ul>
-<li>PKCS5Padding<br><img src="/images/PKCS5Padding.png" alt="PKCS5Padding"><br>如图，用自己的话来描述就是缺多少bit，就在每个bit里填多少。该方式是8分组结构，只适合DES/3DES。</li>
-<li>PKCS7Padding<br>分组长度可以是小于255的任意长度</li>
-<li>ZeroPadding<br>使用0X0补齐：<code>... | DD DD DD DD DD DD DD DD | DD DD DD DD 00 00 00 00 |</code></li>
-<li>ANSI X.923<br>该模式在最后一个字节填缺少的bit数，其它补0X0（我觉得这个模式更符合一般人的想法）：<code>... | DD DD DD DD DD DD DD DD | DD DD DD DD 00 00 00 04 |</code></li>
-<li>ISO 10126<br>该模式个人觉得稍好一些，最后一个填充位填写缺少的bit数，其它位填充随机数：<code>... | DD DD DD DD DD DD DD DD | DD DD DD DD 81 A6 23 04 |</code></li>
-<li>ISO/IEC 7816-4<br>填充实例如下：<code>... | DD DD DD DD DD DD DD DD | DD DD DD DD 80 00 00 00 |</code>（未解）</li>
-</ul>
-<h2 id="PKCS-1"><a href="#PKCS-1" class="headerlink" title="PKCS#1"></a>PKCS#1</h2><p>定义RSA公私钥数据表达形式，及加密，解密，签名，验签，填充过程，定义了数字签名如何计算，包括签名数据和签名本身的格式。<br><strong>RSA公钥结构：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">RSAPublicKey :: = SEQUENCE&#123;</span><br><span class="line">   modulus              INTEGER,   ------ n（RSA合数模）</span><br><span class="line">   publicExponent    INTEGER    ------ e （RSA公开幂，3～n-1范围内的正整数）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>RSA公钥的ASN.1结构，可以表述为：名为RSAPublicKey的这个结构呢，就可以用来表述一个RSA公钥了。它有两个INTEGER型变量：modulus和publicExponent。<br><strong>RSA私钥结构：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">RSAPrivateKey :: = SEQUENCE&#123;</span><br><span class="line">    version                 Version,（版本号，如果使用多素数，版本号为1）</span><br><span class="line">    modulus               INTEGER,   ------ n（RSA合数模）</span><br><span class="line">    publicExponent     INTEGER,   ------ e（RSA的公开幂）</span><br><span class="line">    privateExponent    INTEGER,   ------ d（RSA的私有幂）</span><br><span class="line">    prime1                 INTEGER,   ------ p（n的素数因子p）</span><br><span class="line">    prime2                 INTEGER,   ------ q（n的素数因子q）</span><br><span class="line">    exponent1            INTEGER,   ------ d mod (p -1)</span><br><span class="line">    exponent2            INTEGER,   ------ d mod (q -1)</span><br><span class="line">    coefficient            INTEGER,   ------- (inverse of q) mod p</span><br><span class="line">    otherPrimeInfos    OtherPrimeInfos   ------ OPTIONAL（当version为0时，不存在；当 version为1时，必须有）</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong>加密和签名方案的对象标识</strong><br>以下是对PKCS#1 OID的类型表示的定义<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">PKCS1Algorithms ALGORITHM-IDENTIFIER ::= &#123;</span><br><span class="line"> &#123; OID rsaEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID md2WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID md5WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID sha1WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID sha256WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID sha384WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line"> &#123; OID sha512WithRSAEncryption PARAMETERS NULL &#125; |</span><br><span class="line">&#123; OID id-RSAES-OAEP PARAMETERS RSAES-OAEP-params &#125; |</span><br><span class="line"> PKCS1PSourceAlgorithms |</span><br><span class="line">&#123; OID id-RSASSA-PSS PARAMETERS RSASSA-PSS-params &#125; ,</span><br><span class="line"> ... -- Allows for future expansion --</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>规定了PKCS#1摘要和签名分别使用的算法，例如<code>sha1WithRSAEncryption</code>中<code>sha1</code>代表摘要使用的算法，<code>RSAEncryption</code>代表签名使用的算法<br><strong>RSAES-OAEP加密</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RSAES-OAEP-params ::= SEQUENCE &#123;</span><br><span class="line"> hashAlgorithm [0] HashAlgorithm DEFAULT sha1,(标识了散列函数）</span><br><span class="line"> maskGenAlgorithm [1] MaskGenAlgorithm DEFAULT mgf1SHA1, （标识掩膜生成函数）</span><br><span class="line"> pSourceAlgorithm [2] PSourceAlgorithm DEFAULT pSpecifiedEmpty（标识标签L的源)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>hashAlgorithm</code>支持的散列函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">OAEP-PSSDigestAlgorithms ALGORITHM-IDENTIFIER ::= &#123;</span><br><span class="line"> &#123; OID id-sha1 PARAMETERS NULL &#125;|</span><br><span class="line">&#123; OID id-sha256 PARAMETERS NULL &#125;|</span><br><span class="line">&#123; OID id-sha384 PARAMETERS NULL &#125;|</span><br><span class="line">&#123; OID id-sha512 PARAMETERS NULL &#125;,</span><br><span class="line"> ... -- Allows for future expansion --</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="PKCS-5"><a href="#PKCS-5" class="headerlink" title="PKCS#5"></a>PKCS#5</h2><p>基于口令的加密规范Password-Based Cryptography Specification</p>
-<p>目的：保护私钥文件的安全性</p>
-<p>通过将原始口令+salt派生出新口令进行加密</p>
-<p>PKSC5Padding（用于制定算法DES）对称加密填充方式，填充块固定为8个字节，填充值为待填充的长度，与PKCS7Padding类似。</p>
-<h2 id="PKCS-7"><a href="#PKCS-7" class="headerlink" title="PKCS#7"></a>PKCS#7</h2><p>加密消息的语法标准Cryptographic Message Syntax Version 1.5<br>结构：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">pkcs7_st</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="comment">/* 其他项 */</span></span><br><span class="line"></span><br><span class="line">  ASN1_OBJECT *type;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">union</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">char</span> *ptr;</span><br><span class="line">   <span class="comment">/* NID_pkcs7_data */</span></span><br><span class="line">   ASN1_OCTET_STRING *data;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_signed */</span></span><br><span class="line">   PKCS7_SIGNED *sign;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_enveloped */</span></span><br><span class="line">   PKCS7_ENVELOPE *enveloped;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_signedAndEnveloped */</span></span><br><span class="line">   PKCS7_SIGN_ENVELOPE *signed_and_enveloped;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_digest */</span></span><br><span class="line">   PKCS7_DIGEST *digest;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* NID_pkcs7_encrypted */</span></span><br><span class="line">   PKCS7_ENCRYPT *encrypted;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* Anything else */</span></span><br><span class="line">   ASN1_TYPE *other;</span><br><span class="line"> &#125; d;</span><br><span class="line">&#125; PKCS7;</span><br></pre></td></tr></table></figure></p>
-<p>pkcs7 各种类型数据结构的 DER 编解码通过宏在 crypto/pkcs7/pk7_asn1.c 中实现</p>
-<ul>
-<li>可以包含6种类型的数据:<ul>
-<li>id-data: 任意数据，由应用解析，可以是明文数据。</li>
-<li>id-signedData: 签名数据</li>
-<li>id-envelopedData: 加密数据</li>
-<li>id-signedAndEnvelopedData: 签名又加密数据，数字信封</li>
-<li>id-digestedData: 摘要数据，原文及摘要结果</li>
-<li>id-encryptedData: 只有加密数据，密钥在带外传送、管理</li>
-</ul>
-</li>
-</ul>
-<p>数字信封流程：（A：发送方；B：接收方；SK：私钥；PK：公钥）</p>
-<ul>
-<li>A对<strong>明文</strong>进行hash运算，得到<strong>摘要</strong></li>
-<li>A用自己的私钥<strong>A:SK</strong>对摘要进行RSA私钥加密运算，得到A的<strong>数字签名</strong></li>
-<li>A随即产生一个用于特定加密算法的<strong>加密密钥</strong>（DES密钥），并使用该密钥对<strong>明文</strong>进行对称加密，形成<strong>密文</strong></li>
-<li><p>A使用B的公钥<strong>B:PK</strong>对随机产生的加密密钥进行RSA公钥加密运算，并将结果与密文一同传送给B</p>
-</li>
-<li><p>B用自己的私钥<strong>B:SK</strong>对对称加密的结果进行RSA私钥解密运算，得到A随机产生的对称<strong>加密密钥</strong></p>
-</li>
-<li>B用<strong>加密密钥</strong>对密文解密，得到<strong>明文</strong></li>
-<li>B用A的公钥<strong>A:PK</strong>对A的<strong>数字签名</strong>进行RSA公钥解密运算，得到A的<strong>信息摘要</strong></li>
-<li>B用相同的hash算法对明文进行hash运算，得到新的信息摘要，并与收到的信息摘要比较，若一致，则说明明文未被修改，来自A。</li>
-</ul>
-<p>常用的用途有:</p>
-<ul>
-<li>证书链</li>
-<li>数字信封</li>
-<li>带原文的签名数据</li>
-</ul>
-<p><a href="http://hbaojun.github.io/2014/02/18/PKCS7%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90%E4%B9%8B%E7%AD%BE%E5%90%8D/" target="_blank" rel="noopener">PKCS#7结构分析之签名</a></p>
-<p><a href="http://hbaojun.github.io/2014/02/19/PKCS7%E7%BB%93%E6%9E%84%E5%88%86%E6%9E%90%E4%B9%8B%E6%95%B0%E5%AD%97%E4%BF%A1%E5%B0%81/" target="_blank" rel="noopener">PKCS#7结构分析之数字信封</a></p>
-<h2 id="附：数字信封"><a href="#附：数字信封" class="headerlink" title="附：数字信封"></a>附：数字信封</h2><p><img src="/images/envelop.png" alt="加密图解"></p>
-<p>构造数字信封要能够达到以下功能：</p>
-<ul>
-<li>保密（对称加密，RSA公钥加密）</li>
-<li>验证完整性（MAC值）</li>
-<li>验证身份（签名）</li>
-</ul>
-<p>因此该结构应该包含：</p>
-<ul>
-<li>明文加密后的密文cryptodata</li>
-<li>Hash函数生成的MAC值</li>
-<li>RSA私钥加密的签名值signdata</li>
-<li>（也应该包含证书，由CA担保身份）</li>
-</ul>
-<h2 id="PKCS-8"><a href="#PKCS-8" class="headerlink" title="PKCS#8"></a>PKCS#8</h2><p>私钥封装格式Private_Key Information Syntax Specification Version 1.2</p>
-<p>定义了私钥信息语法和加密私钥语法。<br>私钥类型任意，对称算法可设置</p>
-<h2 id="PKCS-10"><a href="#PKCS-10" class="headerlink" title="PKCS#10"></a>PKCS#10</h2><p>证书请求格式（主题，公钥，私钥签名）</p>
-<p>RA注册流程：注册信息-&gt;审核通过-&gt;生成密钥-&gt;生成PKCS10请求-&gt;将信息和P10请求的公钥合并成CMP请求-&gt;发送到CA</p>
-<h2 id="PKCS-11"><a href="#PKCS-11" class="headerlink" title="PKCS#11"></a>PKCS#11</h2><p>介质接口格式：</p>
-<ul>
-<li>硬件驱动</li>
-<li>定义文件操作</li>
-<li>权限管理</li>
-</ul>
-<p>对应于Windows的CSP，国密接口的SKF</p>
-<h2 id="PKCS-12"><a href="#PKCS-12" class="headerlink" title="PKCS#12"></a>PKCS#12</h2><p>带私钥的个人证书格式，包含私钥、证书、证书链、CRL…</p>
-<h2 id="X-509"><a href="#X-509" class="headerlink" title="X.509"></a>X.509</h2><p><a href="https://tools.ietf.org/html/rfc5280" target="_blank" rel="noopener">X.509证书与509黑名单规范</a></p>
-<p>X.509数字证书主体如下：</p>
-<ul>
-<li>签名前的证书申请（签名对象的信息）</li>
-<li>数字签名的算法（CA对证书签名使用的算法）</li>
-<li>数字签名（用于验证证书的有效性，使用者使用CA的公钥使用同种算法对证书签名，查看和该数字签名是否相同）</li>
-</ul>
-<p>一个真实的X509数字证书包含：</p>
-<ul>
-<li>证书版本（V3）</li>
-<li>证书序列号</li>
-<li>签名算法（sha1RSA）</li>
-<li>签名哈希算法（sha1）</li>
-<li>签名</li>
-<li>颁发者信息<ul>
-<li>CN</li>
-<li>OU</li>
-<li>O组织</li>
-<li>L地点</li>
-<li>S州</li>
-<li>C </li>
-</ul>
-</li>
-<li>使用者信息</li>
-<li>有效期</li>
-<li>公钥</li>
-<li>密钥用法<ul>
-<li>Key Encipherment, Data Encipherment </li>
-<li>Digital Signature, Non-Repudiation</li>
-</ul>
-</li>
-<li>CRL分发点</li>
-<li>指纹算法</li>
-<li>指纹</li>
-</ul>
-<p><strong>结构</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">x509_st</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    X509_CINF *cert_info;</span><br><span class="line">    X509_ALGOR *sig_alg;</span><br><span class="line">    ASN1_BIT_STRING *signature;</span><br><span class="line">    <span class="keyword">int</span> valid;</span><br><span class="line">    <span class="keyword">int</span> references; </span><br><span class="line">    <span class="keyword">char</span> *name;</span><br><span class="line">    CRYPTO_EX_DATA ex_data;</span><br><span class="line">    <span class="keyword">long</span> ex_pathlen;</span><br><span class="line">    <span class="keyword">long</span> ex_pcpathlen;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> ex_flags;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> ex_kusage;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> ex_xkusage;</span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">long</span> ex_nscert;</span><br><span class="line">    ASN1_OCTET_STRING *skid;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">AUTHORITY_KEYID_st</span> *<span class="title">akid</span>;</span></span><br><span class="line">    X509_POLICY_CACHE *policy_cache;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> OPENSSL_NO_SHA</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> sha1_hash[SHA_DIGEST_LENGTH];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    X509_CERT_AUX *aux; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>以上结构表示一个完整的数字证书，主要项如下：</p>
-<ul>
-<li>cert_info:证书主体信息；</li>
-<li>sig_alg:签名算法；</li>
-<li>signature:签名值，存放CA对该证书采用sig_alg算法签名的结果（验证证书持有者身份时，使用该CA公钥对该证书采用sig_alg签名算法签名得到signature1，将两个签名值比较，若相等，则表明是通过CA确认的证书持有者）；</li>
-<li>valid：是否是合法证书，1 为合法，0 为未知；</li>
-<li>references：引用次数，被引用一次则加一；</li>
-<li>name：证书持有者信息该内容在调用 d2i_X509的过程中，通过回调函数 x509_cb(crypto/asn1/x_x509.c)调用 X509_NAME_oneline 来设置；</li>
-</ul>
-<p><strong>编程接口</strong><br>DER 编解码接口由宏在 crypto/asn1/x_x509.c 中实现，包括各自的new、free、i2d 和 d2i 函数：</p>
-<ul>
-<li>d2i_X509：解码 DER 编码的数字证书</li>
-<li>PEM_read_bio_X509：从PEM格式的数字证书中得到X509数据结构</li>
-</ul>
-<h2 id="ASN-1"><a href="#ASN-1" class="headerlink" title="ASN.1"></a>ASN.1</h2><p>Abstract Syntax Notation One，抽象语法标识，是与平台、语言无关的数据结构定义语法</p>
-<p><strong>编码格式</strong><br>BER、CER、DER、XER，可以编码成XML格式，不仅仅是常用的二进制流。<br>二进制流的TLV方式表达数据结构，如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Identifier octets Type</td>
-<td style="text-align:center">Length octets Length</td>
-<td style="text-align:center">Contents octets Value</td>
-<td style="text-align:center">End-of-contents octets</td>
-</tr>
-</tbody>
-</table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Personnel</span><br><span class="line">Record     Length   Contents</span><br><span class="line">60         8185</span><br><span class="line">                    Name     Length  Contents</span><br><span class="line">                    61       10</span><br><span class="line">                                     VisibleString  Length  Contents</span><br><span class="line">                                     1A             04      &quot;John&quot;</span><br><span class="line">                                     VisibleString  Length  Contents</span><br><span class="line">                                     1A             01      &quot;P&quot;</span><br><span class="line">                                     VisibleString  Length  Contents</span><br><span class="line">                                     1A             05      &quot;Smith&quot;</span><br><span class="line"></span><br><span class="line">                     DateofBirth     Length  Contents</span><br><span class="line">                     A0              0A</span><br><span class="line">                                             Date    Length  Contents</span><br><span class="line">                                             43      08      &quot;19590717&quot;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>BER: Basic Encoding Rules<ul>
-<li>基本编码格式。</li>
-<li>对相同的数据，可以有多种编码方式，比如长字节型、短字节型、不定长型等。</li>
-</ul>
-</li>
-<li>DER: Distinguished Encoding Rules<ul>
-<li>是BER的一个子集，为更严格的一个变种版本。</li>
-<li>和BER相比，DER的编码格式只有固定一种。比如BER的Boolean变量编码值是可以1~255的任意值，而DER只能是1。</li>
-<li><strong>DER使用在有数据签名的场合</strong>，以保证数据原文编码后可以保持一致。</li>
-<li>X.509证书都是DER编码。</li>
-</ul>
-</li>
-<li>CER: Canonical Encoding Rules<ul>
-<li>CER和DER一样，都是BER的限定编码规则的子集。</li>
-<li>CER和DER不同在于它是不定长编码，可以用于大数据块的封装。</li>
-<li>PKCS#7数字信封可以用DER编码，也可以用CER编码。</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Privacy Enhanced Mail: 安全增强邮件，通过加密算法、证书加密邮件。<ul>
-<li>更常用的概念是一种文件格式，该文件格式使用一个头、尾标识文件的内容，以方便解析。如下:</li>
-<li>被加密的私钥:</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN ENCRYPTED PRIVATE KEY-----</span><br><span class="line">...</span><br><span class="line">-----END ENCRYPTED PRIVATE KEY-----</span><br></pre></td></tr></table></figure>
-<ul>
-<li>PEM格式的证书:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">...</span><br><span class="line">-----END CERTIFICATE-----</span><br></pre></td></tr></table></figure>
-<ul>
-<li>PEM格式的PKCS#10证书请求:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-----BEGIN CERTIFICATE REQUEST-----</span><br><span class="line">...</span><br><span class="line">-----END CERTIFICATE REQUEST-----</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>CER、DER、CRT、PEM的关系</p>
-<ul>
-<li>所有X.509都是DER编码，DER是指ASN.1的编码规则，.der证书文件一般是二进制文件。</li>
-<li>CER可用于PKCS#7证书(p7b)的编码，但一般是指证书的文件后缀，.cer证书可以是纯BASE64文件或二进制文件。</li>
-<li>PEM通常也是指文件的后缀，为内容使用BASE64编码且带头带尾的特定格式，二进制的文件不应该命名为pem。</li>
-<li>CRT是微软的证书后缀名，和.CER是一回事。</li>
-<li>微软的CryptAPI很强大，证书的各种格式都可以识别，比如纯BASE64编码的、标准PEM格式的、非标识PEM格式的(不是64字节换行、没有头尾等)、二进制格式的。</li>
-<li>但openssl、JCE则不行，必须是标准的PEM格式和DER格式。</li>
-<li>references:<ul>
-<li><a href="http://www.cryptologie.net/article/260/asn1-vs-der-vs-pem-vs-x509-vs-pkcs7-vs/" target="_blank" rel="noopener">http://www.cryptologie.net/article/260/asn1-vs-der-vs-pem-vs-x509-vs-pkcs7-vs/</a></li>
-<li><a href="http://myonlineusb.wordpress.com/2011/06/19/what-are-the-differences-between-pem-der-p7bpkcs7-pfxpkcs12-certificates/" target="_blank" rel="noopener">http://myonlineusb.wordpress.com/2011/06/19/what-are-the-differences-between-pem-der-p7bpkcs7-pfxpkcs12-certificates/</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>PFX</p>
-<ul>
-<li>Personal Information Exchange</li>
-<li>PKCS#12是PFX的后续版本，一般情况二者为等同概念。</li>
-<li>PFX或PKCS#12，是包括私钥的个人证书，通过口令保护私钥。</li>
-<li>后缀名为.pfx或.p12</li>
-<li>使用openssl、keytool、Portecle(KeyStore工具)都可以很方便生成PFX证书。</li>
-<li>references:<ul>
-<li><a href="http://en.wikipedia.org/wiki/PKCS_12" target="_blank" rel="noopener">http://en.wikipedia.org/wiki/PKCS_12</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="CRL"><a href="#CRL" class="headerlink" title="CRL"></a>CRL</h2><p>证书撤销列表(Certificate Revocation List，简称 CRL)，是一种包含撤销的证书列表的签名数据结构。基本的 CRL 信息有：被撤销证书序列号、撤销时间、撤销原因、签名者以及 CRL 签名等信息。</p>
-<p>被撤销证书的信息：X509_REVOKED</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">X509_revoked_st</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ASN1_INTEGER *serialNumber;</span><br><span class="line">    ASN1_TIME *revocationDate;</span><br><span class="line">    STACK_OF(X509_EXTENSION) *extensions;</span><br><span class="line">    <span class="keyword">int</span> sequence;</span><br><span class="line">&#125; X509_REVOKED;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>serialNumber：被撤销证书的序列号；</li>
-<li>revocationDate：撤销时间；</li>
-<li>extensions：扩展项，可选；</li>
-<li>sequence：顺序号，用于排序，表示当前被撤销证书信息在 crl 中的顺序。</li>
-</ul>
-<p>crl信息主体：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">X509_crl_info_st</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    ASN1_INTEGER *version;</span><br><span class="line">    X509_ALGOR *sig_alg;</span><br><span class="line">    X509_NAME *issuer;</span><br><span class="line">    ASN1_TIME *lastUpdate;</span><br><span class="line">    ASN1_TIME *nextUpdate;</span><br><span class="line">    STACK_OF(X509_REVOKED) *revoked; </span><br><span class="line">    STACK_OF(X509_EXTENSION) *extensions;</span><br><span class="line">    ASN1_ENCODING enc;</span><br><span class="line">&#125; X509_CRL_INFO;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>version：crl 版本；</li>
-<li>sig_alg：crl 签名算法；</li>
-<li>issuer：签发者信息；</li>
-<li>lastUpdate：上次更新时间；</li>
-<li>nextUpdate：下次更新时间；</li>
-<li>revoked：被撤销证书信息；</li>
-<li>extensions：扩展项，可选。</li>
-</ul>
-<p>完整crl数据结构：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">X509_crl_st</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    X509_CRL_INFO *crl;</span><br><span class="line">    X509_ALGOR *sig_alg;</span><br><span class="line">    ASN1_BIT_STRING *signature;</span><br><span class="line">    <span class="keyword">int</span> references;</span><br><span class="line">&#125; ;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>crl：crl 信息主体；</li>
-<li>sig_alg：签名算法，与 X509_CRL_INFO 中的一致；</li>
-<li>signature：签名值；</li>
-<li>references：引用</li>
-</ul>
-<h2 id="附3-LDAP"><a href="#附3-LDAP" class="headerlink" title="附3 LDAP"></a>附3 LDAP</h2><p>轻量目录访问协议(Lightweight Directory Access Protocol)，运行于TCP/IP之上。</p>
-<p>目录的信息按照树型结构组织，数据结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">条目entry-&gt;区别名DN-&gt;属性Attribute-&gt;类型Type</span><br><span class="line">                                |</span><br><span class="line">                                -&gt;值Values</span><br></pre></td></tr></table></figure></p>
-<h2 id="附4-OCSP"><a href="#附4-OCSP" class="headerlink" title="附4 OCSP"></a>附4 OCSP</h2><p>在线证书状态协议（Online Certificate Status Protocol)</p>
-<p>数据格式：</p>
-<ul>
-<li>协议版本</li>
-<li>服务请求</li>
-<li>目标证书标识</li>
-<li>可能被OCSP响应器处理的可选扩展</li>
-</ul>
-<p>OCSP响应端检测：</p>
-<ul>
-<li>信息正确格式化</li>
-<li>响应器被配置提供请求服务而且</li>
-<li>请求包含了响应器需要的信息，返回一个确定的回复，OCSP响应端回复的加密消息中包含证书的状态可以是’good’,’revoked’或者’unknown’</li>
-<li>如果任何一个先决条件没有满足，那么OCSP响应器将产生一个错误信息，错误码可能包含以下内容：<ul>
-<li>未正确格式化的请求（malformedRequest）</li>
-<li>内部错误（internalError）</li>
-<li>请稍后再试(trylater)</li>
-<li>需要签名(sigRequired)</li>
-<li>未授权(unauthorized)</li>
-</ul>
-</li>
-</ul>
-<h2 id="数字证书"><a href="#数字证书" class="headerlink" title="数字证书"></a>数字证书</h2><p><strong>发证流程：</strong></p>
-<ul>
-<li>申请者将合法的身份信息（参考X509章节）以PKCS#10格式通过SCEP（简单证书颁发协议，工作在HTTP之上）发送给CA，</li>
-<li>CA验证申请者的合法性，满足条件就会产生一个合法的证书，内容包括身份信息、公钥、CA信息、CA签名、有效时间、序列号、CRL表的下载地址或查询地址</li>
-<li>CA使用申请者公钥将X.509v3加密得到密文格式证书，使用SCEP协议颁发给申请者</li>
-<li>申请者使用自己的私钥解密得到X.509v3证书并保存</li>
-</ul>
-<p><strong>双证书：</strong><br>双证书即双密钥（签名密钥对，加密密钥对）</p>
-<ul>
-<li>签名密钥对用于数据完整性检测，保证放伪造与防抵赖，若遗失，不影响以前数据的验证。因此不需要第三方管理。</li>
-<li>加密密钥对用于数据的加密保护，若遗失，将导致之前加密的数据无法解密。因此加密密钥对应有可信第三方（CA）产生备份。</li>
-</ul>
-<p>（附：我曾今将整理的文件使用一款加密软件加密，选择加密密码的时候由于自己记不住长密码，又不想将长密码以任何形式记录下来，于是决定使用自认为固定的文件作为密钥，然后当再次使用文件解密的时候，被告知不是该文件。才想起，这个当时在我看来是固定的文件，由于版本需要被我修改了！整理的三个月的文件就这样脱胎换骨成了0110…）<br><strong>验证过程</strong></p>
-<ol>
-<li>拆封证书<ul>
-<li>目的：获取证书中的公钥</li>
-</ul>
-</li>
-<li>验证证书链<ul>
-<li>目的：验证签发用户实体证书的CA是否是权威可信的CA</li>
-<li>操作：使用每级CA的公钥验证每级数字签名</li>
-</ul>
-</li>
-<li>验证序列号<ul>
-<li>目的：检查实体证书中的签名实体序列号是否与签发者证书的序列号相一致</li>
-<li>操作：用户实体证书中的Authority Key Identifier扩展项Cert Serial Number,即签发证书的序列号与CA证书中的Certificate Serial Number 证书序列号是否一致</li>
-</ul>
-</li>
-<li>证书废止列表查询（黑名单查询，CRL）<ul>
-<li>目的：检查用户证书是否作废</li>
-</ul>
-</li>
-</ol>
-<h1 id="OpenSSL"><a href="#OpenSSL" class="headerlink" title="OpenSSL"></a>OpenSSL</h1><h2 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h2><p><strong>构建数字证书</strong><br>主要操作包括产生私钥（key），构造证书请求（req），签发用户证书，自签发根证书。</p>
-<ul>
-<li>1.产生私钥（带密码保护）：<code>openssl genrsa -out mysite.key -des3 -passout pass:123456 1024</code></li>
-<li>2.构造证书请求<ul>
-<li>交互式输入：<code>openssl req -key mysite.key -passin pass:123456 -new -out mysite.req</code></li>
-<li>非交互式输入，先编辑配置文件mysite.conf，然后生成请求：<code>openssl req -key mysite.key -passin pass:123456 -new -config mysite.conf -out mysite.req</code></li>
-</ul>
-</li>
-<li>3.签发用户证书：<code>openssl x509 -req -in mysite.req -CA testca.pem -CAkey testca.key -out mysite.pem -passin pass:abcdef -CAcreateserial</code>-days指定证书有效期</li>
-<li>当然，签发用户证书的前提是已经自签发根证书，先执行1,2步生成根证书申请，然后自签发：<code>openssl x509 -req -in testCA.req -signkey testca.key -out testca.pem -passin pass:abcdef</code></li>
-</ul>
-<h2 id="编程"><a href="#编程" class="headerlink" title="编程"></a>编程</h2><p>对称算法和摘要算法全局初始化：<code>OpenSSL_add_all_algorithms();</code></p>
-<p>释放句柄：<code>EVP_MD_CTX_cleanup(&amp;ctx);</code></p>
-<h3 id="加解密"><a href="#加解密" class="headerlink" title="加解密"></a>加解密</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int EVP_CipherInit(EVP_CIPHER_CTX *ctx, const EVP_CIPHER *type, unsigned char *key, unsigned char *iv, int enc)</span><br><span class="line">int EVP_CipherUpdate(EVP_CIPHER_CTX *ctx, unsigned char *out, int *outl, unsigned char *in, int inl);</span><br><span class="line">int EVP_CipherFinal(EVP_CIPHER_CTX *ctx, unsigned char *outm, int *outl);</span><br></pre></td></tr></table></figure>
-<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">int EVP_DigestInit(EVP_MD_CTX *ctx, const EVP_MD *type);</span><br><span class="line">int EVP_DigestUpdate(EVP_MD_CTX *ctx, const void *d, size_t cnt);</span><br><span class="line">int EVP_DigestFinal(EVP_MD_CTX *ctx, unsigned char *md, unsigned int *s);</span><br></pre></td></tr></table></figure>
-<h3 id="签名验签-RSA-ECDSA"><a href="#签名验签-RSA-ECDSA" class="headerlink" title="签名验签(RSA/ECDSA)"></a>签名验签(RSA/ECDSA)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EVP_SignInit ( &amp;md_sign_ctx, md )</span><br><span class="line">EVP_SignUpdate(&amp;md_sign_ctx, data, data_cb)</span><br><span class="line">EVP_SignFinal (&amp;md_sign_ctx, sign, psign_cb, pPriKey )</span><br><span class="line"></span><br><span class="line">EVP_VerifyInit( &amp;md_verify_ctx, md )</span><br><span class="line">EVP_VerifyUpdate(&amp;md_verify_ctx, data, data_cb)</span><br><span class="line">EVP_VerifyFinal(&amp;md_verify_ctx, sign, sign_cb, pPubKey)</span><br></pre></td></tr></table></figure>
-<h3 id="公钥加密与私钥解密（RSA算法）"><a href="#公钥加密与私钥解密（RSA算法）" class="headerlink" title="公钥加密与私钥解密（RSA算法）"></a>公钥加密与私钥解密（RSA算法）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int EVP_PKEY_encrypt	(	EVP_PKEY_CTX * 	ctx, unsigned char * 	out, size_t * 	outlen, const unsigned char * 	in, size_t 	inlen )</span><br></pre></td></tr></table></figure>
-<h3 id="PKCS7签名验签（RSA-ECDSA）"><a href="#PKCS7签名验签（RSA-ECDSA）" class="headerlink" title="PKCS7签名验签（RSA/ECDSA）"></a>PKCS7签名验签（RSA/ECDSA）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p7 = PKCS7_sign(x, pPriKey, NULL, in, PKCS7_BINARY)</span><br><span class="line">PKCS7_verify(p7, NULL, NULL, in, NULL, PKCS7_BINARY|PKCS7_NOVERIFY)</span><br></pre></td></tr></table></figure>
-<h3 id="PKCS7数字信封加密解密（RSA）"><a href="#PKCS7数字信封加密解密（RSA）" class="headerlink" title="PKCS7数字信封加密解密（RSA）"></a>PKCS7数字信封加密解密（RSA）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">p7 = PKCS7_encrypt(certs, in, EVP_des_cbc(), PKCS7_BINARY)</span><br><span class="line">PKCS7_decrypt(p7, pPriKey, x, out, PKCS7_BINARY)</span><br></pre></td></tr></table></figure>
-<h3 id="解密公司的加密邮件（SMIME）"><a href="#解密公司的加密邮件（SMIME）" class="headerlink" title="解密公司的加密邮件（SMIME）"></a>解密公司的加密邮件（SMIME）</h3><p>公司加密邮件为标准SMIME格式，导出后得到.eml文件<br>使用<code>PKCS7 *SMIME_read_PKCS7(BIO *bio, BIO **bcont)</code>将bio读取到的SMIME格式保存在PKCS7格式内，然后通过PKCS7_dncrypt接口解密</p>
-<h3 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h3><p>错误处理应该尽可能多的包含各种信息，包括：</p>
-<ul>
-<li>错误码；</li>
-<li>出错文件以及行号；</li>
-<li>错误原因；</li>
-<li>出错函数；</li>
-<li>出错库；</li>
-<li>出错模块与类别信息；</li>
-<li>错误堆栈信息等。</li>
-</ul>
-<p>ERR_get_error获取第一个错误号</p>
-<p>ERR_error_string根据错误码获取具体的错误信息，包括出错的库、出错的函数以及出错原因</p>
-<p>ERR_print_errors_fp将错误打印到FILE中</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://renzheng0403.github.io/2017/07/02/《白夜行》读后感——夜行者/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="renzheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="renz">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/07/02/《白夜行》读后感——夜行者/" itemprop="url">
-                  夜行者
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-07-02 05:04:00" itemprop="dateCreated datePublished" datetime="2017-07-02T05:04:00+08:00">2017-07-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-05-19 09:59:30" itemprop="dateModified" datetime="2018-05-19T09:59:30+08:00">2018-05-19</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/后感/" itemprop="url" rel="index"><span itemprop="name">后感</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>大概是用了连着的12多个小时读完，中间只睡了4个小时。这是一本读了就让我放不下的书。这本书在我这放了有一年多了，同学和我换书看，但是一直忙于各种事，文学类的书少见的没有顾及，因此一直保持封皮未拆封的状态。这次决定看也是另一个老朋友突然提到，才想起自己手头刚好有一本。</p>
-<p>我们身边总会存在这样一些人，他们身上有一种高尚的气息，未加掩饰的纯洁。提起这个人，别人会觉得，哦，他啊，不是那种做这种龌龊事的人，而提起另外一个人，仿佛他脸上写着阴谋。对第一种人心之所向无可厚非，对第二种人呲之以鼻也是人之常情，我并不想为来自社会底层的陋习做任何正名的事，我自己也厌恶那些，但读完《白夜行》，很难不去想为什么有些人总是走在灰色边缘，原因很简单啊——我的世界里根本没有太阳。</p>
-<hr>
-<p>什么样的人生叫没有太阳？川岛江利子是女主唐泽雪穗的中学和大学好友，尽管她在大学发生了那种事，但是究其本身的生长环境来说，她不是夜行者，所以可以看到她身上有人最崇高的品质。我没有细查作者在前期是怎样描绘江利子，总之是个其貌不扬呆在唐泽雪穗身边乖乖女。开篇介绍她的良好习惯——就寝前写日记，上学前为院子里的树浇水，星期日早上打扫房间。关于日记是这样描写的：</p>
-<blockquote>
-<p>不需要写什么戏剧性的大事，平铺直叙也无妨，即便是一句“今天一如往常”亦无不可。</p>
-</blockquote>
-<p>她憧憬能够与雪穗交朋友，在和她在一起之后更是觉得自己也对许多事物有了新的认识。文章也说了由于男生的目光都集中在雪穗身上，她难免也会有些嫉妒，但是这种嫉妒也仅限于一种未控制生物本能，在之后甚至连这种生物本能都完全消失。简而言之，江利子身上有一种称之为贵族气息的优雅，不争不抢，仿佛岁月静好。她的这个优点被来自上层社会的具有敏锐观察力的筱冢一成一眼识别。</p>
-<p>灰姑娘的故事不是吗？假如不是发生后面的事，她会是第二个灰姑娘。习惯、容貌、礼仪等都是可以学习的技巧，但是那份宠辱不惊的心态是雪穗无论如何都学不来的。毕竟人，生来不平等。</p>
-<hr>
-<p>与之相对，唐泽雪穗的人生则是没有太阳的人生。人类从幼年到成年用时惊人，在这段漫长的岁月里，我们几乎没有任何自卫的能力，完全庇护在看护人的保护下，然而雪穗的看护人——其母西本文代，却因为种种原因，将这个残酷的世界暴露在一个小女孩的面前。年幼的西本雪穗面对的不仅仅是一个或者一次，她面对的是桐原洋介、寺崎忠夫等在未解决好个人人性而暴露出来的原罪——欲。</p>
-<p>这样的一个人，在以后的岁月里，你指望她也能闲看花开花落，云起云涌吗？她只会尽全力将自己武装起来，任何人对她来说都将是工具，因为她无法信任任何人。毕竟在她年幼的时候，自己的母亲都不值得信任。</p>
-<p>在她被唐泽礼子收养之后，她是否曾放下自己的心房呢？你尽可以猜测，由于唐泽礼子家娴静的环境，不愁吃穿不惧生活，她也会获得真正的快乐吧，从而放下罪恶。加入你真有这种想法，哪怕一刻钟，就表明你更偏向于川岛江利子式而不是唐泽雪穗式的思考方式。进入唐泽礼子家是雪穗内心权衡的对自己最有利的选择。年幼的她在生母还在世的时候，有两个地方会带给她内心的一些依靠，一个是图书馆，另一个就是唐泽礼子家，这两个地方带给她的均是逃，逃避了现世的残酷。在图书馆里，阅读带人沉浸在书所描绘的世界，而与远房亲戚唐泽礼子的交流则让她体会到了一个完全不同于自己生母所提供的生活环境，那里谈吐优雅洁净，心之所向大概就是这种感觉。</p>
-<p>在发现自己的母亲自杀后，她冷静的分析现状，并布置了意外死亡的假象，又借由无法找到钥匙的理由，耽误了救治的最佳时间。结果最终如她所愿，如愿以偿的被收养。从此以后，她的行事准则只看是否对自己有利，而不会再去关心爱护身边的人。加入你能感受到她对你的关心，对她来说却仅仅是方程式一般的必做事项，无所谓感情。</p>
-<blockquote>
-<p>我的天空里没有太阳，总是黑夜，但并不暗，因为有东西代替了太阳。虽然没有太阳那么明亮，但对我来说已经足够。凭借着这份光，我便能把黑夜当成白天。我从来就没有太阳，所以不怕失去。</p>
-</blockquote>
-<p>这段话算是雪穗的自白了吧。代替了太阳的应该就是桐原亮司，桐原亮司是她的图书馆小伙伴，最重要的是，在她最绝望的时候，他为她黑暗的人生点亮了一盏灯，将她从越陷越深的泥淖里解救了出来。“并不暗，有东西代替了太阳。”光是说出这句话，内心的幸福感恐怕都要爆棚。</p>
-<p>我们可以说川岛江利子天生幸运，又是不幸的；而唐泽雪穗是天生不幸，又是幸运的。在于人生路上的光，雪穗遇到了伴随她行走的光，因此即使是在黑夜，她都有走下去的勇气。雪穗的另一句话：</p>
-<blockquote>
-<p>有些人一辈子都活在太阳的照耀下，也有些人不得不一直活在漆黑的深夜里。人害怕的是本来一直存在的太阳落下不再升起，也就是非常害怕原来照在身上的光芒突然消失。</p>
-</blockquote>
-<p>全文的最后，桐原亮司死之后是这样描述雪穗的：</p>
-<blockquote>
-<p>只见雪穗正沿扶梯上楼，她的背影犹如白色的影子。<br>她一次都没有回头。</p>
-</blockquote>
-<p>这段描述突然让我想起了小时候看的一个镜头：<br><img src="http://upload-images.jianshu.io/upload_images/5278708-b0cb5df6a8b6cd9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="天下无贼.png"></p>
-<p>雪穗已经死了，因为照在她身上的光已经消失。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
 
 
           </div>
@@ -2524,7 +2345,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2545,7 +2366,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -2570,7 +2395,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

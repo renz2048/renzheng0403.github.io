@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="代码分析requirenmap:与Nmap内部接口。 shortport:建立短portrules的函数 stdnse:标准的Nmap脚本引擎功能。 该模块包含各种方便的功能，这些模块功能太小而无法证明自己。 table:将输出排列成表格。 vulns:漏洞管理功能。 tls descriptionCCS Injection vulnerability(CVE-2014-0224)How I di">
+<meta name="keywords" content="SSL,nmap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nmap ssl-ccs-injection脚本分析">
+<meta property="og:url" content="https://renzheng0403.github.io/2018/06/07/nmap-ssl-ccs-injection脚本解析/index.html">
+<meta property="og:site_name" content="renz">
+<meta property="og:description" content="代码分析requirenmap:与Nmap内部接口。 shortport:建立短portrules的函数 stdnse:标准的Nmap脚本引擎功能。 该模块包含各种方便的功能，这些模块功能太小而无法证明自己。 table:将输出排列成表格。 vulns:漏洞管理功能。 tls descriptionCCS Injection vulnerability(CVE-2014-0224)How I di">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-29T16:43:29.717Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nmap ssl-ccs-injection脚本分析">
+<meta name="twitter:description" content="代码分析requirenmap:与Nmap内部接口。 shortport:建立短portrules的函数 stdnse:标准的Nmap脚本引擎功能。 该模块包含各种方便的功能，这些模块功能太小而无法证明自己。 table:将输出排列成表格。 vulns:漏洞管理功能。 tls descriptionCCS Injection vulnerability(CVE-2014-0224)How I di">
+
+
+
+
+
+
+  <link rel="canonical" href="https://renzheng0403.github.io/2018/06/07/nmap-ssl-ccs-injection脚本解析/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>nmap ssl-ccs-injection脚本分析 | renz</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">renz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">what's past is prologue</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://renzheng0403.github.io/2018/06/07/nmap-ssl-ccs-injection脚本解析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="renzheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="renz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">nmap ssl-ccs-injection脚本分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-07 19:47:00" itemprop="dateCreated datePublished" datetime="2018-06-07T19:47:00+08:00">2018-06-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-30 00:43:29" itemprop="dateModified" datetime="2018-06-30T00:43:29+08:00">2018-06-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/nmap/" itemprop="url" rel="index"><span itemprop="name">nmap</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="代码分析"><a href="#代码分析" class="headerlink" title="代码分析"></a>代码分析</h1><h2 id="require"><a href="#require" class="headerlink" title="require"></a>require</h2><p>nmap:与Nmap内部接口。</p>
+<p>shortport:建立短portrules的函数</p>
+<p>stdnse:标准的Nmap脚本引擎功能。 该模块包含各种方便的功能，这些模块功能太小而无法证明自己。</p>
+<p>table:将输出排列成表格。</p>
+<p>vulns:漏洞管理功能。</p>
+<p>tls</p>
+<h2 id="description"><a href="#description" class="headerlink" title="description"></a>description</h2><h3 id="CCS-Injection-vulnerability-CVE-2014-0224"><a href="#CCS-Injection-vulnerability-CVE-2014-0224" class="headerlink" title="CCS Injection vulnerability(CVE-2014-0224)"></a>CCS Injection vulnerability(CVE-2014-0224)</h3><p><a href="http://ccsinjection.lepidum.co.jp/blog/2014-06-05/CCS-Injection-en/index.html" target="_blank" rel="noopener">How I discovered CCS Injection Vulnerability (CVE-2014-0224)</a></p>
+<h3 id="脚本流程"><a href="#脚本流程" class="headerlink" title="脚本流程"></a>脚本流程</h3><p>脚本发送一个失序的<code>ChangeCipherSpec</code>信息，检查服务器是否返回<code>UNEXPECTED_MESSAGE</code>警告字段。 由于未修复该漏洞的服务器只会接受此消息，因此CCS数据包将发送两次，以强制服务器发出警报。 如果警报类型与“UNEXPECTED_MESSAGE”不同，我们可以得出结论，服务器容易受影响。</p>
+<h2 id="function-test-ccs-injection"><a href="#function-test-ccs-injection" class="headerlink" title="function test_ccs_injection"></a>function test_ccs_injection</h2><h3 id="向目标服务器发送Client-Hello"><a href="#向目标服务器发送Client-Hello" class="headerlink" title="向目标服务器发送Client Hello"></a>向目标服务器发送Client Hello</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s:send(hello)</span><br></pre></td></tr></table></figure>
+<p>检测发送状态，若失败返回错误信息<code>Couldn&#39;t send Client Hello: err</code>，<code>err</code>为s:send返回的err信息。</p>
+<h3 id="读取回复"><a href="#读取回复" class="headerlink" title="读取回复"></a>读取回复</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 判断是否是提示超时</span><br><span class="line">tls.record_buffer(s, response, i)</span><br><span class="line"></span><br><span class="line">tls.record_read(response, i)</span><br><span class="line"></span><br><span class="line">-- 循环record</span><br><span class="line">  -- 判断record.type == “handshake&quot;</span><br><span class="line">    -- 判断body.type == &quot;server_hello_done&quot;</span><br><span class="line">      stdnse.debug1(&quot;Handshake completed (%s)&quot;, version)</span><br></pre></td></tr></table></figure>
+<h3 id="重复发送change-cipher-spec"><a href="#重复发送change-cipher-spec" class="headerlink" title="重复发送change_cipher_spec"></a>重复发送change_cipher_spec</h3><h4 id="change-cipher-spec消息"><a href="#change-cipher-spec消息" class="headerlink" title="change_cipher_spec消息"></a>change_cipher_spec消息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ccs = tls.record_write(&quot;change_cipher_spec&quot;, version, &quot;\x01&quot;)</span><br></pre></td></tr></table></figure>
+<h4 id="发送第一个ccs消息"><a href="#发送第一个ccs消息" class="headerlink" title="发送第一个ccs消息"></a>发送第一个ccs消息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s:send(ccs)</span><br></pre></td></tr></table></figure>
+<h4 id="发送第二个ccs消息"><a href="#发送第二个ccs消息" class="headerlink" title="发送第二个ccs消息"></a>发送第二个ccs消息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s:send(ccs)</span><br></pre></td></tr></table></figure>
+<h4 id="读取警告信息"><a href="#读取警告信息" class="headerlink" title="读取警告信息"></a>读取警告信息</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vulnerable = alert_unexpected_message(s)</span><br></pre></td></tr></table></figure>
+<h2 id="function-alert-unexpected-message-s"><a href="#function-alert-unexpected-message-s" class="headerlink" title="function alert_unexpected_message(s)"></a>function alert_unexpected_message(s)</h2><p>buffer = tls.record_buffer(s, buffer, 1)</p>
+<p>record = tls.record_read(buffer, 1)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if record.type ~= &quot;alert&quot; then</span><br><span class="line">    -- VULNERABLE 标记，预期中的alert record</span><br><span class="line">    return true,true</span><br><span class="line">  end</span><br><span class="line"></span><br><span class="line">  for _, body in ipairs(record.body) do</span><br><span class="line">    if body.level == &quot;fatal&quot; and body.description == &quot;unexpected_message&quot; then</span><br><span class="line">      return true,false</span><br><span class="line">    end</span><br><span class="line">  end</span><br></pre></td></tr></table></figure>
+<h2 id="action-function-host-port"><a href="#action-function-host-port" class="headerlink" title="action = function(host, port)"></a>action = function(host, port)</h2><p>对<code>tls.PROTOCOLS</code>迭代</p>
+<p>  local vulnerable, err = test_ccs_injection(host, port, tls_version)</p>
+<h1 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h1><h2 id="对自建易受攻击环境的检测"><a href="#对自建易受攻击环境的检测" class="headerlink" title="对自建易受攻击环境的检测"></a>对自建易受攻击环境的检测</h2><p>客户端执行nmap：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">renz@ubuntuserver17:~$ nmap -p 443 --script ssl-ccs-injection 192.168.80.211</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.50 ( https://nmap.org ) at 2018-06-08 11:52 CST</span><br><span class="line">Nmap scan report for 192.168.80.211</span><br><span class="line">Host is up (0.00042s latency).</span><br><span class="line"></span><br><span class="line">PORT    STATE SERVICE</span><br><span class="line">443/tcp open  https</span><br><span class="line">| ssl-ccs-injection:</span><br><span class="line">|   VULNERABLE:</span><br><span class="line">|   SSL/TLS MITM vulnerability (CCS Injection)</span><br><span class="line">|     State: VULNERABLE</span><br><span class="line">|     Risk factor: High</span><br><span class="line">|       OpenSSL before 0.9.8za, 1.0.0 before 1.0.0m, and 1.0.1 before 1.0.1h</span><br><span class="line">|       does not properly restrict processing of ChangeCipherSpec messages,</span><br><span class="line">|       which allows man-in-the-middle attackers to trigger use of a zero</span><br><span class="line">|       length master key in certain OpenSSL-to-OpenSSL communications, and</span><br><span class="line">|       consequently hijack sessions or obtain sensitive information, via</span><br><span class="line">|       a crafted TLS handshake, aka the &quot;CCS Injection&quot; vulnerability.</span><br><span class="line">|</span><br><span class="line">|     References:</span><br><span class="line">|       http://www.openssl.org/news/secadv_20140605.txt</span><br><span class="line">|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-0224</span><br><span class="line">|_      http://www.cvedetails.com/cve/2014-0224</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 0.26 seconds</span><br></pre></td></tr></table></figure></p>
+<p>客户端抓包:<code>ssldump -i eth0</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">10 2  0.0019 (0.0015)  S&gt;C  Handshake</span><br><span class="line">      ServerHello</span><br><span class="line">        Version 3.1</span><br><span class="line">        session_id[32]=</span><br><span class="line">          b6 d5 f5 96 08 bc c0 6c 1c 31 5b df 34 11 e5 60</span><br><span class="line">          d4 61 d1 da f1 c3 78 b4 d1 64 d3 df 00 48 e7 71</span><br><span class="line">        cipherSuite         TLS_RSA_WITH_3DES_EDE_CBC_SHA</span><br><span class="line">        compressionMethod                   NULL</span><br><span class="line">10 3  0.0019 (0.0000)  S&gt;C  Handshake</span><br><span class="line">      Certificate</span><br><span class="line">10 4  0.0019 (0.0000)  S&gt;C  Handshake</span><br><span class="line">      ServerHelloDone</span><br><span class="line">10 5  0.0022 (0.0002)  C&gt;S  ChangeCipherSpec</span><br><span class="line">10 6  0.0426 (0.0404)  C&gt;S  ChangeCipherSpec</span><br><span class="line">10 7  0.0429 (0.0002)  S&gt;C  Alert</span><br><span class="line">    level           fatal</span><br><span class="line">    value           decryption_failed</span><br><span class="line">10    0.0430 (0.0001)  C&gt;S  TCP FIN</span><br><span class="line">10    0.0431 (0.0001)  S&gt;C  TCP FIN</span><br></pre></td></tr></table></figure></p>
+<p><strong>107行未检测到<code>unexpected_message</code>表明未修复该漏洞</strong>。</p>
+<h2 id="对自建不受攻击环境的检测"><a href="#对自建不受攻击环境的检测" class="headerlink" title="对自建不受攻击环境的检测"></a>对自建不受攻击环境的检测</h2><p>客户端执行nmap：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">renz@ubuntuserver17:~$ nmap -p 443 --script ssl-ccs-injection 192.168.80.215</span><br><span class="line"></span><br><span class="line">Starting Nmap 7.50 ( https://nmap.org ) at 2018-06-08 11:39 CST</span><br><span class="line">Nmap scan report for 192.168.80.215</span><br><span class="line">Host is up (0.00046s latency).</span><br><span class="line"></span><br><span class="line">PORT    STATE SERVICE</span><br><span class="line">443/tcp open  https</span><br><span class="line"></span><br><span class="line">Nmap done: 1 IP address (1 host up) scanned in 0.22 seconds</span><br></pre></td></tr></table></figure></p>
+<p>客户端抓包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">78 2  0.0010 (0.0005)  S&gt;C  Handshake</span><br><span class="line">      ServerHello</span><br><span class="line">        Version 3.3</span><br><span class="line">        session_id[32]=</span><br><span class="line">          57 bc 8c 2c ba 85 97 52 1f 0e 68 5c 56 c1 21 96</span><br><span class="line">          88 db a6 b6 8c 4d b4 4b eb 36 e1 a7 b8 29 6d 57</span><br><span class="line">        cipherSuite         TLS_RSA_WITH_AES_256_CBC_SHA</span><br><span class="line">        compressionMethod                   NULL</span><br><span class="line">78 3  0.0010 (0.0000)  S&gt;C  Handshake</span><br><span class="line">      Certificate</span><br><span class="line">78 4  0.0010 (0.0000)  S&gt;C  Handshake</span><br><span class="line">      ServerHelloDone</span><br><span class="line">78 5  0.0013 (0.0003)  C&gt;S  ChangeCipherSpec</span><br><span class="line">78 6  0.0016 (0.0002)  S&gt;C  Alert</span><br><span class="line">    level           fatal</span><br><span class="line">    value           unexpected_message</span><br><span class="line">78 7  0.0016 (0.0000)  C&gt;S  ChangeCipherSpec</span><br><span class="line">78    0.0016 (0.0000)  S&gt;C  TCP FIN</span><br><span class="line">78    0.0018 (0.0001)  C&gt;S  TCP FIN</span><br></pre></td></tr></table></figure></p>
+<p><strong>78行检测到<code>unexpected_message</code>表明已修复该漏洞</strong>。</p>
+<h1 id="利用漏洞攻击"><a href="#利用漏洞攻击" class="headerlink" title="利用漏洞攻击"></a>利用漏洞攻击</h1><p>能力有限，虽然手头有易被攻击的环境，但仍没有什么可行的办法以己之矛攻己之盾。是不是说自己作为中间人，成功诱导c/s双方使用弱加密套件，自己这边穷举算出密钥的可能性就大了。<br>我果然最后都没能搞出。<br>看了以下几篇文章推荐给大家，如果有什么可行性高的办法请一定分享。<br><a href="https://www.imperialviolet.org/2014/06/05/earlyccs.html" target="_blank" rel="noopener">早期ChangeCipherSpec攻击</a><br><a href="http://ccsinjection.lepidum.co.jp/blog/2014-06-05/CCS-Injection-en/index.html" target="_blank" rel="noopener">How I discovered CCS Injection Vulnerability (CVE-2014-0224)</a></p>
+<h2 id="使用1-0-1h之前版本的openssl进行ssl握手"><a href="#使用1-0-1h之前版本的openssl进行ssl握手" class="headerlink" title="使用1.0.1h之前版本的openssl进行ssl握手"></a>使用1.0.1h之前版本的openssl进行ssl握手</h2><p>进行这样一个测试，我觉得我需要两个ubuntu，作为服务端的ubuntu安装openssl-1.0.1g，并运行命令openssl s_server，客户端运行nmap。<br>或者通过gdb来运行openssl s_server来查看openssl如何接受ChangeCipherSpec。</p>
+<p>handshark flow：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Client                                                Server</span><br><span class="line"></span><br><span class="line">ClientHello                   --------&gt;</span><br><span class="line">                                                 ServerHello</span><br><span class="line">                                                Certificate*</span><br><span class="line">                                          ServerKeyExchange*</span><br><span class="line">                                         CertificateRequest*</span><br><span class="line">                              &lt;--------      ServerHelloDone</span><br><span class="line">Certificate*</span><br><span class="line">ClientKeyExchange</span><br><span class="line">CertificateVerify*</span><br><span class="line">[ChangeCipherSpec]</span><br><span class="line">Finished                      --------&gt;</span><br><span class="line">                                          [ChangeCipherSpec]</span><br><span class="line">                              &lt;--------             Finished</span><br><span class="line">Application Data              &lt;-------&gt;     Application Data</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SSL/" rel="tag"># SSL</a>
+          
+            <a href="/tags/nmap/" rel="tag"># nmap</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/07/nmap脚本写作教程/" rel="next" title="nmap脚本写作教程">
+                <i class="fa fa-chevron-left"></i> nmap脚本写作教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/29/test/" rel="prev" title="md module">
+                md module <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">renzheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#代码分析"><span class="nav-number">1.</span> <span class="nav-text">代码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#require"><span class="nav-number">1.1.</span> <span class="nav-text">require</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#description"><span class="nav-number">1.2.</span> <span class="nav-text">description</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CCS-Injection-vulnerability-CVE-2014-0224"><span class="nav-number">1.2.1.</span> <span class="nav-text">CCS Injection vulnerability(CVE-2014-0224)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本流程"><span class="nav-number">1.2.2.</span> <span class="nav-text">脚本流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function-test-ccs-injection"><span class="nav-number">1.3.</span> <span class="nav-text">function test_ccs_injection</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向目标服务器发送Client-Hello"><span class="nav-number">1.3.1.</span> <span class="nav-text">向目标服务器发送Client Hello</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取回复"><span class="nav-number">1.3.2.</span> <span class="nav-text">读取回复</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重复发送change-cipher-spec"><span class="nav-number">1.3.3.</span> <span class="nav-text">重复发送change_cipher_spec</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#change-cipher-spec消息"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">change_cipher_spec消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发送第一个ccs消息"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">发送第一个ccs消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发送第二个ccs消息"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">发送第二个ccs消息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#读取警告信息"><span class="nav-number">1.3.3.4.</span> <span class="nav-text">读取警告信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#function-alert-unexpected-message-s"><span class="nav-number">1.4.</span> <span class="nav-text">function alert_unexpected_message(s)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#action-function-host-port"><span class="nav-number">1.5.</span> <span class="nav-text">action = function(host, port)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检测"><span class="nav-number">2.</span> <span class="nav-text">检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对自建易受攻击环境的检测"><span class="nav-number">2.1.</span> <span class="nav-text">对自建易受攻击环境的检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对自建不受攻击环境的检测"><span class="nav-number">2.2.</span> <span class="nav-text">对自建不受攻击环境的检测</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#利用漏洞攻击"><span class="nav-number">3.</span> <span class="nav-text">利用漏洞攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用1-0-1h之前版本的openssl进行ssl握手"><span class="nav-number">3.1.</span> <span class="nav-text">使用1.0.1h之前版本的openssl进行ssl握手</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">renzheng</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

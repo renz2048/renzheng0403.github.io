@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="原文：Script Writing Tutorial  事实上，在你看这篇译文之前，我必须要解释两点  按照这篇译文写出的代码并没有发挥作用 你可以通过这篇文章了解到script的框架   假设您想要从identification服务器提取信息以确定侦听TCP端口的进程的所有者。 这不是identd的目的（它是为了查询传出连接的所有者，而不是监听守护进程），但许多identd服务器都允许它。Nma">
+<meta name="keywords" content="SSL,nmap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nmap脚本写作教程">
+<meta property="og:url" content="https://renzheng0403.github.io/2018/06/07/nmap脚本写作教程/index.html">
+<meta property="og:site_name" content="renz">
+<meta property="og:description" content="原文：Script Writing Tutorial  事实上，在你看这篇译文之前，我必须要解释两点  按照这篇译文写出的代码并没有发挥作用 你可以通过这篇文章了解到script的框架   假设您想要从identification服务器提取信息以确定侦听TCP端口的进程的所有者。 这不是identd的目的（它是为了查询传出连接的所有者，而不是监听守护进程），但许多identd服务器都允许它。Nma">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-06-29T16:43:41.550Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nmap脚本写作教程">
+<meta name="twitter:description" content="原文：Script Writing Tutorial  事实上，在你看这篇译文之前，我必须要解释两点  按照这篇译文写出的代码并没有发挥作用 你可以通过这篇文章了解到script的框架   假设您想要从identification服务器提取信息以确定侦听TCP端口的进程的所有者。 这不是identd的目的（它是为了查询传出连接的所有者，而不是监听守护进程），但许多identd服务器都允许它。Nma">
+
+
+
+
+
+
+  <link rel="canonical" href="https://renzheng0403.github.io/2018/06/07/nmap脚本写作教程/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>nmap脚本写作教程 | renz</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">renz</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">what's past is prologue</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://renzheng0403.github.io/2018/06/07/nmap脚本写作教程/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="renzheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="renz">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">nmap脚本写作教程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-06-07 18:53:00" itemprop="dateCreated datePublished" datetime="2018-06-07T18:53:00+08:00">2018-06-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-06-30 00:43:41" itemprop="dateModified" datetime="2018-06-30T00:43:41+08:00">2018-06-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/nmap/" itemprop="url" rel="index"><span itemprop="name">nmap</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>原文：<a href="https://nmap.org/book/nse-tutorial.html" target="_blank" rel="noopener">Script Writing Tutorial</a></p>
+<blockquote>
+<p>事实上，在你看这篇译文之前，我必须要解释两点</p>
+<ol>
+<li>按照这篇译文写出的代码并没有发挥作用</li>
+<li>你可以通过这篇文章了解到script的框架</li>
+</ol>
+</blockquote>
+<p>假设您想要从identification服务器提取信息以确定侦听TCP端口的进程的所有者。 这不是identd的目的（它是为了查询传出连接的所有者，而不是监听守护进程），但许多identd服务器都允许它。Nmap曾经拥有这种功能（称为ident扫描），但在过渡到新的扫描引擎架构时被删除。 identd使用的协议非常简单，但仍然太复杂，无法处理Nmap的版本检测语言。 首先，连接到标识服务器并发送<port-on-server>，<port-on-client>格式的查询，并以换行符结尾。 然后，服务器应该使用包含服务器端口，客户端端口，响应类型和地址信息的字符串进行响应。 如果出现错误，地址信息将被省略。 更多细节可在<a href="https://www.rfc-editor.org/rfc/rfc1413.txt" target="_blank" rel="noopener">RFC 1413</a>中找到，但这种描述对我们的目的来说已经足够了。该协议不能用Nmap的版本检测语言建模，原因有两个。 首先，您需要知道连接的本地端口和远程端口。 版本检测不提供此数据。 第二个更严重的障碍是，您需要两个打开的连接到目标 - 一个连接到识别服务器，一个连接到您希望查询的侦听端口。 NSE很容易克服这两种障碍。</port-on-client></port-on-server></p>
+<p>脚本的解剖部分在<a href="https://nmap.org/book/nse-script-format.html" target="_blank" rel="noopener">脚本格式</a>一节中进行了描述。 在本节中，我们将介绍如何使用所描述的结构。</p>
+<h1 id="The-Head"><a href="#The-Head" class="headerlink" title="The Head"></a>The Head</h1><p>脚本的head本质上是它的元信息。包含下列字段：<code>description</code>,<code>categories</code>,<code>dependencies</code>,<code>author</code>,<code>license</code>以及初始NSEDoc信息，例如用法，参数和输出标签<a href="https://nmap.org/book/nsedoc.html" target="_blank" rel="noopener">参考编写脚本文档一节</a>。</p>
+<p><code>description</code>应包含一段或更多段描述脚本的功能。 如果有关脚本结果的任何信息可能会混淆或误导用户，并且您无法通过改进脚本或结果文本来消除此问题，则应将其记录在<code>description</code>中。 如果有多个段落，第一个在必要时用作简短摘要。 确保第一段可以作为一个独立的摘要。 这个描述很简短，因为它是一个如此简单的脚本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">description = [[</span><br><span class="line">Attempts to find the owner of an open TCP port by querying an auth</span><br><span class="line">(identd - port 113) daemon which must also be open on the target system.</span><br><span class="line">]]</span><br></pre></td></tr></table></figure>
+<p>接下来是NSEDoc信息。 此脚本缺少常见的@usage和@args标记，因为它非常简单，但它确实有一个NSEDoc @output标记：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">--@output</span><br><span class="line">-- 21/tcp   open     ftp       ProFTPD 1.3.1</span><br><span class="line">-- |_ auth-owners: nobody</span><br><span class="line">-- 22/tcp   open     ssh       OpenSSH 4.3p2 Debian 9etch2 (protocol 2.0)</span><br><span class="line">-- |_ auth-owners: root</span><br><span class="line">-- 25/tcp   open     smtp      Postfix smtpd</span><br><span class="line">-- |_ auth-owners: postfix</span><br><span class="line">-- 80/tcp   open     http      Apache httpd 2.0.61 ((Unix) PHP/4.4.7 ...)</span><br><span class="line">-- |_ auth-owners: dhapache</span><br><span class="line">-- 113/tcp  open     auth?</span><br><span class="line">-- |_ auth-owners: nobody</span><br><span class="line">-- 587/tcp  open     submission Postfix smtpd</span><br><span class="line">-- |_ auth-owners: postfix</span><br><span class="line">-- 5666/tcp open     unknown</span><br><span class="line">-- |_ auth-owners: root</span><br></pre></td></tr></table></figure>
+<p>接下来是<code>author</code>,<code>license</code>,<code>categories</code>标签。 此脚本属于<code>safe</code>，因为我们没有将该服务用于任何不适用的内容。 由于此脚本是默认运行的脚本，因此它也位于<code>default</code>类别中。 以下是上下文中的变量：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">author = &quot;Diman Todorov&quot;</span><br><span class="line"></span><br><span class="line">license = &quot;Same as Nmap--See https://nmap.org/book/man-legal.html&quot;</span><br><span class="line"></span><br><span class="line">categories = &#123;&quot;default&quot;, &quot;safe&quot;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="The-Rule"><a href="#The-Rule" class="headerlink" title="The Rule"></a>The Rule</h1><p><code>rule</code>是一个Lua方法，决定跳过还是执行脚本动作。 该决定通常基于规则的类型以及传递给它的主机和端口信息。 prerule或postrule将始终评估为true。 在识别脚本的情况下，它比这稍微复杂一些。 要决定是否针对给定端口运行识别脚本，我们需要知道目标机器上是否存在运行auth服务器。 换句话说，只有在当前扫描的TCP端口打开并且TCP端口113也打开的情况下，脚本才能运行。 现在我们将依赖识别服务器在TCP端口113上侦听的事实。不幸的是，NSE只给我们提供关于当前扫描端口的信息。</p>
+<p>要知道端口113是否打开，我们使用nmap.get_port_state函数。 如果未扫描auth端口，则get_port_state函数返回nil。 所以我们检查表不是零。 我们还检查两个端口是否处于打开状态。 如果是这种情况，则执行该动作，否则我们跳过该动作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">portrule = function(host, port)</span><br><span class="line">	local auth_port = &#123; number=113, protocol=&quot;tcp&quot; &#125;</span><br><span class="line">	local identd = nmap.get_port_state(host, auth_port)</span><br><span class="line"></span><br><span class="line">	return identd ~= nil</span><br><span class="line">		and identd.state == &quot;open&quot;</span><br><span class="line">		and port.protocol == &quot;tcp&quot;</span><br><span class="line">		and port.state == &quot;open&quot;</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<h1 id="The-Action"><a href="#The-Action" class="headerlink" title="The Action"></a>The Action</h1><p>最后我们实现了实际的功能！ 该脚本首先连接到我们期望找到标识服务器的端口，然后它将连接到我们想要获取信息的端口。 这样做首先通过调用nmap.new_socket创建两个套接字选项。 接下来我们定义一个错误处理catch函数，如果检测到失败，它会关闭这些套接字。 在这一点上，我们可以安全地使用诸如打开，关闭，发送和接收之类的对象方法来在网络套接字上操作。 在这种情况下，我们称connect为连接。 NSE的异常处理机制用于避免过多的错误处理代码。 我们只需在尝试调用中打包网络调用，如果出现任何问题，我们会调用catch函数。</p>
+<p>如果两个连接成功，我们构造一个查询字符串并解析响应。 如果我们收到满意的答复，我们会返回检索到的信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">action = function(host, port)</span><br><span class="line">        local owner = &quot;&quot;</span><br><span class="line"></span><br><span class="line">        local client_ident = nmap.new_socket()</span><br><span class="line">        local client_service = nmap.new_socket()</span><br><span class="line"></span><br><span class="line">        local catch = function()</span><br><span class="line">                client_ident:close()</span><br><span class="line">                client_service:close()</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        local try = nmap.new_try(catch)</span><br><span class="line"></span><br><span class="line">        try(client_ident:connect(host.ip, 113))</span><br><span class="line">        try(client_service:connect(host.ip, port.number))</span><br><span class="line"></span><br><span class="line">        local localip, localport, remoteip, remoteport =</span><br><span class="line">                try(client_service:get_info())</span><br><span class="line"></span><br><span class="line">        local request = port.number .. &quot;, &quot; .. localport .. &quot;\r\n&quot;</span><br><span class="line"></span><br><span class="line">        try(client_ident:send(request))</span><br><span class="line"></span><br><span class="line">        owner = try(client_ident:receive_lines(1))</span><br><span class="line"></span><br><span class="line">        if string.match(owner, &quot;ERROR&quot;) then </span><br><span class="line">                owner = nil</span><br><span class="line">        else</span><br><span class="line">                owner = string.match(owner,</span><br><span class="line">                        &quot;%d+%s*,%s*%d+%s*:%s*USERID%s*:%s*.+%s*:%s*(.+)\r?\n&quot;)</span><br><span class="line">        end</span><br><span class="line"></span><br><span class="line">        try(client_ident:close())</span><br><span class="line">        try(client_service:close())</span><br><span class="line"></span><br><span class="line">        return owner</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<p>请注意，因为我们知道远程端口存储在port.number中，所以我们可以忽略client_service的最后两个返回值：get_info（），如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">local localip, localport = try(client_service:get_info())</span><br></pre></td></tr></table></figure>
+<p>在这个例子中，如果服务响应错误，我们会安静地退出。 这是通过将nil分配给将返回的所有者变量来完成的。 NSE脚本通常只在成功时才会返回消息，因此它们不会用无意义的警报泛滥用户。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SSL/" rel="tag"># SSL</a>
+          
+            <a href="/tags/nmap/" rel="tag"># nmap</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/20/Tun-Tap接口教材/" rel="next" title="TUN-TAP接口教程">
+                <i class="fa fa-chevron-left"></i> TUN-TAP接口教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/07/nmap-ssl-ccs-injection脚本解析/" rel="prev" title="nmap ssl-ccs-injection脚本分析">
+                nmap ssl-ccs-injection脚本分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">renzheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Head"><span class="nav-number">1.</span> <span class="nav-text">The Head</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Rule"><span class="nav-number">2.</span> <span class="nav-text">The Rule</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-Action"><span class="nav-number">3.</span> <span class="nav-text">The Action</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">renzheng</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.3.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
